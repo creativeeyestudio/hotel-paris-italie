@@ -1,6 +1,5 @@
 services:
   front:
-    container_name: "${PROJECT_NAME}-front"
     image: kevinad/dreamsite-web-front
     build:
       context: ./front
@@ -16,7 +15,6 @@ services:
       - back
 
   back:
-    container_name: "${PROJECT_NAME}-back"
     image: kevinad/dreamsite-cms
     build:
       context: ./back

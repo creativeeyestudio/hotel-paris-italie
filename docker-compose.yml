@@ -5,7 +5,6 @@ services:
   # -----------------------------------------------------------------
   mongo:
     image: mongo:8
-    container_name: "${PROJECT_NAME}-mongo"
     restart: unless-stopped
     volumes:
       - mongo-data:/data/db
@@ -16,7 +15,6 @@ services:
   # -----------------------------------------------------------------
   maildev:
     image: maildev/maildev
-    container_name: ${PROJECT_NAME}-maildev # Nom de l'image
     restart: always
     ports:
       - "1080:1080"
