@@ -16,6 +16,8 @@ services:
       ME_CONFIG_BASICAUTH_PASSWORD: admin
     depends_on:
       - mongo
+    networks:
+      - project-network
   
   mongo:
     image: mongo:8
@@ -23,7 +25,9 @@ services:
     volumes:
       - mongo-data:/data/db
     ports:
-      - "27017:27017" 
+      - "27017:27017"
+    networks:
+      - project-network
 
   # MAILDEV
   # -----------------------------------------------------------------
@@ -37,9 +41,11 @@ services:
       - TZ=Europe/France
       - MAILDEV_WEB_PORT=1080
       - MAILDEV_SMTP_PORT=1025
+    networks:
+      - project-network
 
 volumes:
   mongo-data:
 
-networks:
-  ${PROJECT_NAME}-network:
+project-network:
+  name: ${PROJECT_NAME}-network

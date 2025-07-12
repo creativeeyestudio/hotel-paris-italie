@@ -8,7 +8,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ locale }) => {
   return (
     <>
-      <header className="header"></header>
+      <header className="h-[64px] text-4xl"></header>
       <div className="nav--primary">
         <Navigation menuId={'main-menu'} locale={locale} />
       </div>
