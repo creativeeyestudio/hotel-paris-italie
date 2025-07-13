@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
         port: "1337",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "admin-dev.comavotreimage.fr",
+        pathname: "/**",
+      },
     ],
   },
 };

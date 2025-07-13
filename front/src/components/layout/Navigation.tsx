@@ -38,12 +38,11 @@ const Navigation = async ({menuId, locale, classes}: NavigationParams) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Nouvel onglet"
-                className="text-4xl"
             >
                 {label}
             </a>
         ) : (
-            <Link href={href} className="text-4xl">{label}</Link>
+            <Link href={href}>{label}</Link>
         );
     };
 
