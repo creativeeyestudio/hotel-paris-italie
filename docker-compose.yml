@@ -16,16 +16,15 @@ services:
       ME_CONFIG_BASICAUTH_PASSWORD: admin
     depends_on:
       - mongo
-    networks:
-      - project-network
   
   mongo:
     image: mongo:8
     restart: unless-stopped
     volumes:
       - mongo-data:/data/db
-    ports:
-      - "27017:27017"
+    command: ["--auth", "--storageEngine=wiredTiger"]
+    env_file:
+      - .env
     networks:
       - project-network
 
@@ -47,5 +46,6 @@ services:
 volumes:
   mongo-data:
 
-project-network:
-  name: ${PROJECT_NAME}-network
+networks:
+  project-network:
+    name: ${PROJECT_NAME}-network
