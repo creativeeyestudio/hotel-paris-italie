@@ -20,7 +20,6 @@ const Footer: React.FC<FooterProps> = () => {
       </div>
       <div className="footer__block">
         <p className="footer__title text-lg mb-[0.625rem]">Navigation</p>
-        <div className="grid"></div>
       </div>
       <div className="footer__block">
         <p className="footer__title text-lg mb-[0.625rem]">Suivez nous</p>
@@ -29,7 +28,7 @@ const Footer: React.FC<FooterProps> = () => {
     <hr className="my-[1.25rem]" />
     <div className="footer_row--2 text-xs leading-none">
       <p>
-        <span className="flex gap-[1rem]">
+        <span className="flex gap-[.75rem]">
           <Link href={""}>Mentions légales</Link>
           <Link href={""}>Confidentialité</Link>
           <Link href={""}>CGV</Link>
