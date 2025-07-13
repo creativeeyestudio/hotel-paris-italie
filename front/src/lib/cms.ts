@@ -16,7 +16,7 @@ let cachedSettings: SettingsProps | null = null;
 export async function fetchSettings(): Promise<SettingsProps | null> {
     if (cachedSettings) return cachedSettings;
     
-    const res = await fetch(`${CMS_URL}/api/settings/${SETTINGS_ID}`);
+    const res = await fetch(`${CMS_URL}/api/settings/${SETTINGS_ID}?depth=2&draft=false&locale=fr`);
 
     if (!res.ok) return null;
     
