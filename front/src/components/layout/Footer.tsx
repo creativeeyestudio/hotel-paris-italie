@@ -1,3 +1,4 @@
+import { Facebook, Instagram } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -23,6 +24,14 @@ const Footer: React.FC<FooterProps> = () => {
       </div>
       <div className="footer__block">
         <p className="footer__title text-lg mb-[0.625rem]">Suivez nous</p>
+        <ul className="flex gap-[1rem]">
+          <li>
+            <Facebook size={32} color="#ffffff" strokeWidth={1.5} absoluteStrokeWidth />
+          </li>
+          <li>
+            <Instagram size={32} color="#ffffff" strokeWidth={1.5} absoluteStrokeWidth />
+          </li>
+        </ul>
       </div>
     </div>
     <hr className="my-[1.25rem]" />
