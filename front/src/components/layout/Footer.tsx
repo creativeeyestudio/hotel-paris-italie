@@ -9,11 +9,11 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = async ({ locale }) => {
 
-  return <footer className="footer bg-primary text-white p-[2rem]">
+  return <footer className="footer bg-primary text-white p-[2rem] lg:px-[5.787vw] lg:py-[2.8935vw]">
     <div className="footer__row--1 grid grid-cols-12 gap-[2rem]">
       <div className="footer__block col-span-12 md:col-span-4">
         <p className="footer__title text-lg mb-[1rem]">Accès et contact</p>
-        <div className="grid">
+        <div className="grid lg:grid-cols-2">
           <p>Adresse</p>
           <p>
             <a href="tel:+">00 00 00 00 00</a><br/>
@@ -21,11 +21,11 @@ const Footer: React.FC<FooterProps> = async ({ locale }) => {
           </p>
         </div>
       </div>
-      <div className="footer__block col-span-12 md:col-span-4 md:col-start-5">
+      <div className="footer__block col-span-12 md:col-span-4">
         <p className="footer__title text-lg mb-[1rem]">Navigation</p>
-        <Navigation menuId={"footer-menu"} locale={locale} />
+        <Navigation menuId={"footer-menu"} locale={locale} classesList="grid gap-[.5rem] lg:grid-cols-2" />
       </div>
-      <div className="footer__block col-span-12 md:col-span-4 md:col-start-9">
+      <div className="footer__block col-span-12 md:col-span-4">
         <p className="footer__title text-lg mb-[1rem]">Suivez nous</p>
         <ul className="flex gap-[1rem]">
           <li>
@@ -37,7 +37,7 @@ const Footer: React.FC<FooterProps> = async ({ locale }) => {
         </ul>
       </div>
     </div>
-    <hr className="my-[2rem]" />
+    <hr className="my-[2rem] lg:my-[2.8935vw]" />
     <div className="footer_row--2 text-xs leading-none md:text-center">
       <p>
         <span className="flex gap-[.75rem] md:justify-center">
