@@ -12,9 +12,7 @@ const Header: React.FC<HeaderProps> = ({ locale }) => {
     <>
       <header className="h-[4rem] px-[1.25rem] flex justify-between items-center md:h-[6rem] md:px-[1.875rem] lg:relative lg:px-[5.787vw] lg:bg-primary lg:text-white">
         <div className="logo-nav h-full flex items-center gap-[1.875rem]">
-          <div className="hidden md:flex md:flex-wrap md:items-center md:gap-[1rem]">
-            <MenuIcon />
-          </div>
+          <MenuIcon />
           {/* Logo */}
           <figure className="aspect-video h-full relative bg-white lg:px-[1rem] lg:absolute lg:left-[50%] lg:translate-x-[-50%]">
             <div className="relative h-full">
