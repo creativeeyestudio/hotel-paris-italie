@@ -5,7 +5,7 @@ import UseAnimations from 'react-useanimations';
 import menu2 from 'react-useanimations/lib/menu2';
 
 const MenuIcon = () => {
-    const [isActive, setIsActive] = useState(true);
+    const [isActive, setIsActive] = useState(false);
     const [isLargeScreen, setIsLargeScreen] = useState(false);
 
     useEffect(() => {

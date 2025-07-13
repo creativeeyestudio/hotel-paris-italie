@@ -21,11 +21,11 @@ const Header: React.FC<HeaderProps> = ({ locale }) => {
           </figure>
         </div>
         
-        <ul className="flex gap-[0.5rem]">
-          <li><a href="">FR</a></li>
-          <li><a href="">EN</a></li>
-          <li><a href="">ES</a></li>
-          <li><a href="">IT</a></li>
+        <ul className="flex gap-[.5rem] divide-x divide-black lg:divide-white">
+          <li className="ps-[0.5rem]"><a href="">FR</a></li>
+          <li className="ps-[0.5rem]"><a href="">EN</a></li>
+          <li className="ps-[0.5rem]"><a href="">ES</a></li>
+          <li className="ps-[0.5rem]"><a href="">IT</a></li>
         </ul>
       </header>
       <div className="nav--primary">
