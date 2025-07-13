@@ -10,8 +10,8 @@ interface FooterProps {
 const Footer: React.FC<FooterProps> = async ({ locale }) => {
 
   return <footer className="footer bg-primary text-white p-[2rem]">
-    <div className="footer__row--1 grid grid-cols-1 gap-[2rem]">
-      <div className="footer__block">
+    <div className="footer__row--1 grid grid-cols-12 gap-[2rem]">
+      <div className="footer__block col-span-12 md:col-span-4">
         <p className="footer__title text-lg mb-[1rem]">Accès et contact</p>
         <div className="grid">
           <p>Adresse</p>
@@ -21,11 +21,11 @@ const Footer: React.FC<FooterProps> = async ({ locale }) => {
           </p>
         </div>
       </div>
-      <div className="footer__block">
+      <div className="footer__block col-span-12 md:col-span-4 md:col-start-5">
         <p className="footer__title text-lg mb-[1rem]">Navigation</p>
         <Navigation menuId={"footer-menu"} locale={locale} />
       </div>
-      <div className="footer__block">
+      <div className="footer__block col-span-12 md:col-span-4 md:col-start-9">
         <p className="footer__title text-lg mb-[1rem]">Suivez nous</p>
         <ul className="flex gap-[1rem]">
           <li>
@@ -38,9 +38,9 @@ const Footer: React.FC<FooterProps> = async ({ locale }) => {
       </div>
     </div>
     <hr className="my-[2rem]" />
-    <div className="footer_row--2 text-xs leading-none">
+    <div className="footer_row--2 text-xs leading-none md:text-center">
       <p>
-        <span className="flex gap-[.75rem]">
+        <span className="flex gap-[.75rem] md:justify-center">
           <Link href={""}>Mentions légales</Link>
           <Link href={""}>Confidentialité</Link>
           <Link href={""}>CGV</Link>
