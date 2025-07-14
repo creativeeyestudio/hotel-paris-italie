@@ -4,6 +4,7 @@ import { fetchPage } from "@/lib/cms";
 import ContentPageItems from "@/components/layout/ContentPageItems";
 import { headers } from 'next/headers'
 import { isHomePage } from '@/lib/isHomePage';
+import Heroscreen from '@/components/panels/Heroscreen';
 
 /* --------------------------------------------------
    Types & helpers
@@ -44,11 +45,18 @@ export default async function WebPage(props: { params: PageParams }) {
   const { locale, slug } = await props.params;
   const headersList = await headers();
   const site = headersList.get('x-website') ?? 'default-site';
-
   const page = await fetchPage(site, slug, locale);
+
   if (!page) return notFound();
 
   if (await isHomePage(page)) redirect(`/${locale}`);
 
-  return <ContentPageItems blocks={page.content.layout} />
+  const heroscreen = page.content?.heroscreen[0]?.heroImage;
+
+  return <>
+    {heroscreen ?? <Heroscreen heroImage={heroscreen} />}
+    <ContentPageItems blocks={page.content.layout} />
+  </>
+
+  return 
 }

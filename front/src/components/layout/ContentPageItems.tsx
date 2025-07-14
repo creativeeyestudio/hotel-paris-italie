@@ -7,7 +7,6 @@ import TextIntro from "../panels/TextIntro";
 import TextImage from "../panels/TextImage";
 import TextDoubleImage from "../panels/TextDoubleImage";
 import Parallax from "../panels/Parallax";
-import Heroscreen from "../panels/Heroscreen";
 import HtmlContent from "../panels/HtmlContent";
 
 interface ContentPageItemsProps {
@@ -70,8 +69,6 @@ const ContentPageItems: React.FC<ContentPageItemsProps> = ({ blocks }) => {
                 key={index}
               />
             );
-          case "heroscreen":
-            return <Heroscreen heroImage={block.heroImage} key={index} />;
           case "html-content":
             return <HtmlContent content={block.content} key={index} />;
           default:

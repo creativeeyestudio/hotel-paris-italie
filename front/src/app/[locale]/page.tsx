@@ -3,6 +3,7 @@ import {fetchHomePage} from "@/lib/cms";
 import ContentPageItems from "@/components/layout/ContentPageItems";
 import { notFound } from "next/navigation";
 import { headers } from 'next/headers';
+import Heroscreen from "@/components/panels/Heroscreen";
 
 export type PageHomeParams = Promise<{
   locale: string;
@@ -39,5 +40,10 @@ export default async function HomePage(props: { params: PageHomeParams }) {
 
   if (!page) return notFound();
 
-  return <ContentPageItems blocks={page.content.layout} />;
+  const heroscreen = page.content?.heroscreen[0]?.heroImage;
+
+  return <>
+    {heroscreen && <Heroscreen heroImage={heroscreen} />}
+    <ContentPageItems blocks={page.content.layout} />
+  </>;
 }
