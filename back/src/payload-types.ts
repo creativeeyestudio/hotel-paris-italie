@@ -323,6 +323,8 @@ export interface Setting {
     adress?: string | null;
     postcode?: string | null;
     city?: string | null;
+    phone?: string | null;
+    email?: string | null;
   };
   identityGroup?: {
     logo?: (string | null) | Media;
@@ -755,6 +757,8 @@ export interface SettingsSelect<T extends boolean = true> {
         adress?: T;
         postcode?: T;
         city?: T;
+        phone?: T;
+        email?: T;
       };
   identityGroup?:
     | T

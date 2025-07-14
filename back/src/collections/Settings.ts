@@ -38,6 +38,16 @@ const Settings: CollectionConfig = {
           name: 'city',
           label: 'Ville',
           type: 'text'
+        },
+        {
+          name: 'phone',
+          label: 'Téléphone',
+          type: 'text'
+        },
+        {
+          name: 'email',
+          label: 'E-Mail',
+          type: 'email'
         }
       ]
     },

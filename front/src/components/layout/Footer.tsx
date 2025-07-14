@@ -2,6 +2,8 @@ import { Facebook, Instagram } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import Navigation from "./Navigation";
+import { fetchSettings } from "@/lib/cms";
+import { SettingsProps } from "@/interfaces/settings";
 
 interface FooterProps {
   locale: string;
@@ -9,15 +11,36 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = async ({ locale }) => {
 
+  const settings: SettingsProps | null = await fetchSettings();
+
+  if (!settings) return null;
+
+  console.log(settings);
+
+  const telLink = (): string => {
+    const tel: string = settings.contactDetails?.phone;
+
+    if (!tel) return '';
+
+    const linkTel = tel
+      .replace(/ /g, '')
+      .replace(tel.charAt(0), '+33');
+
+    return linkTel;
+  }
+
   return <footer className="footer bg-primary text-white p-[2rem] lg:px-[5.787vw] lg:py-[2.8935vw]">
     <div className="footer__row--1 grid grid-cols-12 gap-[2rem]">
       <div className="footer__block col-span-12 md:col-span-4 lg:col-span-5">
         <p className="footer__title text-lg mb-[1rem]">Accès et contact</p>
         <div className="grid lg:grid-cols-2">
-          <p>Adresse</p>
           <p>
-            <a href="tel:+">00 00 00 00 00</a><br/>
-            <a href="mailto:">example@xyz.fr</a>
+            {settings?.contactDetails?.adress}<br />
+            {settings?.contactDetails?.postcode} {settings?.contactDetails?.city}
+          </p>
+          <p>
+            <a href={`tel:${telLink()}`}>{settings.contactDetails?.phone}</a><br/>
+            <a href={`mailto:${settings.contactDetails?.email}`}>{settings.contactDetails?.email}</a>
           </p>
         </div>
       </div>
