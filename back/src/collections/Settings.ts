@@ -20,6 +20,28 @@ const Settings: CollectionConfig = {
       type: 'text',
     },
     {
+      name: 'contactDetails',
+      label: 'Informations de contact',
+      type: 'group',
+      fields: [
+        {
+          name: 'adress',
+          label: 'Adresse',
+          type: 'textarea'
+        },
+        {
+          name: 'postcode',
+          label: 'Code postal',
+          type: 'text'
+        },
+        {
+          name: 'city',
+          label: 'Ville',
+          type: 'text'
+        }
+      ]
+    },
+    {
       name: 'identityGroup',
       label: 'Identité du site',
       type: 'group',
