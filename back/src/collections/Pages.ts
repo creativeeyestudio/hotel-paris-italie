@@ -83,10 +83,17 @@ const Pages: CollectionConfig = {
       type: 'group',
       fields: [
         {
+          name: 'heroscreen',
+          label: 'Images d\'Heroscreen',
+          type: 'blocks',
+          blocks: [Heroscreen],
+          maxRows: 1
+        },
+        {
           name: 'layout',
           label: 'Blocks de la page',
           type: 'blocks',
-          blocks: [Text, TextIntro, TextImage, TextDoubleImage, Parallax, HtmlContent, Heroscreen],
+          blocks: [Text, TextIntro, TextImage, TextDoubleImage, Parallax, HtmlContent],
           required: false,
           localized: true,
         },

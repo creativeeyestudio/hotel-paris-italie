@@ -8,11 +8,10 @@ const Heroscreen: Block = {
     },
     fields: [
         {
-            name: 'hero_image',
+            name: 'heroImage',
             label: 'Image',
             type: 'upload',
             relationTo: 'media',
-            hasMany: true,
             required: true, 
         },
     ]

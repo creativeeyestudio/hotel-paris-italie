@@ -186,6 +186,14 @@ export interface Page {
   title: string;
   slug: string;
   content?: {
+    heroscreen?:
+      | {
+          heroImage: string | Media;
+          id?: string | null;
+          blockName?: string | null;
+          blockType: 'heroscreen';
+        }[]
+      | null;
     layout?:
       | (
           | {
@@ -289,7 +297,7 @@ export interface Page {
               blockType: 'html-content';
             }
           | {
-              hero_image: (string | Media)[];
+              heroImage: string | Media;
               id?: string | null;
               blockName?: string | null;
               blockType: 'heroscreen';
@@ -587,6 +595,17 @@ export interface PagesSelect<T extends boolean = true> {
   content?:
     | T
     | {
+        heroscreen?:
+          | T
+          | {
+              heroscreen?:
+                | T
+                | {
+                    heroImage?: T;
+                    id?: T;
+                    blockName?: T;
+                  };
+            };
         layout?:
           | T
           | {
@@ -643,7 +662,7 @@ export interface PagesSelect<T extends boolean = true> {
               heroscreen?:
                 | T
                 | {
-                    hero_image?: T;
+                    heroImage?: T;
                     id?: T;
                     blockName?: T;
                   };

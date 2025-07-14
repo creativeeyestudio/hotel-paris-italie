@@ -7,6 +7,7 @@ import {
   TextIntroProps,
   TextProps,
 } from "./blocks";
+import { ImageDataProps } from "./image";
 import { SettingsProps } from "./settings";
 
 export type BlockProps =
@@ -24,6 +25,7 @@ export interface Page {
   title: string
   slug: string
   content: {
+    heroscreen: HeroscreenProps
     layout: BlockProps[]
   }
   config: {
