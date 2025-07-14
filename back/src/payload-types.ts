@@ -188,7 +188,7 @@ export interface Page {
   content?: {
     heroscreen?:
       | {
-          heroImage: string | Media;
+          heroImage: (string | Media)[];
           id?: string | null;
           blockName?: string | null;
           blockType: 'heroscreen';
@@ -295,12 +295,6 @@ export interface Page {
               id?: string | null;
               blockName?: string | null;
               blockType: 'html-content';
-            }
-          | {
-              heroImage: string | Media;
-              id?: string | null;
-              blockName?: string | null;
-              blockType: 'heroscreen';
             }
         )[]
       | null;
@@ -656,13 +650,6 @@ export interface PagesSelect<T extends boolean = true> {
                 | T
                 | {
                     htmlCode?: T;
-                    id?: T;
-                    blockName?: T;
-                  };
-              heroscreen?:
-                | T
-                | {
-                    heroImage?: T;
                     id?: T;
                     blockName?: T;
                   };

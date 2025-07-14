@@ -12,6 +12,7 @@ const Heroscreen: Block = {
             label: 'Image',
             type: 'upload',
             relationTo: 'media',
+            hasMany: true,
             required: true, 
         },
     ]
