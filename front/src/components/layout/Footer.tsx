@@ -11,7 +11,7 @@ const Footer: React.FC<FooterProps> = async ({ locale }) => {
 
   return <footer className="footer bg-primary text-white p-[2rem] lg:px-[5.787vw] lg:py-[2.8935vw]">
     <div className="footer__row--1 grid grid-cols-12 gap-[2rem]">
-      <div className="footer__block col-span-12 md:col-span-4">
+      <div className="footer__block col-span-12 md:col-span-4 lg:col-span-5">
         <p className="footer__title text-lg mb-[1rem]">Accès et contact</p>
         <div className="grid lg:grid-cols-2">
           <p>Adresse</p>
@@ -25,7 +25,7 @@ const Footer: React.FC<FooterProps> = async ({ locale }) => {
         <p className="footer__title text-lg mb-[1rem]">Navigation</p>
         <Navigation menuId={"footer-menu"} locale={locale} classesList="grid gap-[.5rem] lg:grid-cols-2" />
       </div>
-      <div className="footer__block col-span-12 md:col-span-4">
+      <div className="footer__block col-span-12 md:col-span-4 lg:col-span-3">
         <p className="footer__title text-lg mb-[1rem]">Suivez nous</p>
         <ul className="flex gap-[1rem]">
           <li>
