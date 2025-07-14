@@ -12,6 +12,13 @@ export interface SettingsProps {
     }
     maintenanceGroup: {
         maintenance: boolean
+    },
+    contactDetails: {
+        adress: string
+        postcode: string
+        city: string
+        phone: string
+        email: string
     }
 
 } 

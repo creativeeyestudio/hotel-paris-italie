@@ -319,6 +319,13 @@ export interface Page {
 export interface Setting {
   id: string;
   title?: string | null;
+  contactDetails?: {
+    adress?: string | null;
+    postcode?: string | null;
+    city?: string | null;
+    phone?: string | null;
+    email?: string | null;
+  };
   identityGroup?: {
     logo?: (string | null) | Media;
     favicon?: (string | null) | Media;
@@ -744,6 +751,15 @@ export interface NavigationSelect<T extends boolean = true> {
  */
 export interface SettingsSelect<T extends boolean = true> {
   title?: T;
+  contactDetails?:
+    | T
+    | {
+        adress?: T;
+        postcode?: T;
+        city?: T;
+        phone?: T;
+        email?: T;
+      };
   identityGroup?:
     | T
     | {

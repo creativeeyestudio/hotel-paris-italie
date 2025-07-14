@@ -8,9 +8,10 @@ interface NavigationParams {
     menuId?: string | null
     locale: string
     classes?: string
+    classesList?: string
 }
 
-const Navigation = async ({menuId, locale, classes}: NavigationParams) => {
+const Navigation = async ({menuId, locale, classes, classesList}: NavigationParams) => {
     const headersList = await headers();
     const site = headersList.get('x-website') ?? 'default-site';
 
@@ -47,7 +48,7 @@ const Navigation = async ({menuId, locale, classes}: NavigationParams) => {
     };
 
     const renderItems = (items: MenuItem[]) => (
-        <ul>
+        <ul className={classesList}>
             {items.map((item) => (
                 <li key={item.id}>
                     {renderLink(item)}
