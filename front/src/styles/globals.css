@@ -41,6 +41,14 @@
 @tailwind utilities;
 
 body {
+  font-size: 17px;
+  
+}
+
+p {
   line-height: 1.5rem;
-  font-size: 17px
+}
+
+p:not(:last-child) {
+  margin-bottom: 1.5rem;
 }
