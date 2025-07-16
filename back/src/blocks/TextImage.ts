@@ -26,6 +26,12 @@ const TextImage: Block = {
             relationTo: 'media',
             required: true,
         },
+        {
+            name: 'secondaryBg',
+            type: 'checkbox',
+            label: 'Fond secondaire',
+            defaultValue: false
+        },
     ]
 }
 

@@ -7,6 +7,7 @@
                 width: 32.35vw;
                 height: 100%;
                 background: #1D1F2F;
+                z-index: 0;
             }
 
             &:nth-of-type(even) {
@@ -23,6 +24,7 @@
 
     @apply 
         relative
+        z-10
         lg:grid 
         lg:grid-cols-12
         lg:gap-4 
@@ -50,11 +52,11 @@
 
     &:nth-of-type(odd) {
         .text-img__content {
-            @apply lg:order-2;
+            @apply lg:order-2 lg:col-start-8;
         }
 
         .text-img__image {
-            @apply lg:order-1;
+            @apply lg:order-1 lg:col-start-1;
         }
     }
 }

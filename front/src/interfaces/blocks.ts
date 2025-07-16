@@ -28,6 +28,7 @@ export interface TextImageProps {
   title: string;
   html: string;
   image: ImageDataProps;
+  secondaryBg: boolean;
   firstBlock: boolean;
 }
 

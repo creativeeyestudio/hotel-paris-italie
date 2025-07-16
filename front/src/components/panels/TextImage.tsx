@@ -11,12 +11,15 @@ const TextImage: React.FC<TextImageProps> = ({
   title,
   html,
   image,
+  secondaryBg,
   firstBlock,
 }) => {
   const TitleTag = firstBlock ? "h1" : "h2";
 
   const [isMobile, setIsMobile] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
+
+  console.log(secondaryBg);
 
   useEffect(() => {
     const handleResize = () => {
@@ -31,7 +34,8 @@ const TextImage: React.FC<TextImageProps> = ({
   }, []);
   
   return process.env.NEXT_PUBLIC_API_URL ? (
-    <section className="text-img">
+    <section className={`text-img${secondaryBg ? ' text-img--sec-color' : ''}`}>
+
     <div className="text-img__content">
       <TitleTag className="text-img__title text-2xl md:text-3xl lg:text-4xl">
         {title}

@@ -256,6 +256,7 @@ export interface Page {
                 [k: string]: unknown;
               };
               image: string | Media;
+              secondaryBg?: boolean | null;
               id?: string | null;
               blockName?: string | null;
               blockType: 'text-image';
@@ -625,6 +626,7 @@ export interface PagesSelect<T extends boolean = true> {
                     title?: T;
                     content?: T;
                     image?: T;
+                    secondaryBg?: T;
                     id?: T;
                     blockName?: T;
                   };
