@@ -1,0 +1,60 @@
+.text-img {
+    @media screen and (min-width: 1024px) {
+        &:not(.text-img--sec-color) {
+            &::before {
+                content: '';
+                position: absolute;
+                width: 32.35vw;
+                height: 100%;
+                background: #1D1F2F;
+            }
+
+            &:nth-of-type(even) {
+                &::before {
+                    right: 0;
+                }
+            }    
+        }
+    }
+
+    &--sec-color {
+        background-color: #FAF8F3;
+    }
+
+    @apply 
+        relative
+        lg:grid 
+        lg:grid-cols-12
+        lg:gap-4 
+        lg:px-[5.787vw] 
+        lg:py-[8.681vw];
+
+    &__content {
+        @apply 
+            w-full 
+            p-[2rem] 
+            lg:p-0 
+            lg:py-[5.787vw]
+            lg:col-span-5;
+
+    }
+
+    &__image {
+        @apply 
+            relative 
+            w-full
+            h-full
+            lg:col-span-6
+            lg:col-start-7;
+    }
+
+    &:nth-of-type(odd) {
+        .text-img__content {
+            @apply lg:order-2;
+        }
+
+        .text-img__image {
+            @apply lg:order-1;
+        }
+    }
+}
