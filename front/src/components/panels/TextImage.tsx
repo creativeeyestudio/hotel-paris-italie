@@ -19,8 +19,6 @@ const TextImage: React.FC<TextImageProps> = ({
   const [isMobile, setIsMobile] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
 
-  console.log(secondaryBg);
-
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
