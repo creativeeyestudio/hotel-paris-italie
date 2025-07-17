@@ -14,24 +14,41 @@ const TextImageDouble: Block = {
             required: true,
         },
         {
+            name: 'secondaryBg',
+            type: 'checkbox',
+            label: 'Fond secondaire',
+            defaultValue: false
+        },
+        {
             name: 'content',
             label: 'Contenu',
             type: 'richText',
             required: true,
         },
         {
-            name: 'image1',
-            label: 'Image 1',
-            type: 'upload',
-            relationTo: 'media',
-            required: true,
-        },
-        {
-            name: 'image2',
-            label: 'Image 2',
-            type: 'upload',
-            relationTo: 'media',
-            required: false,
+            type: 'row',
+            fields: [
+                {
+                    name: 'image1',
+                    label: 'Image 1',
+                    type: 'upload',
+                    relationTo: 'media',
+                    required: true,
+                    admin: {
+                        width: '50%',
+                    },
+                },
+                {
+                    name: 'image2',
+                    label: 'Image 2',
+                    type: 'upload',
+                    relationTo: 'media',
+                    required: false,
+                    admin: {
+                        width: '50%',
+                    },
+                },
+            ]
         },
     ]
 }

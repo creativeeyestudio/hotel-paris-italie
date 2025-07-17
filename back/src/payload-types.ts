@@ -263,6 +263,7 @@ export interface Page {
             }
           | {
               title: string;
+              secondaryBg?: boolean | null;
               content: {
                 root: {
                   type: string;
@@ -634,6 +635,7 @@ export interface PagesSelect<T extends boolean = true> {
                 | T
                 | {
                     title?: T;
+                    secondaryBg?: T;
                     content?: T;
                     image1?: T;
                     image2?: T;
