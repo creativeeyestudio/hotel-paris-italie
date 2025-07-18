@@ -58,6 +58,7 @@ const ContentPageItems: React.FC<ContentPageItemsProps> = ({ blocks }) => {
                 html={block.html}
                 image1={block.image1}
                 image2={block.image2}
+                secondaryBg={block.secondaryBg}
                 firstBlock={isFirst}
                 key={index}
               />

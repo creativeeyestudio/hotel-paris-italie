@@ -38,6 +38,7 @@ export interface TextDoubleImageProps {
   html: string;
   image1: ImageDataProps;
   image2?: ImageDataProps;
+  secondaryBg: boolean;
   firstBlock: boolean;
 }
 

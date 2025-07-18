@@ -13,6 +13,7 @@ const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
   html,
   image1,
   image2,
+  secondaryBg,
   firstBlock,
 }) => {
   const [isMobile, setIsMobile] = useState(false);
@@ -36,8 +37,11 @@ const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
       return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    console.log(image2);
+
   return apiUrl != undefined ? (
-    <section className="text-double-img">
+    <section className={`text-double-img ${secondaryBg ? 'text-double-img--sec-color' : ''}`}>
+      
       <div className="text-double-img__content">
         <TitleTag className="text-double-img__title">{title}</TitleTag>
         <div
@@ -46,8 +50,25 @@ const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
         ></div>
       </div>
 
+      {isDesktop && <div className={`text-double-img__images`}>
+        <figure className={`text-double-img__image--1 ${image2 ? 'text-double-img__image--half' : 'text-double-img__image--full'}`}>
+          <Image 
+            src={apiUrl + image1.url} 
+            alt={image1.alt ?? ""} 
+            fill={true} 
+            objectFit="cover"/>  
+        </figure>
+        {(image2 !== undefined && image2 !== null) && <figure className="text-double-img__image--2">
+          <Image 
+            src={apiUrl + image2.url} 
+            alt={image1.alt ?? ""} 
+            fill={true} 
+            objectFit="cover"/>  
+        </figure>}
+      </div>}
+
       {(isMobile || isTablet) && (
-        image2 === undefined ? (
+        (image2 === undefined || image2 === null) ? (
           <AspectRatio ratio={imgRatio}>
             <Image 
               src={apiUrl + image1.url} 
