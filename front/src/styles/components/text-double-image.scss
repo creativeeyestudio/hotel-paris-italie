@@ -1,0 +1,23 @@
+.text-double-img {
+
+    &__content {
+        @apply 
+            w-full 
+            p-[2rem] 
+            lg:p-0 
+            lg:py-[5.787vw]
+            lg:col-span-5;
+    }
+
+    &__title {
+        @apply 
+            text-2xl 
+            md:text-3xl 
+            lg:text-4xl
+    }
+
+    &__text {
+        @apply mt-[1.875rem];
+    }
+
+}

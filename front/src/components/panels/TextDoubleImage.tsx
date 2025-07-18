@@ -1,6 +1,12 @@
+'use client'
+
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { TextDoubleImageProps } from "@/interfaces/blocks";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { AspectRatio } from "../ui/aspect-ratio";
+
+import '@/styles/components/text-double-image.scss';
 
 const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
   title,
@@ -9,9 +15,28 @@ const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
   image2,
   firstBlock,
 }) => {
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  const imgRatio = isMobile ? 4/3 : 16/9;
   const TitleTag = firstBlock ? "h1" : "h2";
 
-  return process.env.NEXT_PUBLIC_API_URL != undefined ? (
+  useEffect(() => {
+      const handleResize = () => {
+        setIsMobile(window.innerWidth < 768);
+        setIsTablet(window.innerWidth >= 768 && window.innerWidth < 1280);
+        setIsDesktop(window.innerWidth >= 1280);
+      };
+  
+      handleResize();
+  
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+  return apiUrl != undefined ? (
     <section className="text-double-img">
       <div className="text-double-img__content">
         <TitleTag className="text-double-img__title">{title}</TitleTag>
@@ -21,31 +46,47 @@ const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
         ></div>
       </div>
 
-      <figure className="text-double-img__image--1">
-        <Image
-          src={process.env.NEXT_PUBLIC_API_URL + image1.url}
-          width={image1.width}
-          height={image1.height}
-          alt={image1.alt ?? ""}
-        />
-      </figure>
-
-      {image2 != undefined ? (
-        <figure className="text-double-img__image--2">
-          <Image
-            src={process.env.NEXT_PUBLIC_API_URL + image2.url}
-            width={image2.width}
-            height={image2.height}
-            alt={image2.alt ?? ""}
-          />
-        </figure>
-      ) : (
-        <></>
+      {(isMobile || isTablet) && (
+        image2 === undefined ? (
+          <AspectRatio ratio={imgRatio}>
+            <Image 
+              src={apiUrl + image1.url} 
+              alt={image1.alt ?? ""} 
+              fill={true} 
+              objectFit="cover"/>
+          </AspectRatio>
+        ) : (
+          <>
+            <div id="containerForBullets"></div>
+            <Swiper 
+              autoplay={true} 
+              navigation
+              pagination={{ 
+                el: "#containerForBullets",
+                clickable: true,
+                type: "bullets",
+                bulletClass: "swiper-custom-bullet",
+                bulletActiveClass: "swiper-custom-bullet-active",
+              }}
+              >
+              {[image1, image2].map((img, index) => (
+                <SwiperSlide key={index}>
+                  <AspectRatio ratio={imgRatio}>
+                    <Image 
+                      src={apiUrl + img.url} 
+                      alt={img.alt ?? ""} 
+                      fill 
+                      objectFit="cover" 
+                    />
+                  </AspectRatio>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </>
+        )
       )}
     </section>
-  ) : (
-    <></>
-  );
+  ) : (<></>);
 };
 
 export default TextDoubleImage;
