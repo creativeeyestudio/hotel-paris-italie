@@ -16,6 +16,9 @@ interface ContentPageItemsProps {
 const ContentPageItems: React.FC<ContentPageItemsProps> = ({ blocks }) => {
   if (!blocks || blocks.length === 0) return null;
 
+  console.log(blocks);
+  
+
   return (
     <>
       {blocks.map((block, index) => {

@@ -37,8 +37,6 @@ const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
       return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    console.log(image2);
-
   return apiUrl != undefined ? (
     <section className={`text-double-img ${secondaryBg ? 'text-double-img--sec-color' : ''}`}>
       

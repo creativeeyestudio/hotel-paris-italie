@@ -286,8 +286,8 @@ export interface Page {
               blockType: 'text-double-image';
             }
           | {
-              parallax_image: string | Media;
-              parallax_speed: number;
+              parallaxImage: string | Media;
+              parallaxSpeed: number;
               id?: string | null;
               blockName?: string | null;
               blockType: 'parallax';
@@ -645,8 +645,8 @@ export interface PagesSelect<T extends boolean = true> {
               parallax?:
                 | T
                 | {
-                    parallax_image?: T;
-                    parallax_speed?: T;
+                    parallaxImage?: T;
+                    parallaxSpeed?: T;
                     id?: T;
                     blockName?: T;
                   };
