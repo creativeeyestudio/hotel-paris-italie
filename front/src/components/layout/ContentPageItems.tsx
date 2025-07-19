@@ -16,9 +16,6 @@ interface ContentPageItemsProps {
 const ContentPageItems: React.FC<ContentPageItemsProps> = ({ blocks }) => {
   if (!blocks || blocks.length === 0) return null;
 
-  console.log(blocks);
-  
-
   return (
     <>
       {blocks.map((block, index) => {
@@ -48,9 +45,10 @@ const ContentPageItems: React.FC<ContentPageItemsProps> = ({ blocks }) => {
               <TextImage
                 title={block.title}
                 html={block.html}
-                image={block.image} 
+                image={block.image}
                 secondaryBg={block.secondaryBg}
-                firstBlock={isFirst}
+                linkList={block.linkList}
+                firstBlock={isFirst} 
                 key={index}              
               />
             );
@@ -62,8 +60,9 @@ const ContentPageItems: React.FC<ContentPageItemsProps> = ({ blocks }) => {
                 image1={block.image1}
                 image2={block.image2}
                 secondaryBg={block.secondaryBg}
+                linkList={block.linkList} 
                 firstBlock={isFirst}
-                key={index}
+                key={index}              
               />
             );
           case "parallax":

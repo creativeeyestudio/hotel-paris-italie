@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { AspectRatio } from "../ui/aspect-ratio";
 
 import '@/styles/components/text-double-image.scss';
+import Link from "next/link";
 
 const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
   title,
@@ -14,6 +15,7 @@ const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
   image1,
   image2,
   secondaryBg,
+  linkList,
   firstBlock,
 }) => {
   const [isMobile, setIsMobile] = useState(false);
@@ -23,6 +25,8 @@ const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const imgRatio = isMobile ? 4/3 : 16/9;
   const TitleTag = firstBlock ? "h1" : "h2";
+
+  console.log(linkList);
 
   useEffect(() => {
       const handleResize = () => {
@@ -42,10 +46,24 @@ const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
       
       <div className="text-double-img__content">
         <TitleTag className="text-double-img__title">{title}</TitleTag>
+        
         <div
           className="text-double-img__text"
           dangerouslySetInnerHTML={{ __html: html }}
         ></div>
+
+        {linkList.length > 0 && <ul className="text-double-img__list-items">
+          {linkList?.map((linkItem, index) => (
+            <li key={index} className="text-double-img__list-item">
+              <strong>
+                {linkItem.linkUrl 
+                  ? <Link target="_blank" href={linkItem.linkUrl}>{linkItem.linkName}</Link> 
+                  : linkItem.linkName
+                }  
+              </strong>
+            </li>
+          ))}
+        </ul>}
       </div>
 
       {isDesktop && <div className={`text-double-img__images`}>

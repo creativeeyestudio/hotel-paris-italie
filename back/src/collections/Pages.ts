@@ -40,6 +40,7 @@ export async function enrichLayoutWithHTML(layout: LayoutBlock[] = []): Promise<
         blockName,
         html: await convertRichTextToHTML(content),
         ...rest,
+        content,
       }
     }),
   )

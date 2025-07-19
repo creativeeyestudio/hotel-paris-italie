@@ -6,12 +6,14 @@ import React, { useEffect, useState } from "react";
 import { AspectRatio } from "../ui/aspect-ratio";
 
 import '@/styles/components/text-image.scss';
+import Link from "next/link";
 
 const TextImage: React.FC<TextImageProps> = ({
   title,
   html,
   image,
   secondaryBg,
+  linkList,
   firstBlock,
 }) => {
   const TitleTag = firstBlock ? "h1" : "h2";
@@ -42,6 +44,19 @@ const TextImage: React.FC<TextImageProps> = ({
         className="text-img__text mt-[1.875rem]"
         dangerouslySetInnerHTML={{ __html: html }}
       />
+
+      {linkList.length > 0 && <ul className="text-double-img__list-items">
+          {linkList?.map((linkItem, index) => (
+            <li key={index} className="text-double-img__list-item">
+              <strong>
+                {linkItem.linkUrl 
+                  ? <Link target="_blank" href={linkItem.linkUrl}>{linkItem.linkName}</Link> 
+                  : linkItem.linkName
+                }  
+              </strong>
+            </li>
+          ))}
+        </ul>}
     </div>
 
     <figure className="text-img__image">

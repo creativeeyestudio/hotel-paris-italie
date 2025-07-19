@@ -38,7 +38,22 @@
             lg:p-0 
             lg:py-[5.787vw]
             lg:col-span-5;
+    }
 
+    &__list-items {
+        @apply 
+            mt-[1.875rem]
+            flex
+            flex-col
+            gap-1
+            lg:flex-row
+            lg:flex-wrap
+            lg:justify-between
+            lg:gap-3;
+    }
+
+    &__list-item {
+        @apply lg:w-[49%];
     }
 
     &__image {
