@@ -14,6 +14,7 @@ const TextImage: React.FC<TextImageProps> = ({
   image,
   secondaryBg,
   linkList,
+  subItem,
   firstBlock,
 }) => {
   const TitleTag = firstBlock ? "h1" : "h2";
@@ -44,6 +45,15 @@ const TextImage: React.FC<TextImageProps> = ({
         className="text-img__text mt-[1.875rem]"
         dangerouslySetInnerHTML={{ __html: html }}
       />
+
+      {subItem?.map((item, index) => (
+        <div className="text-img__sub-content" key={index}>
+          <span>
+            <strong>{item.title}</strong>
+          </span>
+          <div dangerouslySetInnerHTML={{ __html: item.html }}></div>
+        </div>
+      ))}
 
       {linkList.length > 0 && <ul className="text-double-img__list-items">
           {linkList?.map((linkItem, index) => (

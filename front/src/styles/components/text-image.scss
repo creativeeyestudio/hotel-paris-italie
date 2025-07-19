@@ -40,6 +40,11 @@
             lg:col-span-5;
     }
 
+    &__sub-content {
+        @apply 
+            mt-[1.875rem];
+    }
+
     &__list-items {
         @apply 
             mt-[1.875rem]

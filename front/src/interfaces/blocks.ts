@@ -30,6 +30,7 @@ export interface TextImageProps {
   image: ImageDataProps
   secondaryBg: boolean
   linkList: LinkList[]
+  subItem: SubItemList[]
   firstBlock: boolean
 }
 
