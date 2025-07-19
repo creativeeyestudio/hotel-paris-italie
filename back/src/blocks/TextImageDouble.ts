@@ -26,6 +26,35 @@ const TextImageDouble: Block = {
             required: true,
         },
         {
+            name: 'linkList',
+            label: 'Liste de liens',
+            type: 'array',
+            fields: [
+                {
+                    type: 'row',
+                    fields:[
+                        {
+                            name: 'linkName',
+                            label: "Nom du lien",
+                            type: 'text',
+                            required: true,
+                            admin: {
+                                width: '50%',
+                            },
+                        },
+                        {
+                            name: 'linkUrl',
+                            label: "URL",
+                            type: 'text',
+                            admin: {
+                                width: '50%',
+                            },
+                        },
+                    ]
+                }
+            ]
+        },
+        {
             type: 'row',
             fields: [
                 {

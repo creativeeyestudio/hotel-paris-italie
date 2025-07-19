@@ -255,6 +255,13 @@ export interface Page {
                 };
                 [k: string]: unknown;
               };
+              linkList?:
+                | {
+                    linkName: string;
+                    linkUrl?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
               image: string | Media;
               secondaryBg?: boolean | null;
               id?: string | null;
@@ -279,6 +286,13 @@ export interface Page {
                 };
                 [k: string]: unknown;
               };
+              linkList?:
+                | {
+                    linkName: string;
+                    linkUrl?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
               image1: string | Media;
               image2?: (string | null) | Media;
               id?: string | null;
@@ -626,6 +640,13 @@ export interface PagesSelect<T extends boolean = true> {
                 | {
                     title?: T;
                     content?: T;
+                    linkList?:
+                      | T
+                      | {
+                          linkName?: T;
+                          linkUrl?: T;
+                          id?: T;
+                        };
                     image?: T;
                     secondaryBg?: T;
                     id?: T;
@@ -637,6 +658,13 @@ export interface PagesSelect<T extends boolean = true> {
                     title?: T;
                     secondaryBg?: T;
                     content?: T;
+                    linkList?:
+                      | T
+                      | {
+                          linkName?: T;
+                          linkUrl?: T;
+                          id?: T;
+                        };
                     image1?: T;
                     image2?: T;
                     id?: T;
