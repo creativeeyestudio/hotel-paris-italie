@@ -14,9 +14,22 @@ const TextImage: Block = {
             required: true,
         },
         {
+            name: 'secondaryBg',
+            type: 'checkbox',
+            label: 'Fond secondaire',
+            defaultValue: false
+        },
+        {
             name: 'content',
             label: 'Contenu',
             type: 'richText',
+            required: true,
+        },
+        {
+            name: 'image',
+            label: 'Image',
+            type: 'upload',
+            relationTo: 'media',
             required: true,
         },
         {
@@ -49,17 +62,21 @@ const TextImage: Block = {
             ]
         },
         {
-            name: 'image',
-            label: 'Image',
-            type: 'upload',
-            relationTo: 'media',
-            required: true,
-        },
-        {
-            name: 'secondaryBg',
-            type: 'checkbox',
-            label: 'Fond secondaire',
-            defaultValue: false
+            name: 'subItem',
+            label: 'Sous contenu',
+            type: 'array',
+            fields: [
+                {
+                    name: 'title',
+                    type: 'text',
+                    required: true
+                },
+                {
+                    name: 'content',
+                    type: 'richText',
+                    required: true
+                },
+            ]
         },
     ]
 }

@@ -240,6 +240,7 @@ export interface Page {
             }
           | {
               title: string;
+              secondaryBg?: boolean | null;
               content: {
                 root: {
                   type: string;
@@ -255,6 +256,7 @@ export interface Page {
                 };
                 [k: string]: unknown;
               };
+              image: string | Media;
               linkList?:
                 | {
                     linkName: string;
@@ -262,8 +264,27 @@ export interface Page {
                     id?: string | null;
                   }[]
                 | null;
-              image: string | Media;
-              secondaryBg?: boolean | null;
+              subItem?:
+                | {
+                    title: string;
+                    content: {
+                      root: {
+                        type: string;
+                        children: {
+                          type: string;
+                          version: number;
+                          [k: string]: unknown;
+                        }[];
+                        direction: ('ltr' | 'rtl') | null;
+                        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                        indent: number;
+                        version: number;
+                      };
+                      [k: string]: unknown;
+                    };
+                    id?: string | null;
+                  }[]
+                | null;
               id?: string | null;
               blockName?: string | null;
               blockType: 'text-image';
@@ -286,6 +307,8 @@ export interface Page {
                 };
                 [k: string]: unknown;
               };
+              image1: string | Media;
+              image2?: (string | null) | Media;
               linkList?:
                 | {
                     linkName: string;
@@ -293,8 +316,27 @@ export interface Page {
                     id?: string | null;
                   }[]
                 | null;
-              image1: string | Media;
-              image2?: (string | null) | Media;
+              subItem?:
+                | {
+                    title: string;
+                    content: {
+                      root: {
+                        type: string;
+                        children: {
+                          type: string;
+                          version: number;
+                          [k: string]: unknown;
+                        }[];
+                        direction: ('ltr' | 'rtl') | null;
+                        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                        indent: number;
+                        version: number;
+                      };
+                      [k: string]: unknown;
+                    };
+                    id?: string | null;
+                  }[]
+                | null;
               id?: string | null;
               blockName?: string | null;
               blockType: 'text-double-image';
@@ -639,7 +681,9 @@ export interface PagesSelect<T extends boolean = true> {
                 | T
                 | {
                     title?: T;
+                    secondaryBg?: T;
                     content?: T;
+                    image?: T;
                     linkList?:
                       | T
                       | {
@@ -647,8 +691,13 @@ export interface PagesSelect<T extends boolean = true> {
                           linkUrl?: T;
                           id?: T;
                         };
-                    image?: T;
-                    secondaryBg?: T;
+                    subItem?:
+                      | T
+                      | {
+                          title?: T;
+                          content?: T;
+                          id?: T;
+                        };
                     id?: T;
                     blockName?: T;
                   };
@@ -658,6 +707,8 @@ export interface PagesSelect<T extends boolean = true> {
                     title?: T;
                     secondaryBg?: T;
                     content?: T;
+                    image1?: T;
+                    image2?: T;
                     linkList?:
                       | T
                       | {
@@ -665,8 +716,13 @@ export interface PagesSelect<T extends boolean = true> {
                           linkUrl?: T;
                           id?: T;
                         };
-                    image1?: T;
-                    image2?: T;
+                    subItem?:
+                      | T
+                      | {
+                          title?: T;
+                          content?: T;
+                          id?: T;
+                        };
                     id?: T;
                     blockName?: T;
                   };
