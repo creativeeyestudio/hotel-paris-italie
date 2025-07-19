@@ -29,7 +29,7 @@ export interface TextImageProps {
   html: string
   image: ImageDataProps
   secondaryBg: boolean
-  linkList: linkList[]
+  linkList: LinkList[]
   firstBlock: boolean
 }
 
@@ -40,13 +40,19 @@ export interface TextDoubleImageProps {
   image1: ImageDataProps
   image2?: ImageDataProps
   secondaryBg: boolean
-  linkList: linkList[]
+  linkList: LinkList[]
+  subItem: SubItemList[]
   firstBlock: boolean
 }
 
-export interface linkList {
+export interface LinkList {
   linkName: string
   linkUrl?: string
+}
+
+export interface SubItemList {
+  title: string
+  html: string
 }
 
 export interface HeroscreenProps {

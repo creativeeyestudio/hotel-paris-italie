@@ -16,6 +16,7 @@ const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
   image2,
   secondaryBg,
   linkList,
+  subItem,
   firstBlock,
 }) => {
   const [isMobile, setIsMobile] = useState(false);
@@ -51,6 +52,15 @@ const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
           className="text-double-img__text"
           dangerouslySetInnerHTML={{ __html: html }}
         ></div>
+
+        {subItem?.map((item, index) => (
+          <div className="text-double-img__sub-content" key={index}>
+            <span>
+              <strong>{item.title}</strong>
+            </span>
+            <div dangerouslySetInnerHTML={{ __html: item.html }}></div>
+          </div>
+        ))}
 
         {linkList.length > 0 && <ul className="text-double-img__list-items">
           {linkList?.map((linkItem, index) => (
