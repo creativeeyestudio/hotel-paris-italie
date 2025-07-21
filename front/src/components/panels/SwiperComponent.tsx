@@ -1,13 +1,13 @@
 'use client'
 
-import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { AspectRatio } from "../ui/aspect-ratio";
 import { ImageDataProps } from "@/interfaces/image";
+import { ImageWrapper } from "./ImageWrapper";
 
 interface SwiperComponentsProps {
     images: ImageDataProps[]
-    ratio: number
+    ratio?: number
 }
 
 const SwiperComponent = ({ images, ratio }: SwiperComponentsProps) => {
@@ -27,11 +27,9 @@ const SwiperComponent = ({ images, ratio }: SwiperComponentsProps) => {
             {images.map((img, index) => (
                 <SwiperSlide key={index}>
                     <AspectRatio ratio={ratio}>
-                        <Image 
-                            src={process.env.NEXT_PUBLIC_API_URL + img.url} 
-                            alt={img.alt ?? ''} 
-                            fill={true}
-                            objectFit="cover"></Image>
+                        <ImageWrapper 
+                            url={process.env.NEXT_PUBLIC_API_URL + img.url} 
+                            alt={img.alt} />
                     </AspectRatio>
                 </SwiperSlide>
             ))}
