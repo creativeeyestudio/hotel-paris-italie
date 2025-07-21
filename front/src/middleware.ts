@@ -8,6 +8,9 @@ const defaultLocale = "fr";
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const res = NextResponse.next();
+  const hostWithoutWww = (request.headers.get('host') ?? '').replace(/^www\./, '');
+  const deviceType = request.cookies.get('deviceType')?.value || 'desktop';
 
   // Si on est à la racine du site (ex: "/")
   if (pathname === "/") {
@@ -27,12 +30,9 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // On vérifie l'URL et on l'intègre dans le header
-  const hostWithoutWww = (request.headers.get('host') ?? '').replace(/^www\./, '');
-  const res = NextResponse.next();
   res.headers.set('x-website', hostWithoutWww);
+  res.headers.set('x-device-type', deviceType)
 
-  // Laisser passer tout le reste
   return res;
 }
 
