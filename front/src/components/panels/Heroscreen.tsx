@@ -14,7 +14,6 @@ import { ImageWrapper } from "./ImageWrapper";
 
 const Heroscreen = ({ heroImage }: HeroscreenProps) => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-  if (!apiUrl) return null;
 
   const [isMobile, setIsMobile] = useState(true);
   const [isTablet, setIsTablet] = useState(true);
@@ -32,6 +31,8 @@ const Heroscreen = ({ heroImage }: HeroscreenProps) => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, [])
+
+  if (!apiUrl) return null;
 
   if (heroImage.length === 1) {
     const image = heroImage[0];
