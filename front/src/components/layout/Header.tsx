@@ -1,5 +1,4 @@
 import React from "react";
-import Navigation from "./Navigation";
 import Logo from "./Logo";
 import MenuIcon from "../icons/MenuIcon";
 
@@ -7,7 +6,7 @@ interface HeaderProps {
   locale: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ locale }) => {
+const Header: React.FC<HeaderProps> = () => {
   return (
     <>
       <header className="h-[4rem] px-[1.25rem] flex justify-between items-center md:h-[6rem] md:px-[1.875rem] lg:fixed lg:z-[9999] lg:w-full lg:px-[5.787vw] lg:bg-primary lg:text-white">
