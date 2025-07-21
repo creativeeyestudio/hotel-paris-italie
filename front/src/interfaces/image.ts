@@ -6,7 +6,7 @@ export interface ImageDataProps {
   filesize: string
   width: number
   height: number
-  alt: string | null
+  alt?: string
   thumbnailURL: string | null
   url: string
   id: number

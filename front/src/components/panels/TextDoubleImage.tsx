@@ -1,11 +1,11 @@
-import Image from "next/image";
 import React from "react";
+import Link from "next/link";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { TextDoubleImageProps } from "@/interfaces/blocks";
-import { AspectRatio } from "../ui/aspect-ratio";
+import { ImageWrapper } from "./ImageWrapper";
+import SwiperComponent from "./SwiperComponent";
 
 import '@/styles/components/text-double-image.scss';
-import Link from "next/link";
-import SwiperComponent from "./SwiperComponent";
 
 const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
   title,
@@ -59,29 +59,17 @@ const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
 
       {device.desktop && <div className={`text-double-img__images`}>
         <figure className={`text-double-img__image--1 ${image2 ? 'text-double-img__image--half' : 'text-double-img__image--full'}`}>
-          <Image 
-            src={apiUrl + image1.url} 
-            alt={image1.alt ?? ""} 
-            fill={true} 
-            objectFit="cover"/>  
+          <ImageWrapper url={apiUrl + image1.url} alt={image1.alt} /> 
         </figure>
         {(image2 !== undefined && image2 !== null) && <figure className="text-double-img__image--2">
-          <Image 
-            src={apiUrl + image2.url} 
-            alt={image1.alt ?? ""} 
-            fill={true} 
-            objectFit="cover"/>  
+          <ImageWrapper url={apiUrl + image2.url} alt={image2.alt} /> 
         </figure>}
       </div>}
 
       {(device.mobile || device.tablet) && (
         (image2 === undefined || image2 === null) ? (
           <AspectRatio ratio={imgRatio}>
-            <Image 
-              src={apiUrl + image1.url} 
-              alt={image1.alt ?? ""} 
-              fill={true} 
-              objectFit="cover"/>
+            <ImageWrapper url={apiUrl + image1.url} alt={image1.alt} />
           </AspectRatio>
         ) : (
           <SwiperComponent images={[image1, image2]} ratio={imgRatio}></SwiperComponent>

@@ -1,10 +1,10 @@
-import { TextImageProps } from "@/interfaces/blocks";
-import Image from "next/image";
 import React from "react";
-import { AspectRatio } from "../ui/aspect-ratio";
+import Link from "next/link";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { TextImageProps } from "@/interfaces/blocks";
+import { ImageWrapper } from "./ImageWrapper";
 
 import '@/styles/components/text-image.scss';
-import Link from "next/link";
 
 const TextImage: React.FC<TextImageProps> = ({
   title,
@@ -17,18 +17,18 @@ const TextImage: React.FC<TextImageProps> = ({
   firstBlock,
 }) => {
   const TitleTag = firstBlock ? "h1" : "h2";
-
-  console.log(device);
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   
   return process.env.NEXT_PUBLIC_API_URL ? (
     <section className={`text-img${secondaryBg ? ' text-img--sec-color' : ''}`}>
 
     <div className="text-img__content">
-      <TitleTag className="text-img__title text-2xl md:text-3xl lg:text-4xl">
+      <TitleTag className="text-img__title">
         {title}
       </TitleTag>
+
       <div
-        className="text-img__text mt-[1.875rem]"
+        className="text-img__text"
         dangerouslySetInnerHTML={{ __html: html }}
       />
 
@@ -57,20 +57,10 @@ const TextImage: React.FC<TextImageProps> = ({
 
     <figure className="text-img__image">
       {device.desktop ? (
-        <Image
-          src={process.env.NEXT_PUBLIC_API_URL + image.url}
-          alt={image.alt ?? ""}
-          fill
-          objectFit="cover"
-        />
+        <ImageWrapper url={apiUrl + image.url} alt={image.alt} />
       ) : (
         <AspectRatio ratio={device.mobile ? 4 / 3 : 16 / 9}>
-          <Image
-            src={process.env.NEXT_PUBLIC_API_URL + image.url}
-            alt={image.alt ?? ""}
-            fill
-            objectFit="cover"
-          />
+          <ImageWrapper url={apiUrl + image.url} alt={image.alt} />
         </AspectRatio>
       )}
     </figure>
