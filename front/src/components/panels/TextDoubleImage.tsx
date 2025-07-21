@@ -1,11 +1,11 @@
 import Image from "next/image";
 import React from "react";
 import { TextDoubleImageProps } from "@/interfaces/blocks";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { AspectRatio } from "../ui/aspect-ratio";
 
 import '@/styles/components/text-double-image.scss';
 import Link from "next/link";
+import SwiperComponent from "./SwiperComponent";
 
 const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
   title,
@@ -84,33 +84,7 @@ const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
               objectFit="cover"/>
           </AspectRatio>
         ) : (
-          <>
-            <div id="containerForBullets"></div>
-            <Swiper 
-              autoplay={true} 
-              navigation
-              pagination={{ 
-                el: "#containerForBullets",
-                clickable: true,
-                type: "bullets",
-                bulletClass: "swiper-custom-bullet",
-                bulletActiveClass: "swiper-custom-bullet-active",
-              }}
-              >
-              {[image1, image2].map((img, index) => (
-                <SwiperSlide key={index}>
-                  <AspectRatio ratio={imgRatio}>
-                    <Image 
-                      src={apiUrl + img.url} 
-                      alt={img.alt ?? ""} 
-                      fill 
-                      objectFit="cover" 
-                    />
-                  </AspectRatio>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </>
+          <SwiperComponent images={[image1, image2]} ratio={imgRatio}></SwiperComponent>
         )
       )}
     </section>
