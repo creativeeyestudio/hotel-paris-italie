@@ -1,3 +1,4 @@
+import { DeviceType } from "@/types/DeviceType";
 import { ImageDataProps } from "./image";
 
 // CONTENT
@@ -31,6 +32,7 @@ export interface TextImageProps {
   secondaryBg: boolean
   linkList: LinkList[]
   subItem: SubItemList[]
+  device: DeviceType
   firstBlock: boolean
 }
 
@@ -43,6 +45,7 @@ export interface TextDoubleImageProps {
   secondaryBg: boolean
   linkList: LinkList[]
   subItem: SubItemList[]
+  device: DeviceType
   firstBlock: boolean
 }
 

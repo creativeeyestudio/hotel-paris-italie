@@ -1,8 +1,6 @@
-'use client'
-
 import { TextImageProps } from "@/interfaces/blocks";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { AspectRatio } from "../ui/aspect-ratio";
 
 import '@/styles/components/text-image.scss';
@@ -15,24 +13,12 @@ const TextImage: React.FC<TextImageProps> = ({
   secondaryBg,
   linkList,
   subItem,
+  device,
   firstBlock,
 }) => {
   const TitleTag = firstBlock ? "h1" : "h2";
 
-  const [isMobile, setIsMobile] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-      setIsDesktop(window.innerWidth >= 1280);
-    };
-
-    handleResize();
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  console.log(device);
   
   return process.env.NEXT_PUBLIC_API_URL ? (
     <section className={`text-img${secondaryBg ? ' text-img--sec-color' : ''}`}>
@@ -70,7 +56,7 @@ const TextImage: React.FC<TextImageProps> = ({
     </div>
 
     <figure className="text-img__image">
-      {isDesktop ? (
+      {device.desktop ? (
         <Image
           src={process.env.NEXT_PUBLIC_API_URL + image.url}
           alt={image.alt ?? ""}
@@ -78,7 +64,7 @@ const TextImage: React.FC<TextImageProps> = ({
           objectFit="cover"
         />
       ) : (
-        <AspectRatio ratio={isMobile ? 4 / 3 : 16 / 9}>
+        <AspectRatio ratio={device.mobile ? 4 / 3 : 16 / 9}>
           <Image
             src={process.env.NEXT_PUBLIC_API_URL + image.url}
             alt={image.alt ?? ""}

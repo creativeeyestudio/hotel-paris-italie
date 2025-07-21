@@ -50,8 +50,9 @@ const ContentPageItems: React.FC<ContentPageItemsProps> = ({ blocks }) => {
                 secondaryBg={block.secondaryBg}
                 linkList={block.linkList}
                 subItem={block.subItem}
+                device={device} 
                 firstBlock={isFirst}
-                key={index}               
+                key={index}              
               />
             );
           case "text-double-image":
@@ -64,8 +65,9 @@ const ContentPageItems: React.FC<ContentPageItemsProps> = ({ blocks }) => {
                 secondaryBg={block.secondaryBg}
                 linkList={block.linkList}
                 subItem={block.subItem}
+                device={device} 
                 firstBlock={isFirst}
-                key={index}              
+                key={index} 
               />
             );
           case "parallax":
