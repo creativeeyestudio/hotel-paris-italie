@@ -1,6 +1,6 @@
 import { NavigationProps } from "@/interfaces/navigation";
-import {Page} from "@/interfaces/page";
-import {SettingsProps} from "@/interfaces/settings";
+import { Page } from "@/interfaces/page";
+import { SettingsProps } from "@/interfaces/settings";
 
 /* ------------------------------------------------------------------
    Constantes
@@ -14,74 +14,91 @@ const CMS_URL = process.env.NEXT_PUBLIC_API_URL!;
 let cachedSettings: SettingsProps | null = null;
 
 export async function fetchSettings(): Promise<SettingsProps | null> {
-    if (cachedSettings) return cachedSettings;
-    
-    const res = await fetch(`${CMS_URL}/api/settings/${SETTINGS_ID}?depth=2`, {
-        next: { revalidate: 0 }
-    });
+  if (cachedSettings) return cachedSettings;
 
-    if (!res.ok) return null;
-    
-    cachedSettings = await res.json() as SettingsProps;
-    return cachedSettings;
+  const res = await fetch(`${CMS_URL}/api/settings/${SETTINGS_ID}?depth=2`, {
+    next: { revalidate: 0 },
+  });
+
+  if (!res.ok) return null;
+
+  cachedSettings = (await res.json()) as SettingsProps;
+  return cachedSettings;
 }
 
 /* --------------------------------------------------
    Pages
 -------------------------------------------------- */
 /**
- * @param site 
- * @param locale 
- * @returns 
+ * @param site
+ * @param locale
+ * @returns
  */
 export async function fetchHomePage(site: string, locale: string) {
-    const settings = await fetchSettings();
-    if (!settings) return null;
+  const settings = await fetchSettings();
+  if (!settings) return null;
 
-    const res = await fetch(`${CMS_URL}/api/pages/${settings.identityGroup?.homepage.id}?depth=2&locale=${locale}`, {
-        headers: { 'x-website': site },
-        next: { revalidate: 0 },
-    })
+  const res = await fetch(
+    `${CMS_URL}/api/pages/${settings.identityGroup?.homepage.id}?depth=2&locale=${locale}`,
+    {
+      headers: { "x-website": site },
+      next: { revalidate: 0 },
+    },
+  );
 
-    if (!res.ok) return null;
-    return res.json();
+  if (!res.ok) return null;
+  return res.json();
 }
 
 /**
- * @param site 
- * @param slug 
- * @param locale 
- * @returns 
+ * @param site
+ * @param slug
+ * @param locale
+ * @returns
  */
-export async function fetchPage(site: string, slug: string, locale: string): Promise<Page | null> {
-    const res = await fetch(`${CMS_URL}/api/pages?where[slug][equals]=${slug}&depth=2&locale=${locale}`, {
-        headers: { 'x-website': site },
-        next: { revalidate: 0 },
-    })
+export async function fetchPage(
+  site: string,
+  slug: string,
+  locale: string,
+): Promise<Page | null> {
+  const res = await fetch(
+    `${CMS_URL}/api/pages?where[slug][equals]=${slug}&depth=2&locale=${locale}`,
+    {
+      headers: { "x-website": site },
+      next: { revalidate: 0 },
+    },
+  );
 
-    if (!res.ok) return null;
+  if (!res.ok) return null;
 
-    const { docs } = await res.json() as { docs: Page[] };
-    return docs?.[0] ?? null;
+  const { docs } = (await res.json()) as { docs: Page[] };
+  return docs?.[0] ?? null;
 }
 
 /* --------------------------------------------------
    Navigation
 -------------------------------------------------- */
 /**
- * @param site 
- * @param menuId 
- * @param locale 
- * @returns 
+ * @param site
+ * @param menuId
+ * @param locale
+ * @returns
  */
-export async function fetchNavigation(site: string, menuId: string, locale: string): Promise<NavigationProps | null> {
-    const res = await fetch(`${CMS_URL}/api/navigation?where[menuId][equals]=${menuId}&depth=2&locale=${locale}`, {
-        headers: { 'x-website': site },
-        next: { revalidate: 0 },
-    })
+export async function fetchNavigation(
+  site: string,
+  menuId: string,
+  locale: string,
+): Promise<NavigationProps | null> {
+  const res = await fetch(
+    `${CMS_URL}/api/navigation?where[menuId][equals]=${menuId}&depth=2&locale=${locale}`,
+    {
+      headers: { "x-website": site },
+      next: { revalidate: 0 },
+    },
+  );
 
-    if (!res.ok) return null;
+  if (!res.ok) return null;
 
-    const { docs } = await res.json() as { docs: NavigationProps[] };
-    return docs?.[0] ?? null;
+  const { docs } = (await res.json()) as { docs: NavigationProps[] };
+  return docs?.[0] ?? null;
 }

@@ -12,7 +12,9 @@ interface ContentPageItemsProps {
   blocks: BlockProps[];
 }
 
-const ContentPageItems: React.FC<ContentPageItemsProps> = async ({ blocks }) => {
+const ContentPageItems: React.FC<ContentPageItemsProps> = async ({
+  blocks,
+}) => {
   if (!blocks || blocks.length === 0) return null;
 
   const device = await getDeviceDetector();
@@ -50,9 +52,9 @@ const ContentPageItems: React.FC<ContentPageItemsProps> = async ({ blocks }) => 
                 secondaryBg={block.secondaryBg}
                 linkList={block.linkList}
                 subItem={block.subItem}
-                device={device} 
+                device={device}
                 firstBlock={isFirst}
-                key={index}              
+                key={index}
               />
             );
           case "text-double-image":
@@ -65,9 +67,9 @@ const ContentPageItems: React.FC<ContentPageItemsProps> = async ({ blocks }) => 
                 secondaryBg={block.secondaryBg}
                 linkList={block.linkList}
                 subItem={block.subItem}
-                device={device} 
+                device={device}
                 firstBlock={isFirst}
-                key={index} 
+                key={index}
               />
             );
           case "parallax":

@@ -1,82 +1,71 @@
-@import '../abstracts/mixins';
+@import "../abstracts/mixins";
 
 .text-double-img {
-    @include gridBlock();
+  @include gridBlock();
 
-    &__images {
-        @apply
-            relative
+  &__images {
+    @apply relative
             w-full
             h-full
             col-span-6
             col-start-7;
+  }
+
+  &__image {
+    &--1 {
+      @apply relative
+                h-full;
+
+      img {
+        @apply w-full;
+      }
     }
 
-    &__image {
-        &--1 {
-            @apply 
-                relative
-                h-full;
-            
-            img {
-                @apply w-full
-            }
-        }
-
-        &--2 {
-            @apply 
-                absolute
+    &--2 {
+      @apply absolute
                 top-[2.894vw]
                 bottom-[2.894vw]
-                w-3/6
-        }
-
-        &--half {
-            @apply 
-                lg:w-4/6
-        }
-
-        &--full {
-            @apply 
-                lg:w-full
-        }
+                w-3/6;
     }
 
-    &:nth-child(odd) {
-        .text-double-img {
-            &__image {
-                &--2 {
-                    @apply
-                        lg:left-[50%]
-                }
-            }
-        }
+    &--half {
+      @apply lg:w-4/6;
     }
 
-    &:nth-child(even) {
-        .text-double-img {
-            &__content {
-                @apply 
-                    lg:order-2 
+    &--full {
+      @apply lg:w-full;
+    }
+  }
+
+  &:nth-child(odd) {
+    .text-double-img {
+      &__image {
+        &--2 {
+          @apply lg:left-[50%];
+        }
+      }
+    }
+  }
+
+  &:nth-child(even) {
+    .text-double-img {
+      &__content {
+        @apply lg:order-2 
                     lg:col-start-8;
-            }
-            &__images {
-                @apply 
-                    lg:order-1 
+      }
+      &__images {
+        @apply lg:order-1 
                     lg:col-start-1;
-                
-            }
+      }
 
-            &__image {
-                &--1 {
-                    @apply
-                        lg:ml-auto
-                }
-                &--2 {
-                    @apply
-                        lg:left-0
-                }
-            }
+      &__image {
+        &--1 {
+          @apply lg:ml-auto;
         }
+        &--2 {
+          @apply lg:left-0;
+        }
+      }
     }
+  }
 }

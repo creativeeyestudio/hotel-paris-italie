@@ -3,18 +3,21 @@ import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import MobileBar from "@/components/layout/MobileBar";
 
-import '@/styles/globals.css';
+import "@/styles/globals.css";
 
 interface LayoutParams {
   locale: string;
 }
 
-export default async function RootLayout({ children, params }: {
+export default async function RootLayout({
+  children,
+  params,
+}: {
   children: React.ReactNode;
   params: Promise<LayoutParams>;
 }) {
   const { locale } = await params;
-  
+
   return (
     <html lang={locale} dir="ltr">
       <body>

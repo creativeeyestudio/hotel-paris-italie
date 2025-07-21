@@ -1,11 +1,11 @@
-'use client'
+"use client";
 
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Ukiyo from "ukiyojs";
 import { ParallaxProps } from "@/interfaces/blocks";
 
-import '@/styles/components/parallax.scss';
+import "@/styles/components/parallax.scss";
 
 const Parallax: React.FC<ParallaxProps> = ({
   parallaxImage,
@@ -25,21 +25,24 @@ const Parallax: React.FC<ParallaxProps> = ({
 
     handleResize();
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  })
-  
-  return apiUrl && isDesktop && (
-    <>
-      <figure className="parallax">
-        <Image
-          className="parallax_image"
-          src={apiUrl + parallaxImage.url}
-          alt={parallaxImage.alt ?? ""}
-          fill={true}
-        />
-      </figure>
-    </>
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  });
+
+  return (
+    apiUrl &&
+    isDesktop && (
+      <>
+        <figure className="parallax">
+          <Image
+            className="parallax_image"
+            src={apiUrl + parallaxImage.url}
+            alt={parallaxImage.alt ?? ""}
+            fill={true}
+          />
+        </figure>
+      </>
+    )
   );
 };
 

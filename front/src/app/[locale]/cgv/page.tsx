@@ -1,3 +1,3 @@
 export default function Cgv() {
-    return <></>
+  return <></>;
 }

@@ -16,23 +16,23 @@ export type BlockProps =
   | TextDoubleImageProps
   | ParallaxProps
   | HeroscreenProps
-  | HTMLContentProps
+  | HTMLContentProps;
 
 export interface Page {
-  createdAt: string
-  updatedAt: string
-  title: string
-  slug: string
+  createdAt: string;
+  updatedAt: string;
+  title: string;
+  slug: string;
   content: {
-    heroscreen: HeroscreenProps[]
-    layout: BlockProps[]
-  }
+    heroscreen: HeroscreenProps[];
+    layout: BlockProps[];
+  };
   config: {
-    site: SettingsProps
-  }
+    site: SettingsProps;
+  };
   meta: {
     title: string;
     description: string;
-  }
-  id: string
+  };
+  id: string;
 }
