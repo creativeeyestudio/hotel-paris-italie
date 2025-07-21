@@ -12,10 +12,10 @@ interface ContentPageItemsProps {
   blocks: BlockProps[];
 }
 
-const ContentPageItems: React.FC<ContentPageItemsProps> = ({ blocks }) => {
+const ContentPageItems: React.FC<ContentPageItemsProps> = async ({ blocks }) => {
   if (!blocks || blocks.length === 0) return null;
 
-  const device = getDeviceDetector();
+  const device = await getDeviceDetector();
 
   return (
     <>
