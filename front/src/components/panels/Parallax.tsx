@@ -5,8 +5,6 @@ import React, { useEffect, useState } from "react";
 import Ukiyo from "ukiyojs";
 import { ParallaxProps } from "@/interfaces/blocks";
 
-import "@/styles/components/parallax.scss";
-
 const Parallax: React.FC<ParallaxProps> = ({
   parallaxImage,
   parallaxSpeed,

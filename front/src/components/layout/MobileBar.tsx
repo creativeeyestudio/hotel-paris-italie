@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import "@/styles/layouts/mobile-bar.scss";
 import MenuIcon from "../icons/MenuIcon";
 import { Phone } from "lucide-react";
 

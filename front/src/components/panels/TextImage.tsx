@@ -4,8 +4,6 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { TextImageProps } from "@/interfaces/blocks";
 import { ImageWrapper } from "./ImageWrapper";
 
-import "@/styles/components/text-image.scss";
-
 const TextImage: React.FC<TextImageProps> = ({
   title,
   html,

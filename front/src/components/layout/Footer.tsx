@@ -5,8 +5,6 @@ import Navigation from "./Navigation";
 import { fetchSettings } from "@/lib/cms";
 import { SettingsProps } from "@/interfaces/settings";
 
-import "@/styles/layouts/footer.scss";
-
 interface FooterProps {
   locale: string;
 }

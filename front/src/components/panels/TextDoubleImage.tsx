@@ -5,8 +5,6 @@ import { TextDoubleImageProps } from "@/interfaces/blocks";
 import { ImageWrapper } from "./ImageWrapper";
 import SwiperComponent from "./SwiperComponent";
 
-import "@/styles/components/text-double-image.scss";
-
 const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
   title,
   html,

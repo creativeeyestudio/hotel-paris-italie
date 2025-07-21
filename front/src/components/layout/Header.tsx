@@ -1,8 +1,6 @@
 import React from "react";
 import Logo from "./Logo";
 import MenuIcon from "../icons/MenuIcon";
-
-import "@/styles/layouts/header.scss";
 import Navigation from "./Navigation";
 
 interface HeaderProps {

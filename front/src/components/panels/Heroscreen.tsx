@@ -9,43 +9,36 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 import { AspectRatio } from "../ui/aspect-ratio";
+import { useEffect, useState } from "react";
+import { ImageWrapper } from "./ImageWrapper";
 
 const Heroscreen = ({ heroImage }: HeroscreenProps) => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   if (!apiUrl) return null;
+
+  const [isMobile, setIsMobile] = useState(true);
+  const [isTablet, setIsTablet] = useState(true);
+  const [isDesktop, setIsDesktop] = useState(true);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+      setIsTablet(window.innerWidth >= 768 && window.innerWidth < 1024);
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [])
 
   if (heroImage.length === 1) {
     const image = heroImage[0];
     return (
       <>
         {/* Mobile : 4/3 */}
-        <div className="block sm:hidden">
-          <AspectRatio ratio={4 / 3}>
-            <Image
-              src={apiUrl + image.url}
-              alt={image.alt ?? "Pas de texte alt"}
-              fill
-              style={{ objectFit: "cover" }}
-              priority
-            />
-          </AspectRatio>
-        </div>
-
-        {/* Tablet : 16/9 */}
-        <div className="hidden sm:block lg:hidden">
-          <AspectRatio ratio={16 / 9}>
-            <Image
-              src={apiUrl + image.url}
-              alt={image.alt ?? "Pas de texte alt"}
-              fill
-              style={{ objectFit: "cover" }}
-              priority
-            />
-          </AspectRatio>
-        </div>
-
-        {/* Desktop : Full width + height */}
-        <div className="hidden lg:block w-full h-screen relative">
+        {isMobile && <AspectRatio ratio={4 / 3}>
           <Image
             src={apiUrl + image.url}
             alt={image.alt ?? "Pas de texte alt"}
@@ -53,7 +46,22 @@ const Heroscreen = ({ heroImage }: HeroscreenProps) => {
             style={{ objectFit: "cover" }}
             priority
           />
-        </div>
+        </AspectRatio>}
+
+        {/* Tablet : 16/9 */}
+        {isTablet && <AspectRatio ratio={16 / 9}>
+          <Image
+            src={apiUrl + image.url}
+            alt={image.alt ?? "Pas de texte alt"}
+            fill
+            style={{ objectFit: "cover" }}
+            priority
+          />
+        </AspectRatio>}
+
+        {/* Desktop : Full width + height */}
+        {isDesktop && <ImageWrapper url={apiUrl + image.url} alt={image.alt} className="w-full h-screen relative" />}
+        
       </>
     );
   }
