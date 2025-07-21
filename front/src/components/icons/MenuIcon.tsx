@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import UseAnimations from "react-useanimations";
 import menu2 from "react-useanimations/lib/menu2";
 
-const MenuIcon = ({ classes = '', mobile = false }) => {
+const MenuIcon = ({ classes = "", mobile = false }) => {
   const [isActive, setIsActive] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
 
@@ -22,7 +22,7 @@ const MenuIcon = ({ classes = '', mobile = false }) => {
     <UseAnimations
       animation={menu2}
       size={36}
-      strokeColor={(isLargeScreen || mobile) ? "white" : "black"}
+      strokeColor={isLargeScreen || mobile ? "white" : "black"}
       reverse={isActive}
       render={(eventProps, animationProps) => (
         <button
@@ -31,7 +31,7 @@ const MenuIcon = ({ classes = '', mobile = false }) => {
             eventProps.onClick?.(e);
             setIsActive((prev) => !prev);
           }}
-          className={`${mobile ? 'flex' : 'hidden md:flex md:items-center'} md:gap-[1rem] ${classes}`}
+          className={`${mobile ? "flex" : "hidden md:flex md:items-center"} md:gap-[1rem] ${classes}`}
         >
           <div {...animationProps} />
           <span className="hidden lg:block relative leading-[1] h-[1em]">

@@ -1,14 +1,14 @@
-@import '../abstracts/mixins';
+@import "../abstracts/mixins";
 
 .mobile-bar {
-    @apply h-[64px] fixed bottom-0 left-0 w-full flex bg-primary text-white divide-x border-white;
+  @apply h-[64px] fixed bottom-0 left-0 z-10 w-full flex bg-primary text-white divide-x border-t border-white;
 
-    &__call-btn,
-    &__nav-btn {
-        @apply h-full aspect-square flex justify-center items-center;
-    }
+  &__call-btn,
+  &__nav-btn {
+    @apply h-full aspect-square flex justify-center items-center;
+  }
 
-    &__reserve-btn {
-        @apply w-full
-    }
+  &__reserve-btn {
+    @apply w-full;
+  }
 }

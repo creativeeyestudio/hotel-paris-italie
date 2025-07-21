@@ -5,6 +5,8 @@ import Navigation from "./Navigation";
 import { fetchSettings } from "@/lib/cms";
 import { SettingsProps } from "@/interfaces/settings";
 
+import "@/styles/layouts/footer.scss";
+
 interface FooterProps {
   locale: string;
 }
@@ -25,9 +27,9 @@ const Footer: React.FC<FooterProps> = async ({ locale }) => {
   };
 
   return (
-    <footer className="footer bg-primary text-white p-[2rem] lg:px-[5.787vw] lg:py-[2.8935vw]">
-      <div className="footer__row--1 grid grid-cols-12 gap-[2rem]">
-        <div className="footer__block col-span-12 md:col-span-4 lg:col-span-5">
+    <footer className="footer">
+      <div className="footer__site-nav">
+        <div className="footer__nav-block">
           <p className="footer__title text-lg mb-[1rem]">Accès et contact</p>
           <div className="grid lg:grid-cols-2">
             <p>
@@ -45,7 +47,7 @@ const Footer: React.FC<FooterProps> = async ({ locale }) => {
             </p>
           </div>
         </div>
-        <div className="footer__block col-span-12 md:col-span-4">
+        <div className="footer__nav-block">
           <p className="footer__title text-lg mb-[1rem]">Navigation</p>
           <Navigation
             menuId={"footer-menu"}
@@ -53,7 +55,7 @@ const Footer: React.FC<FooterProps> = async ({ locale }) => {
             classesList="grid gap-[.5rem] lg:grid-cols-2"
           />
         </div>
-        <div className="footer__block col-span-12 md:col-span-4 lg:col-span-3">
+        <div className="footer__nav-block">
           <p className="footer__title text-lg mb-[1rem]">Suivez nous</p>
           <ul className="flex gap-[1rem]">
             <li>
@@ -75,17 +77,16 @@ const Footer: React.FC<FooterProps> = async ({ locale }) => {
           </ul>
         </div>
       </div>
-      <hr className="my-[2rem] lg:my-[2.8935vw]" />
-      <div className="footer_row--2 text-xs leading-none md:text-center">
+      <hr className="footer__separate" />
+      <div className="footer__legal-nav">
         <p>
-          <span className="flex gap-[.75rem] md:justify-center">
+          <span className="footer__legal-links">
             <Link href={""}>Mentions légales</Link>
             <Link href={""}>Confidentialité</Link>
             <Link href={""}>CGV</Link>
             <span>Cookies</span>
           </span>
-          <br />
-          Conception et développement : Com&apos; A Votre Image
+          <span>Conception et développement : Com&apos; A Votre Image</span>
         </p>
       </div>
     </footer>
