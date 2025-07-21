@@ -58,12 +58,10 @@ const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
       </div>
 
       {device.desktop && <div className={`text-double-img__images`}>
-        <figure className={`text-double-img__image--1 ${image2 ? 'text-double-img__image--half' : 'text-double-img__image--full'}`}>
-          <ImageWrapper url={apiUrl + image1.url} alt={image1.alt} /> 
-        </figure>
-        {(image2 !== undefined && image2 !== null) && <figure className="text-double-img__image--2">
-          <ImageWrapper url={apiUrl + image2.url} alt={image2.alt} /> 
-        </figure>}
+        <ImageWrapper url={apiUrl + image1.url} alt={image1.alt} className={`text-double-img__image--1 ${image2 ? 'text-double-img__image--half' : 'text-double-img__image--full'}`} /> 
+        {(image2 !== undefined && image2 !== null) && 
+          <ImageWrapper url={apiUrl + image2.url} alt={image2.alt} className="text-double-img__image--2" /> 
+        }
       </div>}
 
       {(device.mobile || device.tablet) && (

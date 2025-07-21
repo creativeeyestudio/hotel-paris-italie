@@ -55,15 +55,13 @@ const TextImage: React.FC<TextImageProps> = ({
         </ul>}
     </div>
 
-    <figure className="text-img__image">
-      {device.desktop ? (
-        <ImageWrapper url={apiUrl + image.url} alt={image.alt} />
-      ) : (
-        <AspectRatio ratio={device.mobile ? 4 / 3 : 16 / 9}>
-          <ImageWrapper url={apiUrl + image.url} alt={image.alt} />
-        </AspectRatio>
-      )}
-    </figure>
+    {device.desktop ? (
+      <ImageWrapper url={apiUrl + image.url} alt={image.alt} className="text-img__image" />
+    ) : (
+      <AspectRatio ratio={device.mobile ? 4 / 3 : 16 / 9}>
+        <ImageWrapper url={apiUrl + image.url} alt={image.alt} className="text-img__image" />
+      </AspectRatio>
+    )}
   </section>
 ) : (
   <></>
