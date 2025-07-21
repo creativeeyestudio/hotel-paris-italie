@@ -39,3 +39,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-size: 17px;
+  
+}
+
+p {
+  line-height: 1.5rem;
+}
+
+p:not(:last-child) {
+  margin-bottom: 1.5rem;
+}

@@ -24,6 +24,7 @@ export interface Page {
   title: string
   slug: string
   content: {
+    heroscreen: HeroscreenProps[]
     layout: BlockProps[]
   }
   config: {

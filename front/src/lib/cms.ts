@@ -6,7 +6,7 @@ import {SettingsProps} from "@/interfaces/settings";
    Constantes
 ------------------------------------------------------------------ */
 const SETTINGS_ID = process.env.SITE_ID!;
-const CMS_URL = process.env.API_URL!;
+const CMS_URL = process.env.NEXT_PUBLIC_API_URL!;
 
 /* --------------------------------------------------
    Settings

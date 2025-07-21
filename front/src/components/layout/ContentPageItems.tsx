@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { BlockProps } from "@/interfaces/page";
 import Text from "../panels/Text";
@@ -7,15 +5,17 @@ import TextIntro from "../panels/TextIntro";
 import TextImage from "../panels/TextImage";
 import TextDoubleImage from "../panels/TextDoubleImage";
 import Parallax from "../panels/Parallax";
-import Heroscreen from "../panels/Heroscreen";
 import HtmlContent from "../panels/HtmlContent";
+import { getDeviceDetector } from "@/lib/deviceDetector";
 
 interface ContentPageItemsProps {
   blocks: BlockProps[];
 }
 
-const ContentPageItems: React.FC<ContentPageItemsProps> = ({ blocks }) => {
+const ContentPageItems: React.FC<ContentPageItemsProps> = async ({ blocks }) => {
   if (!blocks || blocks.length === 0) return null;
+
+  const device = await getDeviceDetector();
 
   return (
     <>
@@ -47,8 +47,12 @@ const ContentPageItems: React.FC<ContentPageItemsProps> = ({ blocks }) => {
                 title={block.title}
                 html={block.html}
                 image={block.image}
+                secondaryBg={block.secondaryBg}
+                linkList={block.linkList}
+                subItem={block.subItem}
+                device={device} 
                 firstBlock={isFirst}
-                key={index}
+                key={index}              
               />
             );
           case "text-double-image":
@@ -58,8 +62,12 @@ const ContentPageItems: React.FC<ContentPageItemsProps> = ({ blocks }) => {
                 html={block.html}
                 image1={block.image1}
                 image2={block.image2}
+                secondaryBg={block.secondaryBg}
+                linkList={block.linkList}
+                subItem={block.subItem}
+                device={device} 
                 firstBlock={isFirst}
-                key={index}
+                key={index} 
               />
             );
           case "parallax":
@@ -70,8 +78,6 @@ const ContentPageItems: React.FC<ContentPageItemsProps> = ({ blocks }) => {
                 key={index}
               />
             );
-          case "heroscreen":
-            return <Heroscreen heroImage={block.heroImage} key={index} />;
           case "html-content":
             return <HtmlContent content={block.content} key={index} />;
           default:

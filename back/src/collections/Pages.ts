@@ -30,20 +30,33 @@ type LayoutBlock = {
 export async function enrichLayoutWithHTML(layout: LayoutBlock[] = []): Promise<LayoutBlock[]> {
   return Promise.all(
     layout.map(async (block) => {
-      if (!block.content) return block
+      const { blockType, blockName, content, subItem, ...rest } = block
 
-      // On extrait uniquement ce qu’on veut réellement renvoyer
-      const { blockType, blockName, content, ...rest } = block
-
-      return {
+      const enrichedBlock: LayoutBlock = {
         blockType,
         blockName,
-        html: await convertRichTextToHTML(content),
         ...rest,
       }
-    }),
+
+      if (content) {
+        enrichedBlock.content = content
+        enrichedBlock.html = await convertRichTextToHTML(content)
+      }
+
+      if (Array.isArray(subItem)) {
+        enrichedBlock.subItem = await Promise.all(
+          subItem.map(async (item) => ({
+            ...item,
+            html: item.content ? await convertRichTextToHTML(item.content) : undefined,
+          }))
+        )
+      }
+
+      return enrichedBlock
+    })
   )
 }
+
 
 /* -------------------------------------------------------------------------- */
 /*  Collection                                                                */
@@ -83,10 +96,17 @@ const Pages: CollectionConfig = {
       type: 'group',
       fields: [
         {
+          name: 'heroscreen',
+          label: 'Images d\'Heroscreen',
+          type: 'blocks',
+          blocks: [Heroscreen],
+          maxRows: 1
+        },
+        {
           name: 'layout',
           label: 'Blocks de la page',
           type: 'blocks',
-          blocks: [Text, TextIntro, TextImage, TextDoubleImage, Parallax, HtmlContent, Heroscreen],
+          blocks: [Text, TextIntro, TextImage, TextDoubleImage, Parallax, HtmlContent],
           required: false,
           localized: true,
         },

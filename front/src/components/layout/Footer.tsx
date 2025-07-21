@@ -15,8 +15,6 @@ const Footer: React.FC<FooterProps> = async ({ locale }) => {
 
   if (!settings) return null;
 
-  console.log(settings);
-
   const telLink = (): string => {
     const tel: string = settings.contactDetails?.phone;
 

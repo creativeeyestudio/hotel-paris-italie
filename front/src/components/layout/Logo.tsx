@@ -7,7 +7,7 @@ const Logo = async () => {
 
     if (!settings || !settings.identityGroup.logo) return null;
 
-    const imageUrl = process.env.API_URL + settings.identityGroup.logo.url;
+    const imageUrl = process.env.NEXT_PUBLIC_API_URL + settings.identityGroup.logo.url;
     const image = <Image 
         src={imageUrl} 
         alt={settings.identityGroup.logo.alt ?? ''}

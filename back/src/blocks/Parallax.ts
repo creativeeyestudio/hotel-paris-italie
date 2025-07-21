@@ -8,14 +8,14 @@ const Parallax: Block = {
     },
     fields: [
         {
-            name: 'parallax_image',
+            name: 'parallaxImage',
             label: 'Image du Parallax',
             type: 'upload',
             relationTo: 'media',
             required: true, 
         },
         {
-            name: 'parallax_speed',
+            name: 'parallaxSpeed',
             label: 'Vitesse',
             type: 'number',
             required: true,

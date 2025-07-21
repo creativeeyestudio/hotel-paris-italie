@@ -186,6 +186,14 @@ export interface Page {
   title: string;
   slug: string;
   content?: {
+    heroscreen?:
+      | {
+          heroImage: (string | Media)[];
+          id?: string | null;
+          blockName?: string | null;
+          blockType: 'heroscreen';
+        }[]
+      | null;
     layout?:
       | (
           | {
@@ -232,6 +240,7 @@ export interface Page {
             }
           | {
               title: string;
+              secondaryBg?: boolean | null;
               content: {
                 root: {
                   type: string;
@@ -248,12 +257,41 @@ export interface Page {
                 [k: string]: unknown;
               };
               image: string | Media;
+              linkList?:
+                | {
+                    linkName: string;
+                    linkUrl?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              subItem?:
+                | {
+                    title: string;
+                    content: {
+                      root: {
+                        type: string;
+                        children: {
+                          type: string;
+                          version: number;
+                          [k: string]: unknown;
+                        }[];
+                        direction: ('ltr' | 'rtl') | null;
+                        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                        indent: number;
+                        version: number;
+                      };
+                      [k: string]: unknown;
+                    };
+                    id?: string | null;
+                  }[]
+                | null;
               id?: string | null;
               blockName?: string | null;
               blockType: 'text-image';
             }
           | {
               title: string;
+              secondaryBg?: boolean | null;
               content: {
                 root: {
                   type: string;
@@ -271,13 +309,41 @@ export interface Page {
               };
               image1: string | Media;
               image2?: (string | null) | Media;
+              linkList?:
+                | {
+                    linkName: string;
+                    linkUrl?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              subItem?:
+                | {
+                    title: string;
+                    content: {
+                      root: {
+                        type: string;
+                        children: {
+                          type: string;
+                          version: number;
+                          [k: string]: unknown;
+                        }[];
+                        direction: ('ltr' | 'rtl') | null;
+                        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                        indent: number;
+                        version: number;
+                      };
+                      [k: string]: unknown;
+                    };
+                    id?: string | null;
+                  }[]
+                | null;
               id?: string | null;
               blockName?: string | null;
               blockType: 'text-double-image';
             }
           | {
-              parallax_image: string | Media;
-              parallax_speed: number;
+              parallaxImage: string | Media;
+              parallaxSpeed: number;
               id?: string | null;
               blockName?: string | null;
               blockType: 'parallax';
@@ -287,12 +353,6 @@ export interface Page {
               id?: string | null;
               blockName?: string | null;
               blockType: 'html-content';
-            }
-          | {
-              hero_image: (string | Media)[];
-              id?: string | null;
-              blockName?: string | null;
-              blockType: 'heroscreen';
             }
         )[]
       | null;
@@ -587,6 +647,17 @@ export interface PagesSelect<T extends boolean = true> {
   content?:
     | T
     | {
+        heroscreen?:
+          | T
+          | {
+              heroscreen?:
+                | T
+                | {
+                    heroImage?: T;
+                    id?: T;
+                    blockName?: T;
+                  };
+            };
         layout?:
           | T
           | {
@@ -610,8 +681,23 @@ export interface PagesSelect<T extends boolean = true> {
                 | T
                 | {
                     title?: T;
+                    secondaryBg?: T;
                     content?: T;
                     image?: T;
+                    linkList?:
+                      | T
+                      | {
+                          linkName?: T;
+                          linkUrl?: T;
+                          id?: T;
+                        };
+                    subItem?:
+                      | T
+                      | {
+                          title?: T;
+                          content?: T;
+                          id?: T;
+                        };
                     id?: T;
                     blockName?: T;
                   };
@@ -619,17 +705,32 @@ export interface PagesSelect<T extends boolean = true> {
                 | T
                 | {
                     title?: T;
+                    secondaryBg?: T;
                     content?: T;
                     image1?: T;
                     image2?: T;
+                    linkList?:
+                      | T
+                      | {
+                          linkName?: T;
+                          linkUrl?: T;
+                          id?: T;
+                        };
+                    subItem?:
+                      | T
+                      | {
+                          title?: T;
+                          content?: T;
+                          id?: T;
+                        };
                     id?: T;
                     blockName?: T;
                   };
               parallax?:
                 | T
                 | {
-                    parallax_image?: T;
-                    parallax_speed?: T;
+                    parallaxImage?: T;
+                    parallaxSpeed?: T;
                     id?: T;
                     blockName?: T;
                   };
@@ -637,13 +738,6 @@ export interface PagesSelect<T extends boolean = true> {
                 | T
                 | {
                     htmlCode?: T;
-                    id?: T;
-                    blockName?: T;
-                  };
-              heroscreen?:
-                | T
-                | {
-                    hero_image?: T;
                     id?: T;
                     blockName?: T;
                   };

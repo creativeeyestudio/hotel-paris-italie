@@ -1,58 +1,86 @@
-import Image from "next/image";
-import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectFade, Pagination } from "swiper/modules";
+'use client'
 
-import "swiper/css";
-import "swiper/css/effect-fade";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
-import { HeroscreenProps } from "@/interfaces/blocks";
+import Image from 'next/image'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay, EffectFade, Pagination } from 'swiper/modules'
+import { HeroscreenProps } from '@/interfaces/blocks'
 
-const Heroscreen: React.FC<HeroscreenProps> = (content: HeroscreenProps) => {
-  return content.heroImage.length > 1 ? (
+import 'swiper/css'
+import 'swiper/css/effect-fade'
+import 'swiper/css/pagination'
+import { AspectRatio } from '../ui/aspect-ratio'
+
+const Heroscreen = ({ heroImage }: HeroscreenProps) => {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL
+  if (!apiUrl) return null
+
+  if (heroImage.length === 1) {
+    const image = heroImage[0]
+    return (
+      <>
+        {/* Mobile : 4/3 */}
+        <div className="block sm:hidden">
+          <AspectRatio ratio={4 / 3}>
+            <Image
+              src={apiUrl + image.url}
+              alt={image.alt ?? 'Pas de texte alt'}
+              fill
+              style={{ objectFit: 'cover' }}
+              priority
+            />
+          </AspectRatio>
+        </div>
+
+        {/* Tablet : 16/9 */}
+        <div className="hidden sm:block lg:hidden">
+          <AspectRatio ratio={16 / 9}>
+            <Image
+              src={apiUrl + image.url}
+              alt={image.alt ?? 'Pas de texte alt'}
+              fill
+              style={{ objectFit: 'cover' }}
+              priority
+            />
+          </AspectRatio>
+        </div>
+
+        {/* Desktop : Full width + height */}
+        <div className="hidden lg:block w-full h-screen relative">
+          <Image
+            src={apiUrl + image.url}
+            alt={image.alt ?? 'Pas de texte alt'}
+            fill
+            style={{ objectFit: 'cover' }}
+            priority
+          />
+        </div>
+      </>
+    )
+  }
+
+  return (
     <Swiper
       effect="fade"
-      centeredSlides={true}
+      centeredSlides
+      loop
       pagination={{ dynamicBullets: true }}
-      loop={true}
-      autoplay={{
-        delay: 5000,
-        disableOnInteraction: false,
-      }}
+      autoplay={{ delay: 5000, disableOnInteraction: false }}
       modules={[EffectFade, Pagination, Autoplay]}
       className="heroscreen"
     >
-      {content.heroImage.map((image, index) =>
-        process.env.NEXT_PUBLIC_API_URL != undefined ? (
-          <SwiperSlide key={index} className="heroscreen__container">
-            <Image
-              src={process.env.NEXT_PUBLIC_API_URL + image.url}
-              alt={image.alt ?? ""}
-              fill={true}
-              objectFit="cover"
-              priority={true}
-            />
-          </SwiperSlide>
-        ) : (
-          <></>
-        ),
-      )}
+      {heroImage.map((image, index) => (
+        <SwiperSlide key={index} className="heroscreen__container">
+          <Image
+            src={apiUrl + image.url}
+            alt={image.alt ?? ''}
+            fill
+            style={{ objectFit: 'cover' }}
+            priority
+          />
+        </SwiperSlide>
+      ))}
     </Swiper>
-  ) : process.env.NEXT_PUBLIC_API_URL != undefined ? (
-    <div className="heroscreen__container">
-      <Image
-        src={process.env.NEXT_PUBLIC_API_URL + content.heroImage[0].url}
-        alt={content.heroImage[0].alt ?? "Pas de text alt"}
-        fill={true}
-        objectFit="cover"
-        priority={true}
-      />
-    </div>
-  ) : (
-    <></>
-  );
-};
+  )
+}
 
-export default Heroscreen;
+export default Heroscreen
