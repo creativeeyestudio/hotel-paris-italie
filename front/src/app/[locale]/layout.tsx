@@ -1,6 +1,7 @@
 import DeviceDetectorClient from "@/components/layout/DeviceDetectorClient";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
+import MobileBar from "@/components/layout/MobileBar";
 
 import '@/styles/globals.css';
 
@@ -20,6 +21,7 @@ export default async function RootLayout({ children, params }: {
         <DeviceDetectorClient />
         <Header locale={locale} />
         <main>{children}</main>
+        <MobileBar locale={locale} />
         <Footer locale={locale} />
       </body>
     </html>
