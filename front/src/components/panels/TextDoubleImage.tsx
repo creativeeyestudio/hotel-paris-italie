@@ -27,8 +27,6 @@ const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
   const imgRatio = isMobile ? 4/3 : 16/9;
   const TitleTag = firstBlock ? "h1" : "h2";
 
-  console.log(linkList);
-
   useEffect(() => {
       const handleResize = () => {
         setIsMobile(window.innerWidth < 768);

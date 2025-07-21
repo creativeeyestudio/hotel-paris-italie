@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { BlockProps } from "@/interfaces/page";
 import Text from "../panels/Text";
@@ -8,6 +6,7 @@ import TextImage from "../panels/TextImage";
 import TextDoubleImage from "../panels/TextDoubleImage";
 import Parallax from "../panels/Parallax";
 import HtmlContent from "../panels/HtmlContent";
+import { getDeviceDetector } from "@/lib/deviceDetector";
 
 interface ContentPageItemsProps {
   blocks: BlockProps[];
@@ -15,6 +14,8 @@ interface ContentPageItemsProps {
 
 const ContentPageItems: React.FC<ContentPageItemsProps> = ({ blocks }) => {
   if (!blocks || blocks.length === 0) return null;
+
+  const device = getDeviceDetector();
 
   return (
     <>
