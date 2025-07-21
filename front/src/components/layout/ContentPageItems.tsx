@@ -48,8 +48,9 @@ const ContentPageItems: React.FC<ContentPageItemsProps> = ({ blocks }) => {
                 image={block.image}
                 secondaryBg={block.secondaryBg}
                 linkList={block.linkList}
-                firstBlock={isFirst} 
-                key={index}              
+                subItem={block.subItem}
+                firstBlock={isFirst}
+                key={index}               
               />
             );
           case "text-double-image":
