@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import MenuIcon from "../icons/MenuIcon";
 import { Phone } from "lucide-react";
+import toggleReservePopup from "@/lib/toggleReservePopup";
 
 interface MobileBarProps {
   locale: string;
@@ -28,7 +29,12 @@ const MobileBar: React.FC<MobileBarProps> = () => {
       <button className="mobile-bar__call-btn">
         <Phone></Phone>
       </button>
-      <button className="mobile-bar__reserve-btn">Réserver en ligne</button>
+      <button
+        className="mobile-bar__reserve-btn"
+        onClick={() => toggleReservePopup()}
+      >
+        Réserver en ligne
+      </button>
     </div>
   ) : (
     <></>

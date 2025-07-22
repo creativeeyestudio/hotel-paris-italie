@@ -24,7 +24,7 @@
     @apply row-span-4;
 
     &__list {
-      @apply h-full grid;
+      @apply h-full grid lg:grid-cols-[repeat(auto-fit,minmax(200px,1fr))];
     }
 
     &__item {
@@ -38,7 +38,7 @@
 
   &__secondary {
     &__list {
-      @apply flex flex-col divide-y divide-white text-white lg:grid lg:divide-x lg:divide-y-0;
+      @apply flex flex-col divide-y divide-white text-white lg:grid lg:divide-x lg:divide-y-0 lg:grid-cols-[repeat(auto-fit,minmax(200px,1fr))];
 
       @media screen and (min-width: 1024px) {
         height: $header-ht--d;

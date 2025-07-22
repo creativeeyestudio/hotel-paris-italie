@@ -1,0 +1,71 @@
+.reserve-popup {
+  @apply p-[2rem] fixed inset-0 z-[9999] bg-[rgba(0,0,0,0.7)] duration-500 flex flex-col justify-center items-center flex-wrap gap-[2rem];
+
+  &--open {
+    @apply translate-y-0 opacity-100;
+  }
+
+  &--close {
+    @apply -translate-y-full opacity-0;
+  }
+
+  &__container {
+    @apply bg-secondary relative p-[2rem] xl:py-[100px] xl:px-[150px] xl:w-[1000px];
+  }
+
+  &__form {
+    @apply grid grid-cols-12 grid-rows-3 gap-4 mt-[1rem];
+  }
+
+  &__input {
+    @apply relative;
+
+    label {
+      @apply absolute duration-500;
+    }
+
+    input {
+      @apply duration-500 rounded-none border-0 border-b border-black bg-transparent;
+
+      &[type="date"]::-webkit-datetime-edit {
+        color: transparent;
+      }
+    }
+
+    &--half {
+      @apply col-span-6;
+    }
+
+    &--full {
+      @apply col-span-12 lg:col-span-6;
+    }
+
+    &--inactive {
+      label {
+        @apply top-[40%] -translate-y-[50%];
+      }
+    }
+
+    &--active {
+      @include LabelAnim();
+    }
+
+    &--valid {
+      @include LabelAnim();
+    }
+  }
+
+  &__btn {
+    &--send {
+      @apply mt-[.5rem];
+    }
+
+    &--close-mobile {
+      @apply lg:hidden;
+    }
+
+    &--close-desktop {
+      @apply hidden rounded-full size-[60px] lg:flex lg:justify-center lg:absolute lg:-top-[30px] lg:-right-[30px];
+    }
+  }
+}

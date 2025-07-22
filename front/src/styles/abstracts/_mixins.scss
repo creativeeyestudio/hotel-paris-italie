@@ -49,3 +49,15 @@
     @apply bg-[#FAF8F3];
   }
 }
+
+@mixin LabelAnim() {
+  label {
+    @apply -top-[10px] text-xs;
+  }
+
+  input {
+    &[type="date"]::-webkit-datetime-edit {
+      color: black;
+    }
+  }
+}
