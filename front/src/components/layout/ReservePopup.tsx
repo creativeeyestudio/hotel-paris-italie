@@ -1,6 +1,10 @@
+'use client'
+
+import { CircleX } from "lucide-react"
 import { Button } from "../ui/button"
 import { Input } from "../ui/input"
 import { Label } from "../ui/label"
+import toggleReservePopup from "@/lib/toggleReservePopup"
 
 const ReservePopup = () => {
     return (
@@ -33,6 +37,11 @@ const ReservePopup = () => {
                     </div>
                 </form>
             </div>
+
+            <Button variant="ghost" size={'lg'} onClick={() => toggleReservePopup()}>
+                <CircleX color="#ffffff" strokeWidth={1} style={{ width: 40, height: 64}} />
+            </Button>
+            
         </div>
     )
 }
