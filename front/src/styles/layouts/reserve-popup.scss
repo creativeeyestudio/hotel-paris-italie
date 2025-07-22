@@ -1,0 +1,39 @@
+.reserve-popup {
+    @apply p-[2rem] fixed inset-0 z-[9999] bg-[rgba(0,0,0,0.7)] duration-500 flex flex-col justify-center items-center;
+
+    &--open {
+        @apply translate-y-0 opacity-100;
+    }
+
+    &--close {
+        @apply -translate-y-full opacity-0;
+    }
+
+    &__container {
+        @apply bg-secondary p-[2rem] max-w-[62.5rem];
+    }
+
+    &__title {
+        @apply text-xl
+    }
+
+    &__form {
+        @apply grid grid-cols-12 grid-rows-3 gap-2 mt-[1rem];
+    }
+
+    &__input {
+        &--half {
+            @apply col-span-6;
+        }
+
+        &--full {
+            @apply col-span-12;
+        }
+    }
+
+    &__btn {
+        &--send {
+            @apply mt-[.5rem]
+        }
+    }
+}
