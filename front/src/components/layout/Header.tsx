@@ -37,7 +37,7 @@ const Header: React.FC<HeaderProps> = ({ locale }) => {
         </ul>
       </header>
 
-      <div className="nav">
+      <div className="nav nav--close">
         <Navigation
           menuId={"main-menu"}
           locale={locale}
