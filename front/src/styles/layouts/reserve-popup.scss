@@ -14,15 +14,14 @@
   }
 
   &__form {
-    @apply grid grid-cols-12 grid-rows-3 gap-2 mt-[1rem];
+    @apply grid grid-cols-12 grid-rows-3 gap-4 mt-[1rem];
   }
 
   &__input {
-
     @apply relative;
 
     label {
-      @apply absolute duration-500
+      @apply absolute duration-500;
     }
 
     input {
@@ -30,7 +29,11 @@
       border-radius: 0;
       border: 0;
       border-bottom: 1px solid black;
-      background-color: rgba($color: #000000, $alpha: 0)
+      background-color: rgba($color: #000000, $alpha: 0);
+
+      &[type="date"]::-webkit-datetime-edit {
+        color: transparent;
+      }
     }
 
     &--half {
@@ -43,14 +46,31 @@
 
     &--inactive {
       label {
-        @apply top-[50%] -translate-y-[50%];
+        @apply top-[40%] -translate-y-[50%];
       }
     }
 
-    &--active,
+    &--active {
+      label {
+        @apply -top-[10px] text-xs;
+      }
+
+      input {
+        &[type="date"]::-webkit-datetime-edit {
+          color: black;
+        }
+      }
+    }
+
     &--valid {
       label {
-        @apply top-[0%] ;
+        @apply -top-[10px] text-xs;
+      }
+
+      input {
+        &[type="date"]::-webkit-datetime-edit {
+          color: black;
+        }
       }
     }
   }
