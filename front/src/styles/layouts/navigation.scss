@@ -1,7 +1,14 @@
 .nav {
   @apply fixed w-full bg-primary z-10 grid grid-rows-4 overflow-y-scroll;
   top: $header-ht--m;
-  bottom: $mobile-bar-ht;
+
+  @media screen and (max-width:640px) {
+    bottom: $mobile-bar-ht;
+  }
+
+  @media screen and (min-width:641px) {
+    bottom: 0;
+  }
 
   &--open {
     transform: translateX(0%)
