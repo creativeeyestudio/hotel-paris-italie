@@ -29,7 +29,12 @@ const MobileBar: React.FC<MobileBarProps> = () => {
       <button className="mobile-bar__call-btn">
         <Phone></Phone>
       </button>
-      <button className="mobile-bar__reserve-btn" onClick={() => toggleReservePopup()}>Réserver en ligne</button>
+      <button
+        className="mobile-bar__reserve-btn"
+        onClick={() => toggleReservePopup()}
+      >
+        Réserver en ligne
+      </button>
     </div>
   ) : (
     <></>

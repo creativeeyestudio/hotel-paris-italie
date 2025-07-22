@@ -2,6 +2,7 @@ import React from "react";
 import Logo from "./Logo";
 import MenuIcon from "../icons/MenuIcon";
 import Navigation from "./Navigation";
+import ToggleLang from "../panels/ToggleLang";
 
 interface HeaderProps {
   locale: string;
@@ -21,20 +22,7 @@ const Header: React.FC<HeaderProps> = ({ locale }) => {
           </figure>
         </div>
 
-        <ul className="header__lang-list">
-          <li className="header__lang-btn">
-            <a href="">FR</a>
-          </li>
-          <li className="header__lang-btn">
-            <a href="">EN</a>
-          </li>
-          <li className="header__lang-btn">
-            <a href="">ES</a>
-          </li>
-          <li className="header__lang-btn">
-            <a href="">IT</a>
-          </li>
-        </ul>
+        <ToggleLang currentLocale={locale} />
       </header>
 
       <div className="nav nav--close">
