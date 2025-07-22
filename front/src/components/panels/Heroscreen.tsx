@@ -30,7 +30,7 @@ const Heroscreen = ({ heroImage }: HeroscreenProps) => {
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [])
+  }, []);
 
   if (!apiUrl) return null;
 
@@ -39,30 +39,39 @@ const Heroscreen = ({ heroImage }: HeroscreenProps) => {
     return (
       <>
         {/* Mobile : 4/3 */}
-        {isMobile && <AspectRatio ratio={4 / 3}>
-          <Image
-            src={apiUrl + image.url}
-            alt={image.alt ?? "Pas de texte alt"}
-            fill
-            style={{ objectFit: "cover" }}
-            priority
-          />
-        </AspectRatio>}
+        {isMobile && (
+          <AspectRatio ratio={4 / 3}>
+            <Image
+              src={apiUrl + image.url}
+              alt={image.alt ?? "Pas de texte alt"}
+              fill
+              style={{ objectFit: "cover" }}
+              priority
+            />
+          </AspectRatio>
+        )}
 
         {/* Tablet : 16/9 */}
-        {isTablet && <AspectRatio ratio={16 / 9}>
-          <Image
-            src={apiUrl + image.url}
-            alt={image.alt ?? "Pas de texte alt"}
-            fill
-            style={{ objectFit: "cover" }}
-            priority
-          />
-        </AspectRatio>}
+        {isTablet && (
+          <AspectRatio ratio={16 / 9}>
+            <Image
+              src={apiUrl + image.url}
+              alt={image.alt ?? "Pas de texte alt"}
+              fill
+              style={{ objectFit: "cover" }}
+              priority
+            />
+          </AspectRatio>
+        )}
 
         {/* Desktop : Full width + height */}
-        {isDesktop && <ImageWrapper url={apiUrl + image.url} alt={image.alt} className="w-full h-screen relative" />}
-        
+        {isDesktop && (
+          <ImageWrapper
+            url={apiUrl + image.url}
+            alt={image.alt}
+            className="w-full h-screen relative"
+          />
+        )}
       </>
     );
   }

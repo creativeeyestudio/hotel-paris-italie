@@ -1,0 +1,43 @@
+.nav {
+  @apply fixed w-full bg-primary z-10 grid grid-rows-4 overflow-y-scroll;
+  top: $header-ht--m;
+  bottom: $mobile-bar-ht;
+
+  &--open {
+    transform: translateX(0%)
+  }
+
+  &--close {
+    transform: translateX(-100%)
+  }
+
+  &__primary {
+    @apply row-span-4;
+
+    &__list {
+      @apply h-full grid;
+    }
+
+    &__item {
+      @apply relative;
+    }
+
+    &__link {
+      @apply z-20 absolute inset-0 flex justify-center items-center text-xl text-white bg-[rgba(0,0,0,0.7)];
+    }
+  }
+
+  &__secondary {
+    &__list {
+      @apply flex flex-col divide-y divide-white text-white;
+    }
+
+    &__item {
+      @apply py-[1rem] px-[2rem]
+    }
+
+    &__social-list {
+      @apply flex gap-4;
+    }
+  }
+}

@@ -4,7 +4,7 @@ import Header from "@/components/layout/Header";
 import MobileBar from "@/components/layout/MobileBar";
 
 import "@/styles/globals.css";
-import '@/styles/main.scss';
+import "@/styles/main.scss";
 
 interface LayoutParams {
   locale: string;

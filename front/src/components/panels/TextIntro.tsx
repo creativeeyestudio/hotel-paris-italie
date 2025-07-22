@@ -7,9 +7,7 @@ const TextIntro: React.FC<TextIntroProps> = ({ title, html, firstBlock }) => {
   return (
     <section className="text-intro">
       <div className="text-intro__container">
-        <TitleTag className="text-intro__title">
-          {title}
-        </TitleTag>
+        <TitleTag className="text-intro__title">{title}</TitleTag>
         <div
           className="text-intro__text"
           dangerouslySetInnerHTML={{ __html: html }}

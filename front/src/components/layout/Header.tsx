@@ -37,8 +37,17 @@ const Header: React.FC<HeaderProps> = ({ locale }) => {
         </ul>
       </header>
 
-      <div className="nav--primary">
-        <Navigation menuId={'main-menu'} locale={locale} />
+      <div className="nav">
+        <Navigation
+          menuId={"main-menu"}
+          locale={locale}
+          classes="nav__primary"
+        />
+        <Navigation
+          menuId={'secondary-menu'}
+          locale={locale}
+          classes="nav__secondary"
+        />
       </div>
     </>
   );

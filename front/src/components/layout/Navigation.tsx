@@ -1,14 +1,17 @@
+import { ImageDataProps } from "@/interfaces/image";
 import { MenuItem } from "@/interfaces/navigation";
 import { fetchNavigation } from "@/lib/cms";
+import { Facebook, Instagram } from "lucide-react";
 import { headers } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 
 interface NavigationParams {
-  menuId?: string | null;
+  menuId?: 'main-menu' | 'secondary-menu' | 'footer-menu' | null;
   locale: string;
   classes?: string;
   classesList?: string;
+  classesItem?: string;
 }
 
 const Navigation = async ({
@@ -16,11 +19,12 @@ const Navigation = async ({
   locale,
   classes,
   classesList,
+  classesItem,
 }: NavigationParams) => {
   const headersList = await headers();
   const site = headersList.get("x-website") ?? "default-site";
 
-  if (menuId == null || menuId == "") return;
+  if (menuId == null) return;
 
   const navigation = await fetchNavigation(site, menuId, locale);
 
@@ -44,44 +48,72 @@ const Navigation = async ({
         target="_blank"
         rel="noopener noreferrer"
         title="Nouvel onglet"
+        className={`${classes}__link`}
       >
         {label}
       </a>
     ) : (
-      <Link href={href}>{label}</Link>
+      <Link href={href} className={`${classes}__link`}>
+        {label}
+      </Link>
     );
   };
 
+  const renderImage = (item: ImageDataProps) => (
+    <figure className={`${classes}__image`}>
+      <Image
+        key={item.id}
+        src={process.env.NEXT_PUBLIC_API_URL + item.url}
+        alt={item.alt ?? ""}
+        fill
+        objectFit="cover"
+      />
+    </figure>
+  );
+
+  const renderSocialLinks = () => (
+    <li className={`${classes}__item ${classesItem ?? ""}`}>
+      <ul className={`${classes}__social-list`}>
+        <li className={`${classes}__social-link`}>
+          <Facebook
+            size={32}
+            color="#ffffff"
+            strokeWidth={1.5}
+            absoluteStrokeWidth
+          />
+        </li>
+        <li className={`${classes}__social-link`}>
+          <Instagram
+            size={32}
+            color="#ffffff"
+            strokeWidth={1.5}
+            absoluteStrokeWidth
+          />
+        </li>
+      </ul>
+    </li>
+  );
+
   const renderItems = (items: MenuItem[]) => (
-    <ul className={classesList}>
+    <ul
+      className={`${classes}__list ${classesList ?? ""}`}
+    >
+      {menuId === 'secondary-menu' && renderSocialLinks()}
       {items.map((item) => (
-        <li key={item.id}>
+        <li className={`${classes}__item ${classesItem ?? ""}`} key={item.id}>
           {renderLink(item)}
+          {item.image ? renderImage(item.image) : null}
           {item.children?.length ? renderItems(item.children) : null}
         </li>
       ))}
     </ul>
   );
 
-  const renderImages = (items: MenuItem[]) => (
-    <div>
-      {items.map((item) =>
-        item.image ? (
-          <Image
-            key={item.id}
-            src={item.image.url}
-            alt={item.image.alt ?? ""}
-            fill
-          />
-        ) : null,
-      )}
-    </div>
-  );
-
   return (
     <>
-      <nav className={classes}>{renderItems(navigation.items)}</nav>
-      <div>{renderImages(navigation.items)}</div>
+      <nav className={classes}>
+        {renderItems(navigation.items)}
+      </nav>
     </>
   );
 };
