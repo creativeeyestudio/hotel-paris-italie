@@ -6,7 +6,7 @@
   }
 
   &__site-nav {
-    @apply grid grid-cols-12 gap-[2rem];
+    @apply grid md:grid-cols-12 gap-y-[2rem] md:gap-x-[2rem];
   }
 
   &__nav-block {
