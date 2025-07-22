@@ -57,4 +57,10 @@
       @apply flex gap-x-[3rem] lg:justify-center lg:items-center lg:h-full lg:col-span-1;
     }
   }
+
+  &__footer {
+    &__list {
+      @apply grid gap-[.5rem] lg:grid-cols-2;
+    }
+  }
 }

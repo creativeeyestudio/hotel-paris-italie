@@ -19,11 +19,11 @@ const MenuIcon = ({ classes = "", mobile = false }) => {
   }, []);
 
   function setupNavToggle(): void {
-    const nav = document.querySelector('.nav');
+    const nav = document.querySelector(".nav");
     if (!nav) return;
-    
-    nav.classList.toggle('nav--open', !isActive);
-    nav.classList.toggle('nav--close', isActive);
+
+    nav.classList.toggle("nav--open", !isActive);
+    nav.classList.toggle("nav--close", isActive);
   }
 
   return (
@@ -37,7 +37,7 @@ const MenuIcon = ({ classes = "", mobile = false }) => {
           {...eventProps}
           onClick={(e) => {
             eventProps.onClick?.(e);
-            setIsActive((prev) => !prev)
+            setIsActive((prev) => !prev);
             setupNavToggle();
           }}
           className={`${mobile ? "flex" : "hidden md:flex md:items-center"} md:gap-[1rem] ${classes}`}

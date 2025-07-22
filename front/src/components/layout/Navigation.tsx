@@ -98,7 +98,7 @@ const Navigation = async ({
     const gridCols = `lg:grid-cols-${menuId === "secondary-menu" ? items.length + 1 : items.length}`;
 
     return (
-      <ul className={`${classes}__list ${gridCols} ${classesList ?? ""}`}>
+      <ul className={`${classes}__list ${menuId !== 'footer-menu' ? gridCols : ''} ${classesList ?? ""}`}>
         {menuId === "secondary-menu" && renderSocialLinks()}
 
         {items.map((item) => (

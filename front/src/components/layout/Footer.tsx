@@ -50,7 +50,7 @@ const Footer: React.FC<FooterProps> = async ({ locale }) => {
           <Navigation
             menuId={"footer-menu"}
             locale={locale}
-            classesList="grid gap-[.5rem] lg:grid-cols-2"
+            classes="nav__footer"
           />
         </div>
         <div className="footer__nav-block">
