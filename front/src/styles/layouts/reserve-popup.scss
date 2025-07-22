@@ -18,12 +18,40 @@
   }
 
   &__input {
+
+    @apply relative;
+
+    label {
+      @apply absolute duration-500
+    }
+
+    input {
+      @apply duration-500;
+      border-radius: 0;
+      border: 0;
+      border-bottom: 1px solid black;
+      background-color: rgba($color: #000000, $alpha: 0)
+    }
+
     &--half {
       @apply col-span-6;
     }
 
     &--full {
       @apply col-span-12 lg:col-span-6;
+    }
+
+    &--inactive {
+      label {
+        @apply top-[50%] -translate-y-[50%];
+      }
+    }
+
+    &--active,
+    &--valid {
+      label {
+        @apply top-[0%] ;
+      }
     }
   }
 
@@ -37,7 +65,7 @@
     }
 
     &--close-desktop {
-      @apply hidden rounded-full size-[80px] lg:flex lg:justify-center lg:absolute lg:-top-[40px] lg:-right-[40px];
+      @apply hidden rounded-full size-[60px] lg:flex lg:justify-center lg:absolute lg:-top-[30px] lg:-right-[30px];
     }
   }
 }
