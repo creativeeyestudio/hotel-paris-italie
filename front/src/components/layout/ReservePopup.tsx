@@ -9,78 +9,81 @@ import { useEffect } from "react";
 
 const ReservePopup = () => {
   useEffect(() => {
-  const inputsContent = document.querySelectorAll<HTMLElement>('.reserve-popup__input');
+    const inputsContent = document.querySelectorAll<HTMLElement>(
+      ".reserve-popup__input",
+    );
 
-  const setAllInactive = () => {
-    inputsContent.forEach(el => {
-      // Sauf si c’est déjà validé, on le passe en inactive
-      if (!el.classList.contains('reserve-popup__input--valid')) {
-        el.classList.remove('reserve-popup__input--active');
-        el.classList.add('reserve-popup__input--inactive');
-      }
-    });
-  };
-
-  // Gérer le clic sur chaque bloc input
-  inputsContent.forEach(inputContent => {
-    inputContent.addEventListener('click', e => {
-      e.stopPropagation();
-
-      // Ne rien faire si le champ est déjà validé
-      if (inputContent.classList.contains('reserve-popup__input--valid')) return;
-
-      // Réinitialiser tous les autres (sauf ceux validés)
-      inputsContent.forEach(el => {
-        if (!el.classList.contains('reserve-popup__input--valid')) {
-          el.classList.remove('reserve-popup__input--active');
-          el.classList.add('reserve-popup__input--inactive');
+    const setAllInactive = () => {
+      inputsContent.forEach((el) => {
+        // Sauf si c’est déjà validé, on le passe en inactive
+        if (!el.classList.contains("reserve-popup__input--valid")) {
+          el.classList.remove("reserve-popup__input--active");
+          el.classList.add("reserve-popup__input--inactive");
         }
       });
+    };
 
-      // Activer celui cliqué
-      inputContent.classList.add('reserve-popup__input--active');
-      inputContent.classList.remove('reserve-popup__input--inactive');
+    // Gérer le clic sur chaque bloc input
+    inputsContent.forEach((inputContent) => {
+      inputContent.addEventListener("click", (e) => {
+        e.stopPropagation();
+
+        // Ne rien faire si le champ est déjà validé
+        if (inputContent.classList.contains("reserve-popup__input--valid"))
+          return;
+
+        // Réinitialiser tous les autres (sauf ceux validés)
+        inputsContent.forEach((el) => {
+          if (!el.classList.contains("reserve-popup__input--valid")) {
+            el.classList.remove("reserve-popup__input--active");
+            el.classList.add("reserve-popup__input--inactive");
+          }
+        });
+
+        // Activer celui cliqué
+        inputContent.classList.add("reserve-popup__input--active");
+        inputContent.classList.remove("reserve-popup__input--inactive");
+      });
     });
-  });
 
-  // Clic en dehors → tous en inactive sauf ceux validés
-  document.addEventListener('click', () => {
-    setAllInactive();
-  });
-
-  // Gestion du remplissage (validation)
-  const inputs = document.querySelectorAll<HTMLInputElement>('.reserve-popup__input input');
-
-  inputs.forEach(inputEl => {
-    inputEl.addEventListener('input', () => {
-      const isFilled = inputEl.value.trim() !== '';
-      const parent = inputEl.parentElement;
-
-      if (!parent) return;
-
-      // Gérer valid
-      parent.classList.toggle('reserve-popup__input--valid', isFilled);
-
-      if (isFilled) {
-        // Si validé, retirer active et inactive
-        parent.classList.remove('reserve-popup__input--active');
-        parent.classList.remove('reserve-popup__input--inactive');
-      } else {
-        // Si vidé, remettre inactif
-        parent.classList.add('reserve-popup__input--inactive');
-      }
+    // Clic en dehors → tous en inactive sauf ceux validés
+    document.addEventListener("click", () => {
+      setAllInactive();
     });
-  });
 
-  return () => {
-    document.removeEventListener('click', setAllInactive);
-    inputsContent.forEach(inputContent => {
-      inputContent.replaceWith(inputContent.cloneNode(true));
+    // Gestion du remplissage (validation)
+    const inputs = document.querySelectorAll<HTMLInputElement>(
+      ".reserve-popup__input input",
+    );
+
+    inputs.forEach((inputEl) => {
+      inputEl.addEventListener("input", () => {
+        const isFilled = inputEl.value.trim() !== "";
+        const parent = inputEl.parentElement;
+
+        if (!parent) return;
+
+        // Gérer valid
+        parent.classList.toggle("reserve-popup__input--valid", isFilled);
+
+        if (isFilled) {
+          // Si validé, retirer active et inactive
+          parent.classList.remove("reserve-popup__input--active");
+          parent.classList.remove("reserve-popup__input--inactive");
+        } else {
+          // Si vidé, remettre inactif
+          parent.classList.add("reserve-popup__input--inactive");
+        }
+      });
     });
-  };
-}, []);
 
-
+    return () => {
+      document.removeEventListener("click", setAllInactive);
+      inputsContent.forEach((inputContent) => {
+        inputContent.replaceWith(inputContent.cloneNode(true));
+      });
+    };
+  }, []);
 
   return (
     <div className="reserve-popup reserve-popup--close">

@@ -49,11 +49,11 @@ const ToggleLang: React.FC<ToggleLangProps> = ({ currentLocale }) => {
         ))}
       </div>
 
-      <span className="mr-2">|</span>
+      <span className="hidden md:block">|</span>
 
       <Button
         variant={"link"}
-        className="text-white"
+        className="hidden md:block lg:text-white px-1"
         onClick={() => toggleReservePopup()}
       >
         {bookingTexts[currentLocale]}
