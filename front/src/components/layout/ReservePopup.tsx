@@ -1,6 +1,6 @@
 "use client";
 
-import { CircleX } from "lucide-react";
+import { CircleX, X } from "lucide-react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
@@ -8,8 +8,15 @@ import toggleReservePopup from "@/lib/toggleReservePopup";
 
 const ReservePopup = () => {
   return (
-    <div className="reserve-popup reserve-popup--close">
+    <div className="reserve-popup reserve-popup--open">
       <div className="reserve-popup__container">
+        <Button size={"default"} onClick={() => toggleReservePopup()} className="reserve-popup__btn--close-desktop">
+          <X
+            color="#ffffff"
+            strokeWidth={1}
+            style={{ width: 40, height: 40 }}
+          />
+        </Button>
         <form action="" method="post" className="reserve-popup__form">
           <div className="reserve-popup__input reserve-popup__input--full">
             <Label htmlFor="arriveDate">Date d&apos;arrivée</Label>
@@ -39,7 +46,7 @@ const ReservePopup = () => {
         </form>
       </div>
 
-      <Button variant="link" size={"lg"} onClick={() => toggleReservePopup()}>
+      <Button variant="link" size={"lg"} onClick={() => toggleReservePopup()} className="reserve-popup__btn--close-mobile">
         <CircleX
           color="#ffffff"
           strokeWidth={1}

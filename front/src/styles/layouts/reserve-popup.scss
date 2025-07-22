@@ -10,7 +10,7 @@
   }
 
   &__container {
-    @apply bg-secondary p-[2rem] lg:py-[100px] lg:px-[150px] lg:w-[1000px];
+    @apply bg-secondary relative p-[2rem] lg:py-[100px] lg:px-[150px] lg:w-[1000px];
   }
 
   &__form {
@@ -30,6 +30,14 @@
   &__btn {
     &--send {
       @apply mt-[.5rem];
+    }
+
+    &--close-mobile {
+      @apply lg:hidden;
+    }
+
+    &--close-desktop {
+      @apply hidden rounded-full size-[80px] lg:flex lg:justify-center lg:absolute lg:-top-[40px] lg:-right-[40px];
     }
   }
 }
