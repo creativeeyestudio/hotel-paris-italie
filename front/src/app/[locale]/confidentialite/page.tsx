@@ -1,3 +1,3 @@
 export default function RGPDNotice() {
-    return <></>
+  return <></>;
 }

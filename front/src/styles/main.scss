@@ -1,0 +1,12 @@
+@import "./abstracts/variables";
+@import "./abstracts/mixins";
+
+@import "./components/parallax";
+@import "./components/text-intro";
+@import "./components/text-image";
+@import "./components/text-double-image";
+
+@import "./layouts/header";
+@import "./layouts/navigation";
+@import "./layouts/mobile-bar";
+@import "./layouts/footer";

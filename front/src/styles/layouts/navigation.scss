@@ -1,0 +1,66 @@
+.nav {
+  @apply fixed w-full bg-primary z-10 grid grid-rows-4 overflow-y-scroll duration-500 lg:overflow-y-hidden;
+  top: $header-ht--m;
+
+  @media screen and (max-width: 640px) {
+    bottom: $mobile-bar-ht;
+  }
+
+  @media screen and (min-width: 641px) {
+    bottom: 0;
+  }
+
+  &--open {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+
+  &--close {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  &__primary {
+    @apply row-span-4;
+
+    &__list {
+      @apply h-full grid;
+    }
+
+    &__item {
+      @apply relative lg:row-span-full;
+    }
+
+    &__link {
+      @apply z-20 absolute inset-0 flex justify-center items-center text-xl text-white bg-[rgba(0,0,0,0.7)];
+    }
+  }
+
+  &__secondary {
+    &__list {
+      @apply flex flex-col divide-y divide-white text-white lg:grid lg:divide-x lg:divide-y-0;
+
+      @media screen and (min-width: 1024px) {
+        height: $header-ht--d;
+      }
+    }
+
+    &__item {
+      @apply py-[1rem] px-[2rem] lg:row-span-full lg:text-center lg:px-0;
+    }
+
+    &__link {
+      @apply lg:h-full lg:flex lg:justify-center lg:items-center;
+    }
+
+    &__social-list {
+      @apply flex gap-x-[3rem] lg:justify-center lg:items-center lg:h-full lg:col-span-1;
+    }
+  }
+
+  &__footer {
+    &__list {
+      @apply grid gap-[.5rem] lg:grid-cols-2;
+    }
+  }
+}

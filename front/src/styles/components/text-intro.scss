@@ -1,0 +1,15 @@
+.text-intro {
+  @apply p-[2rem] bg-[#FAF8F3] lg:py-[6.25rem];
+
+  &__container {
+    @apply max-w-[1200] mx-auto;
+  }
+
+  &__title {
+    @apply text-2xl md:text-center md:text-3xl lg:text-5xl;
+  }
+
+  &__text {
+    @apply mt-[1.875rem] lg:text-center;
+  }
+}

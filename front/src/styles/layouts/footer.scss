@@ -1,0 +1,31 @@
+.footer {
+  @apply bg-primary text-white p-[2rem] mb-[64px] md:mb-0 lg:px-[5.787vw] lg:py-[2.8935vw];
+
+  &__separate {
+    @apply my-[2rem] lg:my-[2.8935vw];
+  }
+
+  &__site-nav {
+    @apply grid grid-cols-12 gap-[2rem];
+  }
+
+  &__nav-block {
+    @apply col-span-12 md:col-span-4;
+
+    &:nth-child(1) {
+      @apply lg:col-span-5;
+    }
+
+    &:nth-child(3) {
+      @apply lg:col-span-3;
+    }
+  }
+
+  &__legal-nav {
+    @apply text-xs flex flex-col gap-y-2 md:text-center;
+  }
+
+  &__legal-links {
+    @apply flex gap-x-2 md:justify-center;
+  }
+}

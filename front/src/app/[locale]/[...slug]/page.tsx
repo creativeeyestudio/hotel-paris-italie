@@ -1,10 +1,10 @@
-import { notFound, redirect }  from 'next/navigation';
+import { notFound, redirect } from "next/navigation";
 import type { Metadata } from "next";
 import { fetchPage } from "@/lib/cms";
 import ContentPageItems from "@/components/layout/ContentPageItems";
-import { headers } from 'next/headers'
-import { isHomePage } from '@/lib/isHomePage';
-import Heroscreen from '@/components/panels/Heroscreen';
+import { headers } from "next/headers";
+import { isHomePage } from "@/lib/isHomePage";
+import Heroscreen from "@/components/panels/Heroscreen";
 
 /* --------------------------------------------------
    Types & helpers
@@ -17,10 +17,12 @@ export type PageParams = Promise<{
 /* --------------------------------------------------
    SEO dynamique
 -------------------------------------------------- */
-export async function generateMetadata(props: { params: PageParams }): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: PageParams;
+}): Promise<Metadata> {
   const { locale, slug } = await props.params;
   const headersList = await headers();
-  const site = headersList.get('x-website') ?? 'default-site';
+  const site = headersList.get("x-website") ?? "default-site";
 
   const page = await fetchPage(site, slug, locale);
   if (!page) return { title: "Page introuvable" };
@@ -33,7 +35,7 @@ export async function generateMetadata(props: { params: PageParams }): Promise<M
     description: description ?? "",
     generator: "Dreamsite V3",
     authors: [{ name: "Kévin RIFA", url: "https://creative-eye.fr" }],
-    openGraph: { title, description, url: '/', type: `website` },
+    openGraph: { title, description, url: "/", type: `website` },
     twitter: { card: "summary_large_image", title, description },
   };
 }
@@ -44,7 +46,7 @@ export async function generateMetadata(props: { params: PageParams }): Promise<M
 export default async function WebPage(props: { params: PageParams }) {
   const { locale, slug } = await props.params;
   const headersList = await headers();
-  const site = headersList.get('x-website') ?? 'default-site';
+  const site = headersList.get("x-website") ?? "default-site";
   const page = await fetchPage(site, slug, locale);
 
   if (!page) return notFound();
@@ -53,8 +55,10 @@ export default async function WebPage(props: { params: PageParams }) {
 
   const heroscreen = page.content?.heroscreen[0]?.heroImage;
 
-  return <>
-    {heroscreen ?? <Heroscreen heroImage={heroscreen} />}
-    <ContentPageItems blocks={page.content.layout} />
-  </>
+  return (
+    <>
+      {heroscreen ?? <Heroscreen heroImage={heroscreen} />}
+      <ContentPageItems blocks={page.content.layout} />
+    </>
+  );
 }

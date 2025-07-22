@@ -1,0 +1,26 @@
+.header {
+  @apply px-[1.25rem] flex justify-between items-center sticky top-0 z-[9999] bg-white md:h-[6rem] md:px-[1.875rem] lg:fixed lg:w-full lg:px-[5.787vw] lg:bg-primary lg:text-white;
+  height: $header-ht--m;
+
+  &__nav {
+    @apply h-full flex items-center gap-[1.875rem];
+  }
+
+  &__logo {
+    @apply aspect-video h-full relative bg-white lg:px-[1rem] lg:absolute lg:left-[50%] lg:translate-x-[-50%];
+  }
+
+  &__logo-container {
+    @apply relative h-full;
+  }
+
+  &__lang {
+    &-list {
+      @apply flex gap-[.5rem] divide-x divide-black lg:divide-white;
+    }
+
+    &-btn {
+      @apply ps-[0.5rem];
+    }
+  }
+}
