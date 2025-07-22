@@ -96,9 +96,7 @@ const Navigation = async ({
 
   const renderItems = (items: MenuItem[]) => {
     return (
-      <ul
-        className={`${classes}__list ${classesList ?? ""}`}
-      >
+      <ul className={`${classes}__list ${classesList ?? ""}`}>
         {menuId === "secondary-menu" && renderSocialLinks()}
 
         {items.map((item) => (

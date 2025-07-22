@@ -385,6 +385,27 @@ export interface Setting {
     city?: string | null;
     phone?: string | null;
     email?: string | null;
+    accessList?:
+      | {
+          accessName: string;
+          accessContent: {
+            root: {
+              type: string;
+              children: {
+                type: string;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
+              version: number;
+            };
+            [k: string]: unknown;
+          };
+          id?: string | null;
+        }[]
+      | null;
   };
   identityGroup?: {
     logo?: (string | null) | Media;
@@ -853,6 +874,13 @@ export interface SettingsSelect<T extends boolean = true> {
         city?: T;
         phone?: T;
         email?: T;
+        accessList?:
+          | T
+          | {
+              accessName?: T;
+              accessContent?: T;
+              id?: T;
+            };
       };
   identityGroup?:
     | T
