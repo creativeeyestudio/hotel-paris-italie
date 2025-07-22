@@ -5,13 +5,13 @@ const TextIntro: React.FC<TextIntroProps> = ({ title, html, firstBlock }) => {
   const TitleTag = firstBlock ? "h1" : "h2";
 
   return (
-    <section className="text-intro p-[2rem] bg-[#FAF8F3] lg:py-[6.25rem]">
-      <div className="max-w-[1200] mx-auto">
-        <TitleTag className="text-intro__title text-2xl md:text-center md:text-3xl lg:text-5xl">
+    <section className="text-intro">
+      <div className="text-intro__container">
+        <TitleTag className="text-intro__title">
           {title}
         </TitleTag>
         <div
-          className="text-intro__text mt-[1.875rem] lg:text-center"
+          className="text-intro__text"
           dangerouslySetInnerHTML={{ __html: html }}
         ></div>
       </div>
