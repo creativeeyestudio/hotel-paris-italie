@@ -44,7 +44,7 @@ const Header: React.FC<HeaderProps> = ({ locale }) => {
           classes="nav__primary"
         />
         <Navigation
-          menuId={'secondary-menu'}
+          menuId={"secondary-menu"}
           locale={locale}
           classes="nav__secondary"
         />

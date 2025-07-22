@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 interface NavigationParams {
-  menuId?: 'main-menu' | 'secondary-menu' | 'footer-menu' | null;
+  menuId?: "main-menu" | "secondary-menu" | "footer-menu" | null;
   locale: string;
   classes?: string;
   classesList?: string;
@@ -94,26 +94,27 @@ const Navigation = async ({
     </li>
   );
 
-  const renderItems = (items: MenuItem[]) => (
-    <ul
-      className={`${classes}__list ${classesList ?? ""}`}
-    >
-      {menuId === 'secondary-menu' && renderSocialLinks()}
-      {items.map((item) => (
-        <li className={`${classes}__item ${classesItem ?? ""}`} key={item.id}>
-          {renderLink(item)}
-          {item.image ? renderImage(item.image) : null}
-          {item.children?.length ? renderItems(item.children) : null}
-        </li>
-      ))}
-    </ul>
-  );
+  const renderItems = (items: MenuItem[]) => {
+    const gridCols = `lg:grid-cols-${menuId === "secondary-menu" ? items.length + 1 : items.length}`;
+
+    return (
+      <ul className={`${classes}__list ${gridCols} ${classesList ?? ""}`}>
+        {menuId === "secondary-menu" && renderSocialLinks()}
+
+        {items.map((item) => (
+          <li key={item.id} className={`${classes}__item ${classesItem ?? ""}`}>
+            {renderLink(item)}
+            {item.image ? renderImage(item.image) : null}
+            {item.children?.length ? renderItems(item.children) : null}
+          </li>
+        ))}
+      </ul>
+    );
+  };
 
   return (
     <>
-      <nav className={classes}>
-        {renderItems(navigation.items)}
-      </nav>
+      <nav className={classes}>{renderItems(navigation.items)}</nav>
     </>
   );
 };

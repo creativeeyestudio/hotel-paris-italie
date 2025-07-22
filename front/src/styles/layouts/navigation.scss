@@ -1,21 +1,21 @@
 .nav {
-  @apply fixed w-full bg-primary z-10 grid grid-rows-4 overflow-y-scroll;
+  @apply fixed w-full bg-primary z-10 grid grid-rows-4 overflow-y-scroll lg:overflow-y-hidden;
   top: $header-ht--m;
 
-  @media screen and (max-width:640px) {
+  @media screen and (max-width: 640px) {
     bottom: $mobile-bar-ht;
   }
 
-  @media screen and (min-width:641px) {
+  @media screen and (min-width: 641px) {
     bottom: 0;
   }
 
   &--open {
-    transform: translateX(0%)
+    transform: translateX(0%);
   }
 
   &--close {
-    transform: translateX(-100%)
+    transform: translateX(-100%);
   }
 
   &__primary {
@@ -26,7 +26,7 @@
     }
 
     &__item {
-      @apply relative;
+      @apply relative lg:row-span-full;
     }
 
     &__link {
@@ -36,15 +36,23 @@
 
   &__secondary {
     &__list {
-      @apply flex flex-col divide-y divide-white text-white;
+      @apply flex flex-col divide-y divide-white text-white lg:grid lg:divide-x lg:divide-y-0;
+
+      @media screen and (min-width: 1024px) {
+        height: $header-ht--d;
+      }
     }
 
     &__item {
-      @apply py-[1rem] px-[2rem]
+      @apply py-[1rem] px-[2rem] lg:row-span-full lg:text-center lg:px-0;
+    }
+
+    &__link {
+      @apply lg:h-full lg:flex lg:justify-center lg:items-center;
     }
 
     &__social-list {
-      @apply flex gap-4;
+      @apply flex gap-x-[3rem] lg:justify-center lg:items-center lg:h-full lg:col-span-1;
     }
   }
 }
