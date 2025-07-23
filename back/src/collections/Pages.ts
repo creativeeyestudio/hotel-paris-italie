@@ -18,6 +18,7 @@ export type LayoutBlock = {
   blockType: string
   blockName?: string
   content?: SerializedEditorState
+  accessIntro?: SerializedEditorState
   accessContent?: SerializedEditorState
   html?: string
   [key: string]: unknown

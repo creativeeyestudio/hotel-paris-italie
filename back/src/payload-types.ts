@@ -379,12 +379,38 @@ export interface Page {
 export interface Setting {
   id: string;
   title?: string | null;
+  identityGroup?: {
+    logo?: (string | null) | Media;
+    favicon?: (string | null) | Media;
+    homepage?: (string | null) | Page;
+  };
   contactDetails?: {
     adress?: string | null;
     postcode?: string | null;
     city?: string | null;
     phone?: string | null;
     email?: string | null;
+  };
+  accessPage?: {
+    accessIntro?: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    accessIntroHtml?: string | null;
+    accessLong?: string | null;
+    accessLat?: string | null;
+    accessMapLink?: string | null;
     accessList?:
       | {
           accessName: string;
@@ -406,11 +432,6 @@ export interface Setting {
           id?: string | null;
         }[]
       | null;
-  };
-  identityGroup?: {
-    logo?: (string | null) | Media;
-    favicon?: (string | null) | Media;
-    homepage?: (string | null) | Page;
   };
   maintenanceGroup?: {
     maintenance?: boolean | null;
@@ -866,6 +887,13 @@ export interface NavigationSelect<T extends boolean = true> {
  */
 export interface SettingsSelect<T extends boolean = true> {
   title?: T;
+  identityGroup?:
+    | T
+    | {
+        logo?: T;
+        favicon?: T;
+        homepage?: T;
+      };
   contactDetails?:
     | T
     | {
@@ -874,6 +902,15 @@ export interface SettingsSelect<T extends boolean = true> {
         city?: T;
         phone?: T;
         email?: T;
+      };
+  accessPage?:
+    | T
+    | {
+        accessIntro?: T;
+        accessIntroHtml?: T;
+        accessLong?: T;
+        accessLat?: T;
+        accessMapLink?: T;
         accessList?:
           | T
           | {
@@ -881,13 +918,6 @@ export interface SettingsSelect<T extends boolean = true> {
               accessContent?: T;
               id?: T;
             };
-      };
-  identityGroup?:
-    | T
-    | {
-        logo?: T;
-        favicon?: T;
-        homepage?: T;
       };
   maintenanceGroup?:
     | T
