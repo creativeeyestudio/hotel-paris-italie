@@ -13,10 +13,14 @@ const TextIntro: React.FC<TextIntroProps> = ({
     <section className={`text-intro ${className}`}>
       <div className="text-intro__container">
         <TitleTag className="text-intro__title">{title}</TitleTag>
-        {html !== "" ? <div
-          className="text-intro__text"
-          dangerouslySetInnerHTML={{ __html: html }}
-        ></div> : <></>}
+        {html !== "" ? (
+          <div
+            className="text-intro__text"
+            dangerouslySetInnerHTML={{ __html: html }}
+          ></div>
+        ) : (
+          <></>
+        )}
       </div>
     </section>
   );

@@ -17,7 +17,7 @@ export async function fetchSettings(): Promise<SettingsProps | null> {
   if (cachedSettings) return cachedSettings;
 
   const res = await fetch(`${CMS_URL}/api/settings/${SETTINGS_ID}?depth=2`, {
-    next: { revalidate: 0 },
+    next: { revalidate: 60 },
   });
 
   if (!res.ok) return null;

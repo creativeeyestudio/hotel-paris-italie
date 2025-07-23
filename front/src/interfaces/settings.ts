@@ -22,11 +22,12 @@ export interface SettingsProps {
   };
   accessPage: {
     accessList: AccessListItem[];
-    accessIntroHtml: string;
+    accessMapLink?: string;
+    accessIntroHtml?: string;
   };
 }
 
 interface AccessListItem {
   accessName: string;
   html: string;
-};
+}
