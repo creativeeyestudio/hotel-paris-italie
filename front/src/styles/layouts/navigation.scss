@@ -1,5 +1,5 @@
 .nav {
-  @apply fixed w-full bg-primary z-10 grid grid-rows-4 overflow-y-scroll duration-500 lg:overflow-y-hidden;
+  @apply fixed w-full bg-primary z-[9999] grid grid-rows-4 overflow-y-scroll duration-500 lg:overflow-y-hidden;
   top: $header-ht--m;
 
   @media screen and (max-width: 640px) {
