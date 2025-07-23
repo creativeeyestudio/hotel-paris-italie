@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React from "react";
 import { LeafletMapProps } from "@/interfaces/leafletMap";
@@ -11,8 +11,8 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
   adress,
   postCode,
   city,
+  className,
 }) => {
-
   const position: [number, number] = [lat ?? 0, long ?? 0];
 
   return (
@@ -20,7 +20,7 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
       center={position}
       zoom={13}
       scrollWheelZoom={false}
-      className="h-[500px] w-full"
+      className={`h-[500px] w-full ${className}`}
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -28,7 +28,8 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
       />
       <Marker position={position}>
         <Popup>
-          {adress}<br />
+          {adress}
+          <br />
           {postCode} {city}
         </Popup>
       </Marker>

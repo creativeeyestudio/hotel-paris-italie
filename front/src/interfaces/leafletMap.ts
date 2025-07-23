@@ -4,4 +4,5 @@ export interface LeafletMapProps {
   adress?: string;
   postCode?: string;
   city?: string;
+  className?: string;
 }

@@ -1,0 +1,29 @@
+.access-content {
+  &__text {
+    @apply p-[2rem];
+  }
+
+  &__title {
+    @apply text-xl;
+  }
+
+  &__content {
+    @apply my-[1rem];
+  }
+
+  &__accordion {
+    @apply mt-[1rem];
+
+    &__title {
+      @apply bg-[#B8A373] py-[1rem] px-[2rem];
+    }
+
+    &__content {
+      @apply p-[1rem];
+    }
+  }
+
+  &__image {
+    @apply relative aspect-[4/3]
+  }
+}

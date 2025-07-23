@@ -1,4 +1,5 @@
 import LeafletContainer from "@/components/layout/LeafletContainer";
+import { ImageWrapper } from "@/components/panels/ImageWrapper";
 import TextIntro from "@/components/panels/TextIntro";
 import {
   Accordion,
@@ -11,6 +12,8 @@ import Link from "next/link";
 
 export default async function AccessSituationPage() {
   const settings = await fetchSettings();
+
+  console.log(settings);
 
   const canShowMap: boolean =
     settings?.accessPage.accessLat !== undefined &&
@@ -55,33 +58,56 @@ export default async function AccessSituationPage() {
           )}
 
           {settings?.accessPage.accessList ? (
-            <>
-              <Accordion type="single" collapsible>
-                {settings?.accessPage.accessList.map((item, index) => (
-                  <AccordionItem key={index} value={`access-item-${index}`}>
-                    <AccordionTrigger>{item.accessName}</AccordionTrigger>
-                    <AccordionContent className="flex flex-col gap-4 text-balance">
-                      <div
-                        dangerouslySetInnerHTML={{ __html: item.html }}
-                      ></div>
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </>
+            <Accordion
+              type="single"
+              collapsible
+              className="access-content__accordion"
+            >
+              {settings?.accessPage.accessList.map((item, index) => (
+                <AccordionItem
+                  key={index}
+                  value={`access-item-${index}`}
+                  className="access-content__accordion__item"
+                >
+                  <AccordionTrigger className="access-content__accordion__title">
+                    {item.accessName}
+                  </AccordionTrigger>
+                  <AccordionContent className="access-content__accordion__content">
+                    <div dangerouslySetInnerHTML={{ __html: item.html }}></div>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           ) : (
             <></>
           )}
         </div>
+
+        {settings?.accessPage?.accessImage ? (
+          <ImageWrapper
+            className="access-content__image"
+            url={
+              process.env.NEXT_PUBLIC_API_URL +
+              settings?.accessPage?.accessImage?.url
+            }
+          />
+        ) : (
+          <></>
+        )}
       </section>
 
-      {canShowMap ? <LeafletContainer 
-        lat={settings?.accessPage.accessLat} 
-        long={settings?.accessPage.accessLong}
-        adress={settings?.contactDetails.adress}
-        postCode={settings?.contactDetails.postcode}
-        city={settings?.contactDetails.city} 
-        /> : <></>}
+      {canShowMap ? (
+        <LeafletContainer
+          lat={settings?.accessPage.accessLat}
+          long={settings?.accessPage.accessLong}
+          adress={settings?.contactDetails.adress}
+          postCode={settings?.contactDetails.postcode}
+          city={settings?.contactDetails.city}
+          className="map"
+        />
+      ) : (
+        <></>
+      )}
     </>
   );
 }

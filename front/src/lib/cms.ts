@@ -17,7 +17,7 @@ export async function fetchSettings(): Promise<SettingsProps | null> {
   if (cachedSettings) return cachedSettings;
 
   const res = await fetch(`${CMS_URL}/api/settings/${SETTINGS_ID}?depth=2`, {
-    next: { revalidate: 60 },
+    next: { revalidate: 0 },
   });
 
   if (!res.ok) return null;
@@ -39,10 +39,11 @@ export async function fetchHomePage(site: string, locale: string) {
   if (!settings) return null;
 
   const res = await fetch(
-    `${CMS_URL}/api/pages/${settings.identityGroup?.homepage.id}?depth=2&locale=${locale}`,
+    `${CMS_URL}/api/pages/${settings.identityGroup?.homepage.id}?depth=10&locale=${locale}`,
     {
       headers: { "x-website": site },
       next: { revalidate: 0 },
+      cache: 'no-store'
     },
   );
 

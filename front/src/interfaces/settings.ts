@@ -21,7 +21,8 @@ export interface SettingsProps {
     email: string;
   };
   accessPage: {
-    accessList: AccessListItem[];
+    accessImage?: ImageDataProps;
+    accessList?: AccessListItem[];
     accessLong?: number;
     accessLat?: number;
     accessMapLink?: string;
