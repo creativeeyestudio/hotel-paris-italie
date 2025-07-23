@@ -132,6 +132,12 @@ const Settings: CollectionConfig = {
           }
         },
         {
+          name: 'accessImage',
+          label: 'Image',
+          type:'upload',
+          relationTo: 'media',
+        },
+        {
           type: 'row',
           fields: [
             {

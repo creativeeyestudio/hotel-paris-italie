@@ -408,6 +408,7 @@ export interface Setting {
       [k: string]: unknown;
     } | null;
     accessIntroHtml?: string | null;
+    accessImage?: (string | null) | Media;
     accessLong?: string | null;
     accessLat?: string | null;
     accessMapLink?: string | null;
@@ -908,6 +909,7 @@ export interface SettingsSelect<T extends boolean = true> {
     | {
         accessIntro?: T;
         accessIntroHtml?: T;
+        accessImage?: T;
         accessLong?: T;
         accessLat?: T;
         accessMapLink?: T;
