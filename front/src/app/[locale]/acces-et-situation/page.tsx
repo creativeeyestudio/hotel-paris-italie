@@ -1,3 +1,4 @@
+import LeafletContainer from "@/components/layout/LeafletContainer";
 import TextIntro from "@/components/panels/TextIntro";
 import {
   Accordion,
@@ -10,6 +11,13 @@ import Link from "next/link";
 
 export default async function AccessSituationPage() {
   const settings = await fetchSettings();
+
+  const canShowMap: boolean =
+    settings?.accessPage.accessLat !== undefined &&
+    settings?.accessPage.accessLong !== undefined &&
+    settings?.contactDetails.adress !== undefined &&
+    settings?.contactDetails.postcode !== undefined &&
+    settings?.contactDetails.city !== undefined;
 
   return (
     <>
@@ -66,6 +74,14 @@ export default async function AccessSituationPage() {
           )}
         </div>
       </section>
+
+      {canShowMap ? <LeafletContainer 
+        lat={settings?.accessPage.accessLat} 
+        long={settings?.accessPage.accessLong}
+        adress={settings?.contactDetails.adress}
+        postCode={settings?.contactDetails.postcode}
+        city={settings?.contactDetails.city} 
+        /> : <></>}
     </>
   );
 }

@@ -22,6 +22,8 @@ export interface SettingsProps {
   };
   accessPage: {
     accessList: AccessListItem[];
+    accessLong?: number;
+    accessLat?: number;
     accessMapLink?: string;
     accessIntroHtml?: string;
   };

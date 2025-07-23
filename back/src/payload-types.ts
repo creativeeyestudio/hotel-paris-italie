@@ -409,8 +409,8 @@ export interface Setting {
     } | null;
     accessIntroHtml?: string | null;
     accessImage?: (string | null) | Media;
-    accessLong?: string | null;
-    accessLat?: string | null;
+    accessLong?: number | null;
+    accessLat?: number | null;
     accessMapLink?: string | null;
     accessList?:
       | {

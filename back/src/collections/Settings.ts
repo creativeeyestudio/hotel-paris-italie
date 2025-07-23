@@ -143,7 +143,7 @@ const Settings: CollectionConfig = {
             {
               name: 'accessLong',
               label: 'Longitude',
-              type: 'text',
+              type: 'number',
               admin: {
                 width: '50%',
               },
@@ -151,7 +151,7 @@ const Settings: CollectionConfig = {
             {
               name: 'accessLat',
               label: 'Lattitude',
-              type: 'text',
+              type: 'number',
               admin: {
                 width: '50%',
               },
