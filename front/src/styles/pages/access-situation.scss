@@ -1,6 +1,9 @@
 .access-content {
+
+  @apply lg:px-[5.787vw] lg:py-[8.681vw] lg:grid lg:grid-cols-12 lg:gap-4;
+
   &__text {
-    @apply p-[2rem];
+    @apply p-[2rem] lg:p-0 lg:col-span-6 lg:py-[8.681vw];
   }
 
   &__title {
@@ -24,6 +27,6 @@
   }
 
   &__image {
-    @apply relative aspect-[4/3] md:aspect-[16/9]
+    @apply relative aspect-[4/3] md:aspect-[16/9] lg:aspect-[inherit] lg:col-span-5 lg:col-start-8
   }
 }
