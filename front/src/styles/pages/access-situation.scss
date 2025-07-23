@@ -24,6 +24,6 @@
   }
 
   &__image {
-    @apply relative aspect-[4/3]
+    @apply relative aspect-[4/3] md:aspect-[16/9]
   }
 }
