@@ -20,4 +20,13 @@ export interface SettingsProps {
     phone: string;
     email: string;
   };
+  accessPage: {
+    accessList: AccessListItem[];
+    accessIntroHtml: string;
+  };
 }
+
+interface AccessListItem {
+  accessName: string;
+  html: string;
+};
