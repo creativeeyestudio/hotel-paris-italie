@@ -20,4 +20,17 @@ export interface SettingsProps {
     phone: string;
     email: string;
   };
+  accessPage: {
+    accessImage?: ImageDataProps;
+    accessList?: AccessListItem[];
+    accessLong?: number;
+    accessLat?: number;
+    accessMapLink?: string;
+    accessIntroHtml?: string;
+  };
+}
+
+interface AccessListItem {
+  accessName: string;
+  html: string;
 }

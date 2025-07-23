@@ -21,6 +21,7 @@ export interface TextIntroProps {
   blockType?: "text-intro";
   title: string;
   html: string;
+  className?: string;
   firstBlock: boolean;
 }
 

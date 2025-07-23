@@ -12,4 +12,10 @@
   &__text {
     @apply mt-[1.875rem] lg:text-center;
   }
+
+  &--margin {
+    @media screen and (min-width: 1024px) {
+      margin-top: $header-ht--m;
+    }
+  }
 }

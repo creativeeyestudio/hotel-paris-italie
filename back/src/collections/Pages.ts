@@ -14,19 +14,16 @@ import { pagesAccess } from '@/access/pagesAccess'
 /*  Helpers                                                                   */
 /* -------------------------------------------------------------------------- */
 
-type LayoutBlock = {
+export type LayoutBlock = {
   blockType: string
   blockName?: string
   content?: SerializedEditorState
+  accessIntro?: SerializedEditorState
+  accessContent?: SerializedEditorState
   html?: string
   [key: string]: unknown
 }
 
-/**
- * Ajoute une propriété `html` à chaque block possédant `content`.
- * On utilise `Promise.all` pour gérer correctement une éventuelle
- * fonction `convertRichTextToHTML` asynchrone.
- */
 export async function enrichLayoutWithHTML(layout: LayoutBlock[] = []): Promise<LayoutBlock[]> {
   return Promise.all(
     layout.map(async (block) => {

@@ -379,6 +379,11 @@ export interface Page {
 export interface Setting {
   id: string;
   title?: string | null;
+  identityGroup?: {
+    logo?: (string | null) | Media;
+    favicon?: (string | null) | Media;
+    homepage?: (string | null) | Page;
+  };
   contactDetails?: {
     adress?: string | null;
     postcode?: string | null;
@@ -386,10 +391,48 @@ export interface Setting {
     phone?: string | null;
     email?: string | null;
   };
-  identityGroup?: {
-    logo?: (string | null) | Media;
-    favicon?: (string | null) | Media;
-    homepage?: (string | null) | Page;
+  accessPage?: {
+    accessIntro?: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    accessIntroHtml?: string | null;
+    accessImage?: (string | null) | Media;
+    accessLong?: number | null;
+    accessLat?: number | null;
+    accessMapLink?: string | null;
+    accessList?:
+      | {
+          accessName: string;
+          accessContent: {
+            root: {
+              type: string;
+              children: {
+                type: string;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
+              version: number;
+            };
+            [k: string]: unknown;
+          };
+          id?: string | null;
+        }[]
+      | null;
   };
   maintenanceGroup?: {
     maintenance?: boolean | null;
@@ -845,6 +888,13 @@ export interface NavigationSelect<T extends boolean = true> {
  */
 export interface SettingsSelect<T extends boolean = true> {
   title?: T;
+  identityGroup?:
+    | T
+    | {
+        logo?: T;
+        favicon?: T;
+        homepage?: T;
+      };
   contactDetails?:
     | T
     | {
@@ -854,12 +904,22 @@ export interface SettingsSelect<T extends boolean = true> {
         phone?: T;
         email?: T;
       };
-  identityGroup?:
+  accessPage?:
     | T
     | {
-        logo?: T;
-        favicon?: T;
-        homepage?: T;
+        accessIntro?: T;
+        accessIntroHtml?: T;
+        accessImage?: T;
+        accessLong?: T;
+        accessLat?: T;
+        accessMapLink?: T;
+        accessList?:
+          | T
+          | {
+              accessName?: T;
+              accessContent?: T;
+              id?: T;
+            };
       };
   maintenanceGroup?:
     | T
