@@ -1127,6 +1127,7 @@ export interface RoomPage {
         }[]
       | null;
   };
+  rooms?: {};
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1273,6 +1274,7 @@ export interface RoomPageSelect<T extends boolean = true> {
               id?: T;
             };
       };
+  rooms?: T | {};
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

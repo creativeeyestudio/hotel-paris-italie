@@ -117,7 +117,13 @@ const RoomPage: GlobalConfig = {
                     ]
                 }
             ]
-        }
+        },
+        {
+            name: 'rooms',
+            label: 'Types de chambres',
+            type: 'group',
+            fields: []
+        },
     ],
 
     hooks: {
