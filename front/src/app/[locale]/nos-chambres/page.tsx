@@ -24,7 +24,7 @@ export default async function RoomPage(props: { params: RoomPageParams }) {
     const roomsList = roomPageApi.rooms.roomsList;
 
     return <>
-        {heroscreen && <Heroscreen heroImage={heroscreen} />}
+        {heroscreen ? <Heroscreen heroImage={heroscreen} /> : <></>}
         {introTitle 
             ? <TextIntro title={introTitle} html={introContent} firstBlock={true}></TextIntro> 
             : <></>}
