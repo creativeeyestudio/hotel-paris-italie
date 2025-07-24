@@ -241,7 +241,8 @@ export interface Page {
           | {
               title: string;
               secondaryBg?: boolean | null;
-              content: {
+              image: string | Media;
+              content?: {
                 root: {
                   type: string;
                   children: {
@@ -255,8 +256,19 @@ export interface Page {
                   version: number;
                 };
                 [k: string]: unknown;
-              };
-              image: string | Media;
+              } | null;
+              cta?:
+                | {
+                    type: 'page' | 'post' | 'external' | 'homepage' | 'rooms-page' | 'access-situation' | 'reserve';
+                    label: string;
+                    page?: (string | null) | Page;
+                    post?: (string | null) | Post;
+                    url?: string | null;
+                    image?: (string | null) | Media;
+                    newTab?: boolean | null;
+                    id?: string | null;
+                  }[]
+                | null;
               linkList?:
                 | {
                     linkName: string;
@@ -292,7 +304,9 @@ export interface Page {
           | {
               title: string;
               secondaryBg?: boolean | null;
-              content: {
+              image1: string | Media;
+              image2?: (string | null) | Media;
+              content?: {
                 root: {
                   type: string;
                   children: {
@@ -306,9 +320,19 @@ export interface Page {
                   version: number;
                 };
                 [k: string]: unknown;
-              };
-              image1: string | Media;
-              image2?: (string | null) | Media;
+              } | null;
+              cta?:
+                | {
+                    type: 'page' | 'post' | 'external' | 'homepage' | 'rooms-page' | 'access-situation' | 'reserve';
+                    label: string;
+                    page?: (string | null) | Page;
+                    post?: (string | null) | Post;
+                    url?: string | null;
+                    image?: (string | null) | Media;
+                    newTab?: boolean | null;
+                    id?: string | null;
+                  }[]
+                | null;
               linkList?:
                 | {
                     linkName: string;
@@ -360,6 +384,47 @@ export interface Page {
   config: {
     site: string | Setting;
     published?: ('0' | '1' | '2') | null;
+  };
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (string | null) | Media;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "posts".
+ */
+export interface Post {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt?: string | null;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  coverImage?: (string | null) | Media;
+  config: {
+    site: string | Setting;
+    published?: ('0' | '1' | '2') | null;
+    createdBy?: (string | null) | User;
   };
   meta?: {
     title?: string | null;
@@ -442,47 +507,6 @@ export interface Setting {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "posts".
- */
-export interface Post {
-  id: string;
-  title: string;
-  slug: string;
-  excerpt?: string | null;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  coverImage?: (string | null) | Media;
-  config: {
-    site: string | Setting;
-    published?: ('0' | '1' | '2') | null;
-    createdBy?: (string | null) | User;
-  };
-  meta?: {
-    title?: string | null;
-    description?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (string | null) | Media;
-  };
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "gallery".
  */
 export interface Gallery {
@@ -504,25 +528,13 @@ export interface Navigation {
   menuId: 'main-menu' | 'secondary-menu' | 'footer-menu';
   items?:
     | {
-        type: 'page' | 'post' | 'external';
+        type: 'page' | 'post' | 'external' | 'homepage' | 'rooms-page' | 'access-situation' | 'reserve';
+        label: string;
         page?: (string | null) | Page;
         post?: (string | null) | Post;
-        label?: string | null;
         url?: string | null;
         image?: (string | null) | Media;
         newTab?: boolean | null;
-        children?:
-          | {
-              type: 'page' | 'post' | 'external';
-              page?: (string | null) | Page;
-              post?: (string | null) | Post;
-              label?: string | null;
-              url?: string | null;
-              image?: (string | null) | Media;
-              newTab?: boolean | null;
-              id?: string | null;
-            }[]
-          | null;
         id?: string | null;
       }[]
     | null;
@@ -725,8 +737,20 @@ export interface PagesSelect<T extends boolean = true> {
                 | {
                     title?: T;
                     secondaryBg?: T;
-                    content?: T;
                     image?: T;
+                    content?: T;
+                    cta?:
+                      | T
+                      | {
+                          type?: T;
+                          label?: T;
+                          page?: T;
+                          post?: T;
+                          url?: T;
+                          image?: T;
+                          newTab?: T;
+                          id?: T;
+                        };
                     linkList?:
                       | T
                       | {
@@ -749,9 +773,21 @@ export interface PagesSelect<T extends boolean = true> {
                 | {
                     title?: T;
                     secondaryBg?: T;
-                    content?: T;
                     image1?: T;
                     image2?: T;
+                    content?: T;
+                    cta?:
+                      | T
+                      | {
+                          type?: T;
+                          label?: T;
+                          page?: T;
+                          post?: T;
+                          url?: T;
+                          image?: T;
+                          newTab?: T;
+                          id?: T;
+                        };
                     linkList?:
                       | T
                       | {
@@ -854,24 +890,12 @@ export interface NavigationSelect<T extends boolean = true> {
     | T
     | {
         type?: T;
+        label?: T;
         page?: T;
         post?: T;
-        label?: T;
         url?: T;
         image?: T;
         newTab?: T;
-        children?:
-          | T
-          | {
-              type?: T;
-              page?: T;
-              post?: T;
-              label?: T;
-              url?: T;
-              image?: T;
-              newTab?: T;
-              id?: T;
-            };
         id?: T;
       };
   config?:

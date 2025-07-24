@@ -4,12 +4,14 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { TextDoubleImageProps } from "@/interfaces/blocks";
 import { ImageWrapper } from "./ImageWrapper";
 import SwiperComponent from "./SwiperComponent";
+import NavLink from "./NavLink";
 
 const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
   title,
   html,
   image1,
   image2,
+  cta,
   secondaryBg,
   linkList,
   subItem,
@@ -20,6 +22,8 @@ const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
   const imgRatio = device.mobile ? 4 / 3 : 16 / 9;
   const TitleTag = firstBlock ? "h1" : "h2";
 
+  console.log(cta);
+
   return apiUrl != undefined ? (
     <section
       className={`text-double-img ${secondaryBg ? "text-double-img--sec-color" : ""}`}
@@ -27,10 +31,31 @@ const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
       <div className="text-double-img__content">
         <TitleTag className="text-double-img__title">{title}</TitleTag>
 
-        <div
-          className="text-double-img__text"
-          dangerouslySetInnerHTML={{ __html: html }}
-        ></div>
+        {html ? (
+          <div
+            className="text-double-img__text"
+            dangerouslySetInnerHTML={{ __html: html }}
+          />
+        ) : (
+          <></>
+        )}
+
+        {cta?.length && cta?.length > 0 ? (
+          <div className="text-double-img__btn-list">
+            {cta?.map((btn, index) => (
+              <NavLink
+                isExternal={false}
+                linkType={btn.type}
+                label={btn.label}
+                isBlank={btn.isBlank}
+                key={index}
+                className="text-double-img__btn"
+              ></NavLink>
+            ))}
+          </div>
+        ) : (
+          <></>
+        )}
 
         {subItem?.map((item, index) => (
           <div className="text-double-img__sub-content" key={index}>

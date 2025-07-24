@@ -1,3 +1,52 @@
+@mixin TitleDesign($fsMobile, $fsTablet, $fsDesktop, $text: false) {
+  @if $text {
+    @apply font-body;
+  } @else {
+    @apply font-title;
+  }
+
+  font-size: $fsMobile;
+  line-height: 1.2em;
+
+  @media screen and (min-width: 768px) {
+    font-size: $fsTablet;
+  }
+
+  @media screen and (min-width: 1280px) {
+    font-size: $fsDesktop;
+  }
+}
+
+@mixin btnDesign($type) {
+  @if $type == 'secondary' {
+    @apply py-3 px-0 uppercase relative z-10 transition-[padding] duration-1000;
+
+    &::after {
+      content: '';
+      @apply absolute left-0 bg-black w-[25%] h-[2px] -z-10;
+      transition: width 0.5s ease, height 0.5s ease 0.5s, background-color 0.5s ease 0.5s;
+      bottom: -2px;
+    }
+
+    &:hover {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+      @apply no-underline;
+
+      &::after {
+        @apply w-full h-full bg-secondary;
+        transition: width 0.5s ease, height 0.5s ease 0.5s, background-color 0.5s ease 0.5s;
+      }
+    }
+
+    &:not(:hover)::after {
+      @apply w-[25%] h-[2px] bg-black;
+      background-color: black;
+      transition: height 0.5s ease, background-color 0.5s ease, width 0.5s ease 0.5s;
+    }
+  }
+}
+
 @mixin gridBlock() {
   @include secondaryBg();
 
@@ -5,42 +54,43 @@
         lg:grid-cols-12
         lg:gap-4 
         lg:px-[5.787vw] 
-        lg:py-[8.681vw];
+        lg:py-[8.681vw]
+        xl:px-[6.94vw]
+        xl:gap-6;
 
   &__content {
-    @apply p-[2rem] 
-            lg:p-0 
-            lg:py-[5.787vw]
-            lg:col-span-5;
+    @apply p-[2rem] lg:p-0 lg:py-[5.787vw] lg:col-span-5;
   }
 
   &__title {
-    @apply text-2xl 
-            md:text-3xl 
-            lg:text-4xl;
+    @apply text-2xl md:text-3xl lg:text-4xl;
   }
 
-  &__text {
+  &__text,
+  &__sub-content,
+  &__btn-list,
+  &__list-items {
     @apply mt-[1.875rem];
   }
 
-  &__sub-content {
-    @apply mt-[1.875rem];
+  &__btn-list {
+    @apply flex flex-col items-start gap-2;
   }
 
   &__list-items {
-    @apply mt-[1.875rem]
-            flex
-            flex-col
-            gap-1
-            lg:flex-row
-            lg:flex-wrap
-            lg:justify-between
-            lg:gap-3;
+    @apply flex flex-col gap-1 lg:flex-row lg:flex-wrap lg:justify-between lg:gap-3;
   }
 
   &__list-item {
     @apply lg:w-[49%];
+  }
+
+  &__btn {
+    @include btnDesign('secondary');
+  }
+
+  .list-bullet {
+    @apply list-disc pl-[2.5rem] mb-[1.5rem] leading-[2];
   }
 }
 

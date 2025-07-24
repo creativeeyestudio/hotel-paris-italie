@@ -28,11 +28,12 @@
     }
 
     &__item {
-      @apply relative lg:row-span-full;
+      @apply relative lg:row-span-full xl:text-3xl;
+      @extend .title3;
     }
 
     &__link {
-      @apply z-20 absolute inset-0 flex justify-center items-center text-xl text-white bg-[rgba(0,0,0,0.7)];
+      @apply z-20 absolute inset-0 flex justify-center items-center text-white bg-[rgba(0,0,0,0.7)];
     }
   }
 

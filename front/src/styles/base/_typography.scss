@@ -1,0 +1,18 @@
+h1,
+.title1 {
+  @include TitleDesign(32px, 40px, 48px);
+}
+
+h2,
+.title2 {
+  @include TitleDesign(24px, 32px, 40px);
+}
+
+h3,
+.title3 {
+  @include TitleDesign(20px, 22px, 24px);
+}
+
+.text-base {
+  @include TitleDesign(16px, 16px, 16px, true);
+}
