@@ -43,7 +43,7 @@ export async function fetchHomePage(site: string, locale: string) {
     {
       headers: { "x-website": site },
       next: { revalidate: 0 },
-      cache: 'no-store'
+      cache: "no-store",
     },
   );
 

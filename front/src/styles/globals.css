@@ -42,9 +42,7 @@
 
 body {
   font-size: 17px;
-}
-
-p {
+  font-family: "Raleway";
   line-height: 1.5rem;
 }
 
