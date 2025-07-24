@@ -4,12 +4,14 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { TextDoubleImageProps } from "@/interfaces/blocks";
 import { ImageWrapper } from "./ImageWrapper";
 import SwiperComponent from "./SwiperComponent";
+import NavLink from "./NavLink";
 
 const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
   title,
   html,
   image1,
   image2,
+  cta,
   secondaryBg,
   linkList,
   subItem,
@@ -19,6 +21,8 @@ const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const imgRatio = device.mobile ? 4 / 3 : 16 / 9;
   const TitleTag = firstBlock ? "h1" : "h2";
+
+  console.log(cta);
 
   return apiUrl != undefined ? (
     <section
@@ -35,6 +39,14 @@ const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
         ) : (
           <></>
         )}
+
+        {cta?.length && cta?.length > 0 ? (
+          <div className="text-img__btn-list">
+            {cta?.map((btn, index) => (
+              <NavLink isExternal={false} linkType={btn.type} label={btn.label} isBlank={btn.isBlank} key={index}></NavLink>
+            ))}  
+          </div>
+        ) : <></>}
 
         {subItem?.map((item, index) => (
           <div className="text-double-img__sub-content" key={index}>

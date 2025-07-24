@@ -4,6 +4,7 @@ import { Page } from "@/interfaces/page";
 import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
+import toggleReservePopup from "@/lib/toggleReservePopup";
 
 interface NavLinkProps {
   isExternal: boolean;
@@ -102,7 +103,7 @@ const AccessPageLink = (label: string, locale: string, isBlank: boolean, classNa
 };
 
 const ReserveLink = (label: string, className?: string) => {
-  return <Button className={className}>{label}</Button>;
+  return <Button className={className} onClick={() => toggleReservePopup()}>{label}</Button>;
 };
 
 const NavLink: React.FC<NavLinkProps> = ({

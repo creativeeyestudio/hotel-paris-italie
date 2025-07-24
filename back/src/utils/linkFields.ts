@@ -16,7 +16,7 @@ const LinkFields = (noImage = false): Field[] => [
           { label: 'Page "Accueil du site"', value: 'homepage' },
           { label: 'Page "Nos Chambres"', value: 'rooms-page' },
           { label: 'Page "Accès et situation"', value: 'access-situation' },
-          { label: 'Réserver une chambre', value: 'reserve-popup' },
+          { label: 'Réserver une chambre', value: 'reserve' },
         ],
         admin: {
           width: '25%'

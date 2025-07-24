@@ -3,11 +3,13 @@ import Link from "next/link";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { TextImageProps } from "@/interfaces/blocks";
 import { ImageWrapper } from "./ImageWrapper";
+import NavLink from "./NavLink";
 
 const TextImage: React.FC<TextImageProps> = ({
   title,
   html,
   image,
+  cta,
   secondaryBg,
   linkList,
   subItem,
@@ -30,6 +32,15 @@ const TextImage: React.FC<TextImageProps> = ({
         ) : (
           <></>
         )}
+
+        {cta?.length && cta?.length > 0 ? (
+          <div className="text-img__btn-list">
+            {cta?.map((btn, index) => (
+              <NavLink isExternal={false} linkType={btn.type} label={btn.label} isBlank={btn.isBlank} key={index}></NavLink>
+            ))}  
+          </div>
+        ) : <></>}
+        
 
         {subItem?.map((item, index) => (
           <div className="text-img__sub-content" key={index}>
