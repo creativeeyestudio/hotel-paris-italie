@@ -22,10 +22,10 @@ const TextImage: React.FC<TextImageProps> = ({
       <div className="text-img__content">
         <TitleTag className="text-img__title">{title}</TitleTag>
 
-        <div
+        {html ? <div
           className="text-img__text"
           dangerouslySetInnerHTML={{ __html: html }}
-        />
+        /> : <></>}
 
         {subItem?.map((item, index) => (
           <div className="text-img__sub-content" key={index}>

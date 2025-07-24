@@ -23,7 +23,6 @@ const TextImage: Block = {
             name: 'content',
             label: 'Contenu',
             type: 'richText',
-            required: true,
         },
         {
             name: 'image',

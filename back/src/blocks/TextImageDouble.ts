@@ -23,7 +23,6 @@ const TextImageDouble: Block = {
             name: 'content',
             label: 'Contenu',
             type: 'richText',
-            required: true,
         },
         {
             type: 'row',

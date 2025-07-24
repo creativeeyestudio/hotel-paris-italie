@@ -20,7 +20,7 @@ export interface TextProps {
 export interface TextIntroProps {
   blockType?: "text-intro";
   title: string;
-  html: string;
+  html?: string;
   className?: string;
   firstBlock: boolean;
 }
@@ -28,7 +28,7 @@ export interface TextIntroProps {
 export interface TextImageProps {
   blockType?: "text-image";
   title: string;
-  html: string;
+  html?: string;
   image: ImageDataProps;
   secondaryBg: boolean;
   linkList: LinkList[];

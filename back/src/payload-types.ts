@@ -241,7 +241,7 @@ export interface Page {
           | {
               title: string;
               secondaryBg?: boolean | null;
-              content: {
+              content?: {
                 root: {
                   type: string;
                   children: {
@@ -255,7 +255,7 @@ export interface Page {
                   version: number;
                 };
                 [k: string]: unknown;
-              };
+              } | null;
               image: string | Media;
               linkList?:
                 | {
@@ -292,7 +292,7 @@ export interface Page {
           | {
               title: string;
               secondaryBg?: boolean | null;
-              content: {
+              content?: {
                 root: {
                   type: string;
                   children: {
@@ -306,7 +306,7 @@ export interface Page {
                   version: number;
                 };
                 [k: string]: unknown;
-              };
+              } | null;
               image1: string | Media;
               image2?: (string | null) | Media;
               linkList?:
