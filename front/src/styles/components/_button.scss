@@ -4,6 +4,6 @@
   }
 
   &--secondary {
-    @apply p-0;
+    @include btnDesign('secondary');
   }
 }
