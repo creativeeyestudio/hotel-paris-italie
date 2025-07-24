@@ -24,6 +24,7 @@ import Confidentiality from './globals/Confidentiality'
 import Cgv from './globals/Cgv'
 import Settings from '@/collections/Settings'
 import ChrConnectConfig from './plugins/ChrConnectConfig'
+import RoomPage from './globals/RoomPage'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -36,7 +37,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Pages, Posts, Galleries, Navigation, Settings, ChrConnectConfig],
-  globals: [LegalNotice, Confidentiality, Cgv],
+  globals: [LegalNotice, Confidentiality, Cgv, RoomPage],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
