@@ -20,7 +20,7 @@ export interface TextProps {
 export interface TextIntroProps {
   blockType?: "text-intro";
   title: string;
-  html: string;
+  html?: string;
   className?: string;
   firstBlock: boolean;
 }
@@ -28,8 +28,9 @@ export interface TextIntroProps {
 export interface TextImageProps {
   blockType?: "text-image";
   title: string;
-  html: string;
+  html?: string;
   image: ImageDataProps;
+  cta?: CTA[];
   secondaryBg: boolean;
   linkList: LinkList[];
   subItem: SubItemList[];
@@ -43,11 +44,24 @@ export interface TextDoubleImageProps {
   html: string;
   image1: ImageDataProps;
   image2?: ImageDataProps;
+  cta?: CTA[];
   secondaryBg: boolean;
   linkList: LinkList[];
   subItem: SubItemList[];
   device: DeviceType;
   firstBlock: boolean;
+}
+
+interface CTA {
+  type:
+    | "page"
+    | "external"
+    | "access-situation"
+    | "rooms-page"
+    | "reserve"
+    | "homepage";
+  label: string;
+  isBlank: boolean;
 }
 
 export interface LinkList {

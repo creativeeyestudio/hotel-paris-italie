@@ -4,7 +4,7 @@ import { fetchNavigation } from "@/lib/cms";
 import { Facebook, Instagram } from "lucide-react";
 import { headers } from "next/headers";
 import Image from "next/image";
-import Link from "next/link";
+import NavLink from "../panels/NavLink";
 
 interface NavigationParams {
   menuId?: "main-menu" | "secondary-menu" | "footer-menu" | null;
@@ -33,29 +33,17 @@ const Navigation = async ({
     return;
   }
 
-  const getLinkProps = (item: MenuItem) => {
-    const href = item.page ? `/${locale}/${item.page.slug}` : (item.url ?? "#");
-    const label = item.page?.title ?? item.label ?? "";
-    return { href, label };
-  };
-
   const renderLink = (item: MenuItem) => {
-    const { href, label } = getLinkProps(item);
-
-    return item.type === "external" ? (
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        title="Nouvel onglet"
+    return (
+      <NavLink
+        isExternal={item.type === "external"}
+        linkType={item.type}
+        label={item.label ?? ""}
+        link={item.page}
+        href={item.url}
         className={`${classes}__link`}
-      >
-        {label}
-      </a>
-    ) : (
-      <Link href={href} className={`${classes}__link`}>
-        {label}
-      </Link>
+        isBlank={item.newTab ?? false}
+      />
     );
   };
 

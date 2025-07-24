@@ -3,8 +3,8 @@ import { Block } from "payload";
 const Parallax: Block = {
     slug: 'parallax',
     labels: {
-        singular: 'parallax',
-        plural: 'parallaxes'
+        singular: 'Parallax',
+        plural: 'Parallaxes'
     },
     fields: [
         {

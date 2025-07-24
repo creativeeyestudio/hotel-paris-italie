@@ -1,65 +1,7 @@
 import { accessNavigation } from '@/access/navigationAccess'
-import { CollectionConfig, Field } from 'payload'
+import LinkFields from '@/utils/linkFields'
+import { CollectionConfig } from 'payload'
 import { v4 as uuidv4 } from 'uuid'
-
-// Réutilisable : structure commune pour les liens
-const linkFields = (): Field[] => [
-  {
-    name: 'type',
-    type: 'radio',
-    options: [
-      { label: 'Page', value: 'page' },
-      { label: 'Article', value: 'post' },
-      { label: 'Lien personnalisé', value: 'external' },
-    ],
-    defaultValue: 'page',
-    required: true,
-  },
-  {
-    name: 'page',
-    type: 'relationship',
-    relationTo: 'pages',
-    admin: {
-      condition: (_data, sibling) => sibling.type === 'page',
-    },
-  },
-  {
-    name: 'post',
-    type: 'relationship',
-    relationTo: 'posts',
-    admin: {
-      condition: (_data, sibling) => sibling.type === 'post',
-    },
-  },
-  {
-    name: 'label',
-    type: 'text',
-    required: true,
-    localized: true,
-    admin: {
-      condition: (_data, sibling) => sibling.type === 'external',
-    },
-  },
-  {
-    name: 'url',
-    type: 'text',
-    admin: {
-      condition: (_data, sibling) => sibling.type === 'external',
-    },
-  },
-  {
-    name: 'image',
-    label: 'Image',
-    type: 'relationship',
-    relationTo: 'media',
-    required: false,
-  },
-  {
-    name: 'newTab',
-    type: 'checkbox',
-    label: 'Ouvrir dans un nouvel onglet',
-  },
-]
 
 const Navigation: CollectionConfig = {
   slug: 'navigation',
@@ -87,16 +29,20 @@ const Navigation: CollectionConfig = {
     },
     {
       name: 'items',
-      type: 'array',
       label: 'Liens du menu',
+      type: 'array',
+      labels: {
+        singular: 'Lien de menu',
+        plural: 'Liens de menu',
+      },
       fields: [
-        ...linkFields(),
-        {
-          name: 'children',
-          type: 'array',
-          label: 'Sous-menus',
-          fields: linkFields(),
-        },
+        ...LinkFields(),
+        // {
+        //   name: 'children',
+        //   type: 'array',
+        //   label: 'Sous-menus',
+        //   fields: linkFields(),
+        // },
       ],
     },
 
@@ -113,7 +59,6 @@ const Navigation: CollectionConfig = {
           type: 'relationship',
           relationTo: 'settings',
           required: true,
-          multiple: true,
         },
       ],
     },

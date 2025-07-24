@@ -1,6 +1,11 @@
 .footer {
   @apply bg-primary text-white p-[2rem] mb-[64px] md:mb-0 lg:px-[5.787vw] lg:py-[2.8935vw];
 
+  &__title {
+    @apply mb-[30px];
+    @extend .title3;
+  }
+
   &__separate {
     @apply my-[2rem] lg:my-[2.8935vw];
   }
@@ -22,10 +27,10 @@
   }
 
   &__legal-nav {
-    @apply text-xs flex flex-col gap-y-2 md:text-center;
+    @apply text-xs leading-[2] font-light flex flex-col gap-y-2 md:text-center;
   }
 
   &__legal-links {
-    @apply flex gap-x-2 md:justify-center;
+    @apply flex gap-x-2 space-x-1 md:justify-center;
   }
 }

@@ -10,11 +10,11 @@
   }
 
   &__container {
-    @apply bg-secondary relative p-[2rem] xl:py-[100px] xl:px-[150px] xl:w-[1000px];
+    @apply bg-white relative p-[2rem] xl:py-[100px] xl:px-[150px] xl:w-[1000px];
   }
 
   &__form {
-    @apply grid grid-cols-12 grid-rows-3 gap-4 mt-[1rem];
+    @apply grid grid-cols-12 gap-4 mt-[1rem] lg:gap-x-10 lg:gap-y-5;
   }
 
   &__input {
@@ -57,7 +57,7 @@
 
   &__btn {
     &--send {
-      @apply mt-[.5rem];
+      @apply mt-[2rem];
     }
 
     &--close-mobile {
@@ -65,7 +65,7 @@
     }
 
     &--close-desktop {
-      @apply hidden rounded-full size-[60px] lg:flex lg:justify-center lg:absolute lg:-top-[30px] lg:-right-[30px];
+      @apply hidden rounded-full aspect-square size-[60px] p-0 lg:flex lg:justify-center lg:absolute lg:-top-[30px] lg:-right-[30px];
     }
   }
 }

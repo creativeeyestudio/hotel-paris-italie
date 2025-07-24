@@ -39,11 +39,11 @@ export async function fetchHomePage(site: string, locale: string) {
   if (!settings) return null;
 
   const res = await fetch(
-    `${CMS_URL}/api/pages/${settings.identityGroup?.homepage.id}?depth=10&locale=${locale}`,
+    `${CMS_URL}/api/pages/${settings.identityGroup?.homepage.id}?depth=9&locale=${locale}`,
     {
       headers: { "x-website": site },
       next: { revalidate: 0 },
-      cache: 'no-store'
+      cache: "no-store",
     },
   );
 
