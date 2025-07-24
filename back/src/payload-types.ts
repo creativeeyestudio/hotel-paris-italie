@@ -1151,7 +1151,31 @@ export interface RoomPage {
         }[]
       | null;
   };
-  rooms?: {};
+  rooms?: {
+    roomsList?:
+      | {
+          roomName?: string | null;
+          roomDescHtml?: string | null;
+          roomDesc?: {
+            root: {
+              type: string;
+              children: {
+                type: string;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
+              version: number;
+            };
+            [k: string]: unknown;
+          } | null;
+          roomImage?: (string | null) | Media;
+          id?: string | null;
+        }[]
+      | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1298,7 +1322,19 @@ export interface RoomPageSelect<T extends boolean = true> {
               id?: T;
             };
       };
-  rooms?: T | {};
+  rooms?:
+    | T
+    | {
+        roomsList?:
+          | T
+          | {
+              roomName?: T;
+              roomDescHtml?: T;
+              roomDesc?: T;
+              roomImage?: T;
+              id?: T;
+            };
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

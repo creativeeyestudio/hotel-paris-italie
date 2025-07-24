@@ -1,11 +1,12 @@
+import { pagesAccess } from "@/access/pagesAccess";
 import Heroscreen from "@/blocks/Heroscreen";
 import { convertRichTextToHTML } from "@/utils/convertRichTextToHTML";
-import { convertHTMLToLexical } from "@payloadcms/richtext-lexical";
 import { GlobalConfig } from "payload";
 
 const RoomPage: GlobalConfig = {
     slug: 'roomPage',
     label: 'Nos chambres',
+    access: pagesAccess,
     admin: {
         group: 'Pages dédiées'
     },
@@ -122,7 +123,40 @@ const RoomPage: GlobalConfig = {
             name: 'rooms',
             label: 'Types de chambres',
             type: 'group',
-            fields: []
+            fields: [
+                {
+                    name: 'roomsList',
+                    label: false,
+                    type: 'array',
+                    fields: [
+                        {
+                            name: 'roomName',
+                            label: 'Nom de la chambre',
+                            type: 'text',
+                        },
+                        {
+                            name: 'roomDescHtml',
+                            label: false,
+                            type: 'code',
+                            hidden: true,
+                            admin: {
+                                language: 'html'
+                            }
+                        },
+                        {
+                            name: 'roomDesc',
+                            label: 'Description de la chambre',
+                            type: 'richText',
+                        },
+                        {
+                            name: 'roomImage',
+                            label: 'Image de la chambre',
+                            type: 'relationship',
+                            relationTo: 'media',
+                        }
+                    ]
+                }
+            ]
         },
     ],
 
@@ -131,6 +165,12 @@ const RoomPage: GlobalConfig = {
             async ({ doc }) => {
                 if (doc?.intro?.introContent) {
                     doc.intro.introContentHtml = await convertRichTextToHTML(doc?.intro?.introContent);
+                }
+
+                if (doc?.rooms?.roomsList[0]) {
+                    doc?.rooms?.roomsList.forEach(async room => {
+                        room.roomDescHtml = await convertRichTextToHTML(room.roomDesc);
+                    });
                 }
             }
         ]
