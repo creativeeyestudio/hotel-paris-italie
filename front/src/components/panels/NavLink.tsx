@@ -23,7 +23,7 @@ type LinkType =
   | "access-situation"
   | "rooms-page"
   | "reserve"
-  | 'homepage';
+  | "homepage";
 
 const ExternalLink: React.FC<{
   href: string;
@@ -50,11 +50,12 @@ const HomePageLink = (
   className?: string,
 ) => {
   return (
-    <Link 
-        href={`/${locale}`} 
-        className={className}
-        target={isBlank ? "_blank" : undefined}
-        rel={isBlank ? "noopener noreferrer" : undefined}>
+    <Link
+      href={`/${locale}`}
+      className={className}
+      target={isBlank ? "_blank" : undefined}
+      rel={isBlank ? "noopener noreferrer" : undefined}
+    >
       {label}
     </Link>
   );
@@ -68,42 +69,59 @@ const InternalLink = (
   className?: string,
 ) => {
   return (
-    <Link 
-        href={`/${locale}/${link.slug}`} 
-        className={className}
-        target={isBlank ? "_blank" : undefined}
-        rel={isBlank ? "noopener noreferrer" : undefined}>
+    <Link
+      href={`/${locale}/${link.slug}`}
+      className={className}
+      target={isBlank ? "_blank" : undefined}
+      rel={isBlank ? "noopener noreferrer" : undefined}
+    >
       {label}
     </Link>
   );
 };
 
-const RoomsPageLink = (label: string, locale: string, isBlank: boolean, className?: string) => {
+const RoomsPageLink = (
+  label: string,
+  locale: string,
+  isBlank: boolean,
+  className?: string,
+) => {
   return (
-    <Link 
-        href={`/${locale}/nos-chambres`} 
-        className={className}
-        target={isBlank ? "_blank" : undefined}
-        rel={isBlank ? "noopener noreferrer" : undefined}>
+    <Link
+      href={`/${locale}/nos-chambres`}
+      className={className}
+      target={isBlank ? "_blank" : undefined}
+      rel={isBlank ? "noopener noreferrer" : undefined}
+    >
       {label}
     </Link>
   );
 };
 
-const AccessPageLink = (label: string, locale: string, isBlank: boolean, className?: string) => {
+const AccessPageLink = (
+  label: string,
+  locale: string,
+  isBlank: boolean,
+  className?: string,
+) => {
   return (
-    <Link 
-        href={`/${locale}/acces-et-situation`} 
-        className={className}
-        target={isBlank ? "_blank" : undefined}
-        rel={isBlank ? "noopener noreferrer" : undefined}>
+    <Link
+      href={`/${locale}/acces-et-situation`}
+      className={className}
+      target={isBlank ? "_blank" : undefined}
+      rel={isBlank ? "noopener noreferrer" : undefined}
+    >
       {label}
     </Link>
   );
 };
 
 const ReserveLink = (label: string, className?: string) => {
-  return <Button className={className} onClick={() => toggleReservePopup()}>{label}</Button>;
+  return (
+    <Button variant={'link'} className={className} onClick={() => toggleReservePopup()}>
+      {label}
+    </Button>
+  );
 };
 
 const NavLink: React.FC<NavLinkProps> = ({
@@ -117,13 +135,20 @@ const NavLink: React.FC<NavLinkProps> = ({
   locale = "fr",
 }) => {
   if (isExternal && href) {
-    return <ExternalLink href={href} label={label} className={className} isBlank={isBlank} />;
+    return (
+      <ExternalLink
+        href={href}
+        label={label}
+        className={className}
+        isBlank={isBlank}
+      />
+    );
   }
 
   switch (linkType) {
     case "homepage":
       return HomePageLink(label, isBlank, locale, className);
-    
+
     case "page":
       if (link) return InternalLink(link, label, isBlank, locale, className);
       return null;

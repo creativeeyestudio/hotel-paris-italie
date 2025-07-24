@@ -53,9 +53,15 @@ export interface TextDoubleImageProps {
 }
 
 interface CTA {
-  type: "page" | "external" | "access-situation" | "rooms-page" | "reserve" | 'homepage';
+  type:
+    | "page"
+    | "external"
+    | "access-situation"
+    | "rooms-page"
+    | "reserve"
+    | "homepage";
   label: string;
-  isBlank: boolean
+  isBlank: boolean;
 }
 
 export interface LinkList {

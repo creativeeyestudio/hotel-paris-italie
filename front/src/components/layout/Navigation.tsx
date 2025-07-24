@@ -41,8 +41,8 @@ const Navigation = async ({
         label={item.label ?? ""}
         link={item.page}
         href={item.url}
-        className={`${classes}__link`} 
-        isBlank={item.newTab ?? false}      
+        className={`${classes}__link`}
+        isBlank={item.newTab ?? false}
       />
     );
   };

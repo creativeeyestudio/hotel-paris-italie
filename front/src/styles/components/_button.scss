@@ -2,4 +2,8 @@
   &--primary {
     @apply py-[2.5rem] py-[1.25rem] bg-[#B8A373] relative;
   }
+
+  &--secondary {
+    @apply p-0;
+  }
 }

@@ -41,12 +41,21 @@ const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
         )}
 
         {cta?.length && cta?.length > 0 ? (
-          <div className="text-img__btn-list">
+          <div className="text-double-img__btn-list">
             {cta?.map((btn, index) => (
-              <NavLink isExternal={false} linkType={btn.type} label={btn.label} isBlank={btn.isBlank} key={index}></NavLink>
-            ))}  
+              <NavLink
+                isExternal={false}
+                linkType={btn.type}
+                label={btn.label}
+                isBlank={btn.isBlank}
+                key={index}
+                className="text-double-img__btn"
+              ></NavLink>
+            ))}
           </div>
-        ) : <></>}
+        ) : (
+          <></>
+        )}
 
         {subItem?.map((item, index) => (
           <div className="text-double-img__sub-content" key={index}>
