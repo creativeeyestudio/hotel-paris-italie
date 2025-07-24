@@ -35,13 +35,27 @@ const Navigation = async ({
 
   const getLinkProps = (item: MenuItem) => {
     const href = item.page ? `/${locale}/${item.page.slug}` : (item.url ?? "#");
-    const label = item.page?.title ?? item.label ?? "";
+    const label = item.label ?? "";
     return { href, label };
   };
 
   const renderLink = (item: MenuItem) => {
-    const { href, label } = getLinkProps(item);
+    let href: string;
 
+    const props = getLinkProps(item);
+
+    console.log(item);
+    
+    // Détermination du lien et label selon le type
+    if (item.type === "access-situation") {
+      href = `/${locale}/acces-et-situation`;
+    } else if (item.type === "rooms-page") {
+      href = `/${locale}/nos-chambres`;
+    } else {
+      href = props.href;
+    }
+
+    // Retourne le lien selon qu'il soit externe ou interne
     return item.type === "external" ? (
       <a
         href={href}
@@ -50,14 +64,15 @@ const Navigation = async ({
         title="Nouvel onglet"
         className={`${classes}__link`}
       >
-        {label}
+        {props.label}
       </a>
     ) : (
       <Link href={href} className={`${classes}__link`}>
-        {label}
+        {props.label}
       </Link>
     );
   };
+
 
   const renderImage = (item: ImageDataProps) => (
     <figure className={`${classes}__image`}>

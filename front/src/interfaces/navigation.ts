@@ -10,7 +10,7 @@ export interface NavigationProps {
 }
 
 export interface MenuItem {
-  type: "page" | "post" | "external";
+  type: "page" | "post" | "external" | 'access-situation' | 'rooms-page';
   page?: Page;
   label?: string;
   url?: string;

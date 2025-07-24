@@ -1,10 +1,11 @@
+import LinkFields from "@/utils/linkFields";
 import type { Block } from "payload";
 
 const TextImageDouble: Block = {
     slug: 'text-double-image',
     labels: {
-        singular: 'text-double-image-block',
-        plural: 'text-double-image-blocks',
+        singular: 'Texte Double Image',
+        plural: 'Texte Double Image',
     },
     fields: [
         {
@@ -18,11 +19,6 @@ const TextImageDouble: Block = {
             type: 'checkbox',
             label: 'Fond secondaire',
             defaultValue: false
-        },
-        {
-            name: 'content',
-            label: 'Contenu',
-            type: 'richText',
         },
         {
             type: 'row',
@@ -50,51 +46,92 @@ const TextImageDouble: Block = {
             ]
         },
         {
-            name: 'linkList',
-            label: 'Liste de liens',
-            type: 'array',
-            fields: [
-                {
-                    type: 'row',
-                    fields:[
-                        {
-                            name: 'linkName',
-                            label: "Nom du lien",
-                            type: 'text',
-                            required: true,
-                            admin: {
-                                width: '50%',
-                            },
-                        },
-                        {
-                            name: 'linkUrl',
-                            label: "URL",
-                            type: 'text',
-                            admin: {
-                                width: '50%',
-                            },
-                        },
-                    ]
-                }
-            ]
+            name: 'content',
+            label: 'Contenu',
+            type: 'richText',
         },
         {
-            name: 'subItem',
-            label: 'Sous contenu',
-            type: 'array',
-            fields: [
+            type: 'tabs',
+            tabs: [
                 {
-                    name: 'title',
-                    type: 'text',
-                    required: true
+                    label: 'Boutons Call To Action',
+                    description: 'Boutons dédiés à accompagner le visiteur dans sa navigation',
+                    fields: [
+                        {
+                            name: 'cta',
+                            label: false,
+                            type: 'array',
+                            labels: {
+                                singular: 'Lien de CTA',
+                                plural: 'Liens de CTA',
+                            },
+                            fields: [
+                                ...LinkFields(true),
+                            ],
+                        },
+                    ]
                 },
                 {
-                    name: 'content',
-                    type: 'richText',
-                    required: true
+                    label: 'Liste de liens (Colonne de 2)',
+                    description: 'Liens sous forme de colonne de 2',
+                    fields: [
+                        {
+                            name: 'linkList',
+                            label: false,
+                            type: 'array',
+                            fields: [
+                                {
+                                    type: 'row',
+                                    fields:[
+                                        {
+                                            name: 'linkName',
+                                            label: "Nom du lien",
+                                            type: 'text',
+                                            required: true,
+                                            admin: {
+                                                width: '50%',
+                                            },
+                                        },
+                                        {
+                                            name: 'linkUrl',
+                                            label: "URL",
+                                            type: 'text',
+                                            admin: {
+                                                width: '50%',
+                                            },
+                                        },
+                                    ]
+                                }
+                            ]
+                        },
+                    ]    
+                },
+                {
+                    label: 'Sous contenu',
+                    description: 'Sous catégories internes',
+                    fields: [
+                        {
+                            name: 'subItem',
+                            label: false,
+                            type: 'array',
+                            fields: [
+                                {
+                                    name: 'title',
+                                    type: 'text',
+                                    required: true
+                                },
+                                {
+                                    name: 'content',
+                                    type: 'richText',
+                                    required: true
+                                },
+                            ]
+                        },
+                    ]    
                 },
             ]
         },
+        
     ]
 }
 
