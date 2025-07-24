@@ -4,7 +4,7 @@ import { fetchNavigation } from "@/lib/cms";
 import { Facebook, Instagram } from "lucide-react";
 import { headers } from "next/headers";
 import Image from "next/image";
-import Link from "next/link";
+import NavLink from "../panels/NavLink";
 
 interface NavigationParams {
   menuId?: "main-menu" | "secondary-menu" | "footer-menu" | null;
@@ -33,46 +33,19 @@ const Navigation = async ({
     return;
   }
 
-  const getLinkProps = (item: MenuItem) => {
-    const href = item.page ? `/${locale}/${item.page.slug}` : (item.url ?? "#");
-    const label = item.label ?? "";
-    return { href, label };
-  };
-
   const renderLink = (item: MenuItem) => {
-    let href: string;
-
-    const props = getLinkProps(item);
-
-    console.log(item);
-    
-    // Détermination du lien et label selon le type
-    if (item.type === "access-situation") {
-      href = `/${locale}/acces-et-situation`;
-    } else if (item.type === "rooms-page") {
-      href = `/${locale}/nos-chambres`;
-    } else {
-      href = props.href;
-    }
-
-    // Retourne le lien selon qu'il soit externe ou interne
-    return item.type === "external" ? (
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        title="Nouvel onglet"
-        className={`${classes}__link`}
-      >
-        {props.label}
-      </a>
-    ) : (
-      <Link href={href} className={`${classes}__link`}>
-        {props.label}
-      </Link>
+    return (
+      <NavLink
+        isExternal={item.type === "external"}
+        linkType={item.type}
+        label={item.label ?? ""}
+        link={item.page}
+        href={item.url}
+        className={`${classes}__link`} 
+        isBlank={item.newTab ?? false}      
+      />
     );
   };
-
 
   const renderImage = (item: ImageDataProps) => (
     <figure className={`${classes}__image`}>

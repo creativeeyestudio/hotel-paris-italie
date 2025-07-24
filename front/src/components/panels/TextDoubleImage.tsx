@@ -27,10 +27,14 @@ const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
       <div className="text-double-img__content">
         <TitleTag className="text-double-img__title">{title}</TitleTag>
 
-        {html ? <div
-          className="text-double-img__text"
-          dangerouslySetInnerHTML={{ __html: html }}
-        /> : <></>}
+        {html ? (
+          <div
+            className="text-double-img__text"
+            dangerouslySetInnerHTML={{ __html: html }}
+          />
+        ) : (
+          <></>
+        )}
 
         {subItem?.map((item, index) => (
           <div className="text-double-img__sub-content" key={index}>

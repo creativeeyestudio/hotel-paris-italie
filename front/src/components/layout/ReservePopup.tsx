@@ -93,10 +93,7 @@ const ReservePopup = () => {
           onClick={() => toggleReservePopup()}
           className="reserve-popup__btn--close-desktop"
         >
-          <X
-            strokeWidth={1}
-            style={{ width: 40, height: 40 }}
-          />
+          <X strokeWidth={1} style={{ width: 40, height: 40 }} />
         </Button>
 
         <form action="" method="post" className="reserve-popup__form">

@@ -259,7 +259,14 @@ export interface Page {
               } | null;
               cta?:
                 | {
-                    type: 'page' | 'post' | 'external' | 'rooms-page' | 'access-situation' | 'reserve-popup';
+                    type:
+                      | 'page'
+                      | 'post'
+                      | 'external'
+                      | 'homepage'
+                      | 'rooms-page'
+                      | 'access-situation'
+                      | 'reserve-popup';
                     label: string;
                     page?: (string | null) | Page;
                     post?: (string | null) | Post;
@@ -323,7 +330,14 @@ export interface Page {
               } | null;
               cta?:
                 | {
-                    type: 'page' | 'post' | 'external' | 'rooms-page' | 'access-situation' | 'reserve-popup';
+                    type:
+                      | 'page'
+                      | 'post'
+                      | 'external'
+                      | 'homepage'
+                      | 'rooms-page'
+                      | 'access-situation'
+                      | 'reserve-popup';
                     label: string;
                     page?: (string | null) | Page;
                     post?: (string | null) | Post;
@@ -528,7 +542,7 @@ export interface Navigation {
   menuId: 'main-menu' | 'secondary-menu' | 'footer-menu';
   items?:
     | {
-        type: 'page' | 'post' | 'external' | 'rooms-page' | 'access-situation' | 'reserve-popup';
+        type: 'page' | 'post' | 'external' | 'homepage' | 'rooms-page' | 'access-situation' | 'reserve-popup';
         label: string;
         page?: (string | null) | Page;
         post?: (string | null) | Post;
