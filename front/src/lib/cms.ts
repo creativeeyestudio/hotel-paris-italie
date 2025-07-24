@@ -1,5 +1,6 @@
 import { NavigationProps } from "@/interfaces/navigation";
 import { Page } from "@/interfaces/page";
+import { RoomPageProps } from "@/interfaces/room";
 import { SettingsProps } from "@/interfaces/settings";
 
 /* ------------------------------------------------------------------
@@ -74,6 +75,26 @@ export async function fetchPage(
 
   const { docs } = (await res.json()) as { docs: Page[] };
   return docs?.[0] ?? null;
+}
+
+/* --------------------------------------------------
+   Page Chambres
+-------------------------------------------------- */
+/**
+ * @param site 
+ * @param locale 
+ * @returns 
+ */
+export async function fetchRoomPage(site: string, locale: string): Promise<RoomPageProps | null> {
+  const res = await fetch(`${CMS_URL}/api/globals/roomPage?depth=2&draft=false&locale=${locale}`, {
+    headers: { "x-website": site },
+    next: { revalidate: 0 },
+    cache: "no-store",
+  })
+
+  if (!res.ok) return null;
+  
+  return res.json();
 }
 
 /* --------------------------------------------------

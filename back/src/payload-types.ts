@@ -100,11 +100,13 @@ export interface Config {
     'legal-notice': LegalNotice;
     confidentiality: Confidentiality;
     cgv: Cgv;
+    roomPage: RoomPage;
   };
   globalsSelect: {
     'legal-notice': LegalNoticeSelect<false> | LegalNoticeSelect<true>;
     confidentiality: ConfidentialitySelect<false> | ConfidentialitySelect<true>;
     cgv: CgvSelect<false> | CgvSelect<true>;
+    roomPage: RoomPageSelect<false> | RoomPageSelect<true>;
   };
   locale: 'fr' | 'en' | 'es';
   user: User & {
@@ -1107,6 +1109,78 @@ export interface Cgv {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "roomPage".
+ */
+export interface RoomPage {
+  id: string;
+  intro: {
+    heroscreen?:
+      | {
+          heroImage: (string | Media)[];
+          id?: string | null;
+          blockName?: string | null;
+          blockType: 'heroscreen';
+        }[]
+      | null;
+    introTitle: string;
+    introContent: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    };
+    introContentHtml?: string | null;
+  };
+  services?: {
+    serviceList?:
+      | {
+          serviceIcon?:
+            | ('bathroom' | 'air' | 'wifi' | 'phone' | 'safe' | 'minibar' | 'television' | 'courtesyTray')
+            | null;
+          serviceLabel: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  rooms?: {
+    roomsList?:
+      | {
+          roomName?: string | null;
+          roomDescHtml?: string | null;
+          roomDesc?: {
+            root: {
+              type: string;
+              children: {
+                type: string;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
+              version: number;
+            };
+            [k: string]: unknown;
+          } | null;
+          roomImage?: (string | null) | Media;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "legal-notice_select".
  */
 export interface LegalNoticeSelect<T extends boolean = true> {
@@ -1209,6 +1283,57 @@ export interface CgvSelect<T extends boolean = true> {
         cancel_delay?: T;
         cancel_fees?: T;
         special_cancel_conditions?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "roomPage_select".
+ */
+export interface RoomPageSelect<T extends boolean = true> {
+  intro?:
+    | T
+    | {
+        heroscreen?:
+          | T
+          | {
+              heroscreen?:
+                | T
+                | {
+                    heroImage?: T;
+                    id?: T;
+                    blockName?: T;
+                  };
+            };
+        introTitle?: T;
+        introContent?: T;
+        introContentHtml?: T;
+      };
+  services?:
+    | T
+    | {
+        serviceList?:
+          | T
+          | {
+              serviceIcon?: T;
+              serviceLabel?: T;
+              id?: T;
+            };
+      };
+  rooms?:
+    | T
+    | {
+        roomsList?:
+          | T
+          | {
+              roomName?: T;
+              roomDescHtml?: T;
+              roomDesc?: T;
+              roomImage?: T;
+              id?: T;
+            };
       };
   updatedAt?: T;
   createdAt?: T;

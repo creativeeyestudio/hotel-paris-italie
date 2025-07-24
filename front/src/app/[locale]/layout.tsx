@@ -13,8 +13,12 @@ interface LayoutParams {
   locale: string;
 }
 
-const fontBody = Raleway();
-const fontTitle = Playfair_Display();
+const fontBody = Raleway({
+  subsets: ['latin'],
+});
+const fontTitle = Playfair_Display({
+  subsets: ['latin'],
+});
 
 export default async function RootLayout({
   children,
