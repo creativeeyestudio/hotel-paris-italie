@@ -94,7 +94,6 @@ const ReservePopup = () => {
           className="reserve-popup__btn--close-desktop"
         >
           <X
-            color="#ffffff"
             strokeWidth={1}
             style={{ width: 40, height: 40 }}
           />
@@ -141,7 +140,7 @@ const ReservePopup = () => {
 
       <Button
         variant="link"
-        size={"lg"}
+        size={"sm"}
         onClick={() => toggleReservePopup()}
         className="reserve-popup__btn--close-mobile"
       >
