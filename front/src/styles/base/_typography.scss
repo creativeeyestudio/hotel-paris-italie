@@ -9,3 +9,7 @@ h2 {
 h3 {
     @include TitleDesign(20px, 24px, 33px);
 }
+
+.text-base {
+    @include TitleDesign(16px, 16px, 16px, true);
+}

@@ -1,5 +1,11 @@
-@mixin TitleDesign($fsMobile, $fsTablet, $fsDesktop) {
-  @apply font-title;
+@mixin TitleDesign($fsMobile, $fsTablet, $fsDesktop, $text: false) {
+  @if $text {
+    @apply font-body;
+  } @else {
+    @apply font-title;
+  }
+    
+
   font-size: $fsMobile;
 
   @media screen and (min-width: 768px) {
