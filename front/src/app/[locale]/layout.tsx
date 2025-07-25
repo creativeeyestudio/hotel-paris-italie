@@ -8,6 +8,7 @@ import { Playfair_Display, Raleway } from "next/font/google";
 
 import "@/styles/globals.css";
 import "@/styles/main.scss";
+import LenisProvider from "@/components/layout/LenisProvider";
 
 interface LayoutParams {
   locale: string;
@@ -36,6 +37,7 @@ export default async function RootLayout({
       className={`${fontBody.className} ${fontTitle.className}`}
     >
       <body>
+        <LenisProvider />
         <DeviceDetectorClient />
         <Header locale={locale} />
         <ReservePopup></ReservePopup>
