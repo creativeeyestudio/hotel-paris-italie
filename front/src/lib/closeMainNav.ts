@@ -3,5 +3,8 @@ export default function closeMainNav(): void {
   if (!mainNav) return;
 
   const isOpen: boolean = mainNav.classList.contains("nav--open");
-  mainNav.classList.toggle("nav--close", isOpen);
+  if (!isOpen) return;
+
+  const toggleNavBtn = document.querySelector('#toggle-nav-btn') as HTMLElement;
+  toggleNavBtn?.click();
 }
