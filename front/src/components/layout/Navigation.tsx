@@ -2,7 +2,6 @@ import { ImageDataProps } from "@/interfaces/image";
 import { MenuItem } from "@/interfaces/navigation";
 import { fetchNavigation } from "@/lib/cms";
 import { Facebook, Instagram } from "lucide-react";
-import { headers } from "next/headers";
 import Image from "next/image";
 import NavLink from "../panels/NavLink";
 
@@ -21,12 +20,10 @@ const Navigation = async ({
   classesList,
   classesItem,
 }: NavigationParams) => {
-  const headersList = await headers();
-  const site = headersList.get("x-website") ?? "default-site";
 
   if (menuId == null) return;
 
-  const navigation = await fetchNavigation(site, menuId, locale);
+  const navigation = await fetchNavigation("default-site", menuId, locale);
 
   if (!navigation) {
     console.error(`Menu non trouvé avec l'ID ${menuId}`);

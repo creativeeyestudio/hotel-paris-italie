@@ -5,6 +5,7 @@ import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
 import toggleReservePopup from "@/lib/toggleReservePopup";
+import closeMainNav from "@/lib/closeMainNav";
 
 interface NavLinkProps {
   isExternal: boolean;
@@ -55,6 +56,7 @@ const HomePageLink = (
       className={className}
       target={isBlank ? "_blank" : undefined}
       rel={isBlank ? "noopener noreferrer" : undefined}
+      onClick={() => closeMainNav()}
     >
       {label}
     </Link>
@@ -74,6 +76,7 @@ const InternalLink = (
       className={className}
       target={isBlank ? "_blank" : undefined}
       rel={isBlank ? "noopener noreferrer" : undefined}
+      onClick={() => closeMainNav()}
     >
       {label}
     </Link>
@@ -92,6 +95,7 @@ const RoomsPageLink = (
       className={className}
       target={isBlank ? "_blank" : undefined}
       rel={isBlank ? "noopener noreferrer" : undefined}
+      onClick={() => closeMainNav()}
     >
       {label}
     </Link>
