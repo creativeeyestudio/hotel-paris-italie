@@ -9,6 +9,7 @@ import TextImage from '@/blocks/TextImage'
 import { convertRichTextToHTML } from '@/utils/convertRichTextToHTML'
 import { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
 import { pagesAccess } from '@/access/pagesAccess'
+import ImageLink from '@/blocks/ImageLink'
 
 /* -------------------------------------------------------------------------- */
 /*  Helpers                                                                   */
@@ -103,7 +104,7 @@ const Pages: CollectionConfig = {
           name: 'layout',
           label: 'Blocks de la page',
           type: 'blocks',
-          blocks: [Text, TextIntro, TextImage, TextDoubleImage, Parallax, HtmlContent],
+          blocks: [Text, TextIntro, TextImage, TextDoubleImage, Parallax, ImageLink, HtmlContent],
           required: false,
           localized: true,
         },

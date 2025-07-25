@@ -375,6 +375,23 @@ export interface Page {
               blockType: 'parallax';
             }
           | {
+              linksList?:
+                | {
+                    type: 'page' | 'post' | 'external' | 'homepage' | 'rooms-page' | 'access-situation' | 'reserve';
+                    label: string;
+                    page?: (string | null) | Page;
+                    post?: (string | null) | Post;
+                    url?: string | null;
+                    image?: (string | null) | Media;
+                    newTab?: boolean | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+              blockName?: string | null;
+              blockType: 'image-link';
+            }
+          | {
               htmlCode: string;
               id?: string | null;
               blockName?: string | null;
@@ -812,6 +829,24 @@ export interface PagesSelect<T extends boolean = true> {
                 | {
                     parallaxImage?: T;
                     parallaxSpeed?: T;
+                    id?: T;
+                    blockName?: T;
+                  };
+              'image-link'?:
+                | T
+                | {
+                    linksList?:
+                      | T
+                      | {
+                          type?: T;
+                          label?: T;
+                          page?: T;
+                          post?: T;
+                          url?: T;
+                          image?: T;
+                          newTab?: T;
+                          id?: T;
+                        };
                     id?: T;
                     blockName?: T;
                   };
