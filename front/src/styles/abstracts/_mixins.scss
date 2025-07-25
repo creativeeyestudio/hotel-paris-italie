@@ -18,31 +18,53 @@
 }
 
 @mixin btnDesign($type) {
+  $transition-duration: 750ms;
+  $transition-delay: 750ms;
+
   @if $type == 'secondary' {
-    @apply py-3 px-0 uppercase relative z-10 transition-[padding] duration-1000;
+    @apply py-3 px-0 uppercase relative z-10;
 
     &::after {
       content: '';
       @apply absolute left-0 bg-black w-[25%] h-[2px] -z-10;
-      transition: width 0.5s ease, height 0.5s ease 0.75s, background-color 0.5s ease 0.75s;
       bottom: -2px;
+      transition:
+        width $transition-duration ease $transition-delay,
+        height $transition-duration ease $transition-delay,
+        background-color $transition-duration ease $transition-delay;
     }
 
     &:hover {
+      @apply no-underline;
       padding-left: 2.5rem;
       padding-right: 2.5rem;
-      @apply no-underline;
+
+      transition:
+        padding-left $transition-duration ease,
+        padding-right $transition-duration ease;
 
       &::after {
         @apply w-full h-full bg-secondary;
-        transition: width 0.5s ease, height 0.5s ease 0.75s, background-color 0.5s ease 0.75s;
+        transition:
+          width $transition-duration ease,
+          height $transition-duration ease $transition-delay,
+          background-color $transition-duration ease $transition-delay;
       }
     }
 
-    &:not(:hover)::after {
-      @apply w-[25%] h-[2px] bg-black;
-      background-color: black;
-      transition: height 0.5s ease, background-color 0.5s ease, width 0.5s ease 0.5s;
+    // État : retour à l'état normal (quand le curseur sort)
+    &:not(:hover) {
+      transition:
+        padding-left $transition-duration ease $transition-delay,
+        padding-right $transition-duration ease $transition-delay;
+
+      &::after {
+        @apply w-[25%] h-[2px] bg-black;
+        transition:
+          height $transition-duration ease,
+          background-color $transition-duration ease,
+          width $transition-duration ease $transition-delay;
+      }
     }
   }
 }

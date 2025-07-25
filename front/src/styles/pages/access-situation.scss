@@ -6,11 +6,11 @@
   }
 
   &__content {
-    @apply my-[1rem];
+    @apply mt-[1rem] mb-[2rem];
   }
 
   &__accordion {
-    @apply mt-[1rem];
+    @apply mt-[3rem];
 
     &__title {
       @apply bg-[#B8A373] py-[1rem] px-[2rem];
@@ -24,5 +24,9 @@
 
   &__image {
     @apply relative aspect-[4/3] md:aspect-[16/9] lg:aspect-[inherit] lg:col-span-5 lg:col-start-8 xl:col-span-6 xl:col-start-7;
+  }
+
+  &__map-link {
+    @extend .btn--secondary;
   }
 }

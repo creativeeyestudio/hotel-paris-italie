@@ -55,8 +55,6 @@ export default async function WebPage(props: { params: PageParams }) {
 
   const heroscreen = page.content?.heroscreen[0]?.heroImage;
 
-  console.log(heroscreen);
-
   return (
     <>
       {heroscreen ? <Heroscreen heroImage={heroscreen} /> : <></>}

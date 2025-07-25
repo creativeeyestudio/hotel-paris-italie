@@ -49,7 +49,7 @@ export default async function AccessSituationPage() {
             <Link
               href={settings?.accessPage.accessMapLink}
               target="_blank"
-              className="access-content__map-link"
+              className="access-content__map-link btn--secondary"
             >
               Voir l&apos;itinéraire
             </Link>
