@@ -52,6 +52,11 @@ export interface TextDoubleImageProps {
   firstBlock: boolean;
 }
 
+export interface ImageLinkProps {
+  blockType?: "image-link";
+  linksList: CTA[];
+}
+
 interface CTA {
   type:
     | "page"
@@ -62,6 +67,7 @@ interface CTA {
     | "homepage";
   label: string;
   isBlank: boolean;
+  image: ImageDataProps;
 }
 
 export interface LinkList {

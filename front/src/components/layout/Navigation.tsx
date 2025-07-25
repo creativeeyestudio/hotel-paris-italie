@@ -20,7 +20,6 @@ const Navigation = async ({
   classesList,
   classesItem,
 }: NavigationParams) => {
-
   if (menuId == null) return;
 
   const navigation = await fetchNavigation("default-site", menuId, locale);

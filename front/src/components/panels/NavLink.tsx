@@ -123,7 +123,11 @@ const AccessPageLink = (
 
 const ReserveLink = (label: string, className?: string) => {
   return (
-    <Button variant={'link'} className={className} onClick={() => toggleReservePopup()}>
+    <Button
+      variant={"link"}
+      className={className}
+      onClick={() => toggleReservePopup()}
+    >
       {label}
     </Button>
   );

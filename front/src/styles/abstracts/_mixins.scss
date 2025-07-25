@@ -21,11 +21,11 @@
   $transition-duration: 750ms;
   $transition-delay: 750ms;
 
-  @if $type == 'secondary' {
+  @if $type == "secondary" {
     @apply py-3 px-0 uppercase relative z-10;
 
     &::after {
-      content: '';
+      content: "";
       @apply absolute left-0 bg-black w-[25%] h-[2px] -z-10;
       bottom: -2px;
       transition:
@@ -108,7 +108,7 @@
   }
 
   &__btn {
-    @include btnDesign('secondary');
+    @include btnDesign("secondary");
   }
 
   .list-bullet {
