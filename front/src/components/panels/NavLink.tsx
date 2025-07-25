@@ -114,6 +114,7 @@ const AccessPageLink = (
       className={className}
       target={isBlank ? "_blank" : undefined}
       rel={isBlank ? "noopener noreferrer" : undefined}
+      onClick={() => closeMainNav()}
     >
       {label}
     </Link>
