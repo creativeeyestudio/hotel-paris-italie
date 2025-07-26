@@ -1,0 +1,18 @@
+.image-link {
+
+    &__item {
+        @apply relative aspect-[4/3];
+    }
+    
+    &__image,
+    &__link {
+        @apply absolute inset-0;
+    }
+
+    &__link {
+        @apply z-10 flex justify-center items-end p-[2rem] text-white;
+        background: rgba(0, 0, 0, 0);
+        background: linear-gradient(180deg,rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .75) 85%);
+        @extend .title3;
+    }
+}

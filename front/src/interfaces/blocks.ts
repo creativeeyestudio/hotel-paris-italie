@@ -1,5 +1,6 @@
 import { DeviceType } from "@/types/DeviceType";
 import { ImageDataProps } from "./image";
+import { Page } from "./page";
 
 // CONTENT
 // --------------------------------
@@ -68,6 +69,7 @@ interface CTA {
   label: string;
   isBlank: boolean;
   image: ImageDataProps;
+  page: Page;
 }
 
 export interface LinkList {

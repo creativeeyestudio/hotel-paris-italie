@@ -22,8 +22,6 @@ const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
   const imgRatio = device.mobile ? 4 / 3 : 16 / 9;
   const TitleTag = firstBlock ? "h1" : "h2";
 
-  console.log(cta);
-
   return apiUrl != undefined ? (
     <section
       className={`text-double-img ${secondaryBg ? "text-double-img--sec-color" : ""}`}
