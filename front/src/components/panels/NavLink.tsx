@@ -58,7 +58,7 @@ const HomePageLink = (
       rel={isBlank ? "noopener noreferrer" : undefined}
       onClick={() => closeMainNav()}
     >
-      {label}
+      <span className={`${className}__label`}>{label}</span>
     </Link>
   );
 };
@@ -78,7 +78,7 @@ const InternalLink = (
       rel={isBlank ? "noopener noreferrer" : undefined}
       onClick={() => closeMainNav()}
     >
-      {label}
+      <span className={`${className}__label`}>{label}</span>
     </Link>
   );
 };
@@ -97,7 +97,7 @@ const RoomsPageLink = (
       rel={isBlank ? "noopener noreferrer" : undefined}
       onClick={() => closeMainNav()}
     >
-      {label}
+      <span className={`${className}__label`}>{label}</span>
     </Link>
   );
 };
@@ -116,15 +116,19 @@ const AccessPageLink = (
       rel={isBlank ? "noopener noreferrer" : undefined}
       onClick={() => closeMainNav()}
     >
-      {label}
+      <span className={`${className}__label`}>{label}</span>
     </Link>
   );
 };
 
 const ReserveLink = (label: string, className?: string) => {
   return (
-    <Button variant={'link'} className={className} onClick={() => toggleReservePopup()}>
-      {label}
+    <Button
+      variant={"link"}
+      className={className}
+      onClick={() => toggleReservePopup()}
+    >
+      <span className={`${className}__label`}>{label}</span>
     </Button>
   );
 };

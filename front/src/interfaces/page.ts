@@ -1,6 +1,7 @@
 import {
   HeroscreenProps,
   HTMLContentProps,
+  ImageLinkProps,
   ParallaxProps,
   TextDoubleImageProps,
   TextImageProps,
@@ -16,6 +17,7 @@ export type BlockProps =
   | TextDoubleImageProps
   | ParallaxProps
   | HeroscreenProps
+  | ImageLinkProps
   | HTMLContentProps;
 
 export interface Page {

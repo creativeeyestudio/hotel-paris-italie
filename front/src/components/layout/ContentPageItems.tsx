@@ -7,6 +7,7 @@ import TextDoubleImage from "../panels/TextDoubleImage";
 import Parallax from "../panels/Parallax";
 import HtmlContent from "../panels/HtmlContent";
 import { getDeviceDetector } from "@/lib/deviceDetector";
+import ImageLink from "../panels/ImageLink";
 
 interface ContentPageItemsProps {
   blocks: BlockProps[];
@@ -82,6 +83,8 @@ const ContentPageItems: React.FC<ContentPageItemsProps> = async ({
                 key={index}
               />
             );
+          case "image-link":
+            return <ImageLink linksList={block.linksList} key={index} />;
           case "html-content":
             return <HtmlContent content={block.content} key={index} />;
           default:

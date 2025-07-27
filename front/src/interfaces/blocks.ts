@@ -1,5 +1,6 @@
 import { DeviceType } from "@/types/DeviceType";
 import { ImageDataProps } from "./image";
+import { Page } from "./page";
 
 // CONTENT
 // --------------------------------
@@ -52,6 +53,11 @@ export interface TextDoubleImageProps {
   firstBlock: boolean;
 }
 
+export interface ImageLinkProps {
+  blockType?: "image-link";
+  linksList: CTA[];
+}
+
 interface CTA {
   type:
     | "page"
@@ -62,6 +68,8 @@ interface CTA {
     | "homepage";
   label: string;
   isBlank: boolean;
+  image: ImageDataProps;
+  page: Page;
 }
 
 export interface LinkList {

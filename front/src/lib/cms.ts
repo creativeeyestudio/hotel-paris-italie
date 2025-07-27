@@ -40,7 +40,7 @@ export async function fetchHomePage(site: string, locale: string) {
   if (!settings) return null;
 
   const res = await fetch(
-    `${CMS_URL}/api/pages/${settings.identityGroup?.homepage.id}?depth=9&locale=${locale}`,
+    `${CMS_URL}/api/pages/${settings.identityGroup?.homepage.id}?depth=2&locale=${locale}`,
     {
       headers: { "x-website": site },
       next: { revalidate: 0 },
@@ -81,19 +81,25 @@ export async function fetchPage(
    Page Chambres
 -------------------------------------------------- */
 /**
- * @param site 
- * @param locale 
- * @returns 
+ * @param site
+ * @param locale
+ * @returns
  */
-export async function fetchRoomPage(site: string, locale: string): Promise<RoomPageProps | null> {
-  const res = await fetch(`${CMS_URL}/api/globals/roomPage?depth=2&draft=false&locale=${locale}`, {
-    headers: { "x-website": site },
-    next: { revalidate: 0 },
-    cache: "no-store",
-  })
+export async function fetchRoomPage(
+  site: string,
+  locale: string,
+): Promise<RoomPageProps | null> {
+  const res = await fetch(
+    `${CMS_URL}/api/globals/roomPage?depth=2&draft=false&locale=${locale}`,
+    {
+      headers: { "x-website": site },
+      next: { revalidate: 0 },
+      cache: "no-store",
+    },
+  );
 
   if (!res.ok) return null;
-  
+
   return res.json();
 }
 

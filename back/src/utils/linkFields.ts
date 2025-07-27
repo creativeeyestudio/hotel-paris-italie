@@ -1,6 +1,6 @@
 import { Field } from "payload";
 
-const LinkFields = (noImage = false): Field[] => [
+const LinkFields = (noImage = false, requiredImage = false): Field[] => [
   {
     type: 'row',
     fields: [
@@ -63,7 +63,7 @@ const LinkFields = (noImage = false): Field[] => [
     label: 'Image',
     type: 'relationship',
     relationTo: 'media',
-    required: false,
+    required: requiredImage,
     admin: {
         condition: () => !noImage
     }
