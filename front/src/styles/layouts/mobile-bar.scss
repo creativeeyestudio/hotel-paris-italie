@@ -1,7 +1,7 @@
 @import "../abstracts/mixins";
 
 .mobile-bar {
-  @apply fixed bottom-0 left-0 z-10 w-full flex bg-primary text-white divide-x border-t border-white;
+  @apply fixed bottom-0 left-0 z-30 w-full flex bg-primary text-white divide-x border-t border-white;
   height: $mobile-bar-ht;
 
   &__call-btn,
