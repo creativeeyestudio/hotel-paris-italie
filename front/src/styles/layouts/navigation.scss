@@ -63,5 +63,9 @@
     &__list {
       @apply grid gap-[.5rem] lg:grid-cols-2;
     }
+
+    &__link {
+      @include FooterLinkAnim();
+    }
   }
 }

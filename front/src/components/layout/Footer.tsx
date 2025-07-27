@@ -37,9 +37,11 @@ const Footer: React.FC<FooterProps> = async ({ locale }) => {
               {settings?.contactDetails?.city}
             </p>
             <p>
-              <a href={`tel:${telLink()}`}>{settings.contactDetails?.phone}</a>
+              <a href={`tel:${telLink()}`} className="footer__link">
+                {settings.contactDetails?.phone}
+              </a>
               <br />
-              <a href={`mailto:${settings.contactDetails?.email}`}>
+              <a href={`mailto:${settings.contactDetails?.email}`} className="footer__link">
                 {settings.contactDetails?.email}
               </a>
             </p>
@@ -79,12 +81,12 @@ const Footer: React.FC<FooterProps> = async ({ locale }) => {
       <div className="footer__legal-nav">
         <p>
           <span className="footer__legal-links">
-            <Link href={""}>Mentions légales</Link>
-            <Link href={""}>Confidentialité</Link>
-            <Link href={""}>CGV</Link>
-            <span>Cookies</span>
+            <Link href={""} className="footer__link">Mentions légales</Link>
+            <Link href={""} className="footer__link">Confidentialité</Link>
+            <Link href={""} className="footer__link">CGV</Link>
+            <span className="footer__link">Cookies</span>
           </span>
-          <span>Conception et développement : Com&apos; A Votre Image</span>
+          <span>Conception et développement : <a href="" className="footer__link">Com&apos; A Votre Image</a></span>
         </p>
       </div>
     </footer>

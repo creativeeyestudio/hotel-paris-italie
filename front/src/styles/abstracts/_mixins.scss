@@ -133,3 +133,13 @@
     }
   }
 }
+
+@mixin FooterLinkAnim() {
+  @media screen and (min-width: 1280px) {
+      @apply duration-1000;
+
+      &:hover {
+        @apply opacity-50;
+      }
+    }
+}

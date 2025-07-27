@@ -49,7 +49,7 @@ export const CurtainReveal = ({
     },
     reveal: {
       x: direction === "left" || direction === "right" ? directionValue : 0,
-      y: (direction === "top" || direction === "bottom") ? directionValue : 0,
+      y: direction === "top" || direction === "bottom" ? directionValue : 0,
       transition: {
         duration: duration,
         delay: delay,

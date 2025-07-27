@@ -22,9 +22,8 @@ const TextIntro: React.FC<TextIntroProps> = ({
             ></div>
           ) : (
             <></>
-          )}  
+          )}
         </CurtainReveal>
-        
       </div>
     </section>
   );
