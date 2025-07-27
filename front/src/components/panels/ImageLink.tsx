@@ -6,12 +6,12 @@ const ImageLink: React.FC<ImageLinkProps> = ({ linksList }) => {
   return (
     <section className="image-link">
       {linksList.map((link, index) => {
-        // Extraction ici
         const type = link?.type;
         const label = link?.label;
         const isBlank = link?.isBlank;
         const imageUrl = link?.image?.url;
         const imageAlt = link?.image?.alt ?? "";
+        const pageLink = link?.page;
 
         return (
           <div className="image-link__item" key={index}>
@@ -20,7 +20,7 @@ const ImageLink: React.FC<ImageLinkProps> = ({ linksList }) => {
               linkType={type}
               label={label}
               isBlank={isBlank}
-              link={link.page}
+              link={pageLink}
               className="image-link__link"
             />
             <figure className="image-link__image">
@@ -36,6 +36,5 @@ const ImageLink: React.FC<ImageLinkProps> = ({ linksList }) => {
     </section>
   );
 };
-
 
 export default ImageLink;
