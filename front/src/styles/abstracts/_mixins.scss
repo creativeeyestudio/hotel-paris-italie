@@ -100,11 +100,7 @@
   }
 
   &__list-items {
-    @apply flex flex-col gap-1 lg:flex-row lg:flex-wrap lg:justify-between lg:gap-3;
-  }
-
-  &__list-item {
-    @apply lg:w-[49%];
+    @apply flex flex-col gap-1 md:grid md:grid-cols-2 md:gap-3;
   }
 
   &__btn {
@@ -136,10 +132,10 @@
 
 @mixin FooterLinkAnim() {
   @media screen and (min-width: 1280px) {
-      @apply duration-1000;
+    @apply duration-1000;
 
-      &:hover {
-        @apply opacity-50;
-      }
+    &:hover {
+      @apply opacity-50;
     }
+  }
 }

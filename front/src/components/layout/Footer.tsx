@@ -41,7 +41,10 @@ const Footer: React.FC<FooterProps> = async ({ locale }) => {
                 {settings.contactDetails?.phone}
               </a>
               <br />
-              <a href={`mailto:${settings.contactDetails?.email}`} className="footer__link">
+              <a
+                href={`mailto:${settings.contactDetails?.email}`}
+                className="footer__link"
+              >
                 {settings.contactDetails?.email}
               </a>
             </p>
@@ -81,12 +84,23 @@ const Footer: React.FC<FooterProps> = async ({ locale }) => {
       <div className="footer__legal-nav">
         <p>
           <span className="footer__legal-links">
-            <Link href={""} className="footer__link">Mentions légales</Link>
-            <Link href={""} className="footer__link">Confidentialité</Link>
-            <Link href={""} className="footer__link">CGV</Link>
+            <Link href={""} className="footer__link">
+              Mentions légales
+            </Link>
+            <Link href={""} className="footer__link">
+              Confidentialité
+            </Link>
+            <Link href={""} className="footer__link">
+              CGV
+            </Link>
             <span className="footer__link">Cookies</span>
           </span>
-          <span>Conception et développement : <a href="" className="footer__link">Com&apos; A Votre Image</a></span>
+          <span>
+            Conception et développement :{" "}
+            <a href="" className="footer__link">
+              Com&apos; A Votre Image
+            </a>
+          </span>
         </p>
       </div>
     </footer>
