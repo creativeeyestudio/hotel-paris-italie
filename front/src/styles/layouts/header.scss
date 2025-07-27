@@ -3,7 +3,13 @@
   height: $header-ht--m;
 
   &__nav {
-    @apply h-full flex items-center gap-[1.875rem];
+    @apply h-full flex items-center gap-[1.875rem] duration-1000;
+
+    @media screen and (min-width: 1280px) {
+      &:hover {
+        letter-spacing: 0.2rem;
+      }
+    }
   }
 
   &__logo {

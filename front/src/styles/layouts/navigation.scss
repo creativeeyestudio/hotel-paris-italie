@@ -28,12 +28,28 @@
     }
 
     &__item {
-      @apply relative lg:row-span-full xl:text-3xl;
+      @apply relative overflow-hidden lg:row-span-full xl:text-3xl;
       @extend .title3;
+
+      @media screen and (min-width: 1280px) {
+        &:hover {
+          .nav__primary__image {
+            img {
+              transform: scale(1.2);
+            }
+          }
+        }
+      }
     }
 
     &__link {
       @apply z-20 absolute inset-0 flex justify-center items-center text-white bg-[rgba(0,0,0,0.7)];
+    }
+
+    &__image {
+      img {
+        @apply duration-1000;
+      }
     }
   }
 
@@ -47,11 +63,11 @@
     }
 
     &__item {
-      @apply py-[1rem] px-[2rem] lg:row-span-full lg:text-center lg:px-0;
+      @apply py-[1rem] px-[2rem] lg:row-span-full lg:text-center lg:px-0 xl:relative;
     }
 
     &__link {
-      @apply lg:h-full lg:flex lg:justify-center lg:items-center;
+      @apply lg:h-full lg:flex lg:justify-center lg:items-center xl:absolute xl:inset-0 xl:hover:bg-black/50 xl:duration-1000;
     }
 
     &__social-list {
@@ -62,6 +78,10 @@
   &__footer {
     &__list {
       @apply grid gap-[.5rem] lg:grid-cols-2;
+    }
+
+    &__link {
+      @include FooterLinkAnim();
     }
   }
 }

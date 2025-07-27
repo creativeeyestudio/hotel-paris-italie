@@ -10,6 +10,11 @@
     @apply my-[2rem] lg:my-[2.8935vw];
   }
 
+  &__link {
+    @apply cursor-pointer;
+    @include FooterLinkAnim();
+  }
+
   &__site-nav {
     @apply grid md:grid-cols-12 gap-y-[2rem] md:gap-x-[2rem];
   }
