@@ -44,10 +44,11 @@ const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
             <div className="text-double-img__btn-list">
               {cta?.map((btn, index) => (
                 <NavLink
-                  isExternal={false}
+                  isExternal={btn.isBlank}
                   linkType={btn.type}
                   label={btn.label}
                   isBlank={btn.isBlank}
+                  link={btn.page}
                   key={index}
                   className="text-double-img__btn"
                 ></NavLink>

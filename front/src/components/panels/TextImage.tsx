@@ -39,10 +39,11 @@ const TextImage: React.FC<TextImageProps> = ({
             <div className="text-img__btn-list">
               {cta?.map((btn, index) => (
                 <NavLink
-                  isExternal={false}
+                  isExternal={btn.isBlank}
                   linkType={btn.type}
                   label={btn.label}
                   isBlank={btn.isBlank}
+                  link={btn.page}
                   key={index}
                   className="text-img__btn"
                 ></NavLink>
