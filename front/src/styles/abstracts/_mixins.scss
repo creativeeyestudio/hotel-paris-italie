@@ -36,34 +36,39 @@
 
     &:hover {
       @apply no-underline;
-      padding-left: 2.5rem;
-      padding-right: 2.5rem;
-
-      transition:
-        padding-left $transition-duration ease,
-        padding-right $transition-duration ease;
-
-      &::after {
-        @apply w-full h-full bg-secondary;
-        transition:
-          width $transition-duration ease,
-          height $transition-duration ease $transition-delay,
-          background-color $transition-duration ease $transition-delay;
-      }
     }
 
-    // État : retour à l'état normal (quand le curseur sort)
-    &:not(:hover) {
-      transition:
-        padding-left $transition-duration ease $transition-delay,
-        padding-right $transition-duration ease $transition-delay;
+    @media screen and (min-width: 1280px) {
+      &:hover {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
 
-      &::after {
-        @apply w-[25%] h-[2px] bg-black;
         transition:
-          height $transition-duration ease,
-          background-color $transition-duration ease,
-          width $transition-duration ease $transition-delay;
+          padding-left $transition-duration ease,
+          padding-right $transition-duration ease;
+
+        &::after {
+          @apply w-full h-full bg-secondary;
+          transition:
+            width $transition-duration ease,
+            height $transition-duration ease $transition-delay,
+            background-color $transition-duration ease $transition-delay;
+        }
+      }
+
+      // État : retour à l'état normal (quand le curseur sort)
+      &:not(:hover) {
+        transition:
+          padding-left $transition-duration ease $transition-delay,
+          padding-right $transition-duration ease $transition-delay;
+
+        &::after {
+          @apply w-[25%] h-[2px] bg-black;
+          transition:
+            height $transition-duration ease,
+            background-color $transition-duration ease,
+            width $transition-duration ease $transition-delay;
+        }
       }
     }
   }
