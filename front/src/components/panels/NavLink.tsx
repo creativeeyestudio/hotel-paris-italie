@@ -51,7 +51,7 @@ const HomePageLink = (
   className?: string,
 ) => {
   const handleOnClick = useHandleNavClick();
-  const href = `/${locale}`;
+  const href = `/${locale}/`;
   
   return (
     <Link
