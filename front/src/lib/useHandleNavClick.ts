@@ -12,7 +12,11 @@ export function useHandleNavClick() {
     (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
       if (!shouldNavigateTo(href)) {
         e.preventDefault();
-        console.log("Déjà sur cette page");
+        const mainNav = document.querySelector(".nav");
+        if (mainNav?.classList.contains("nav--open")) {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          closeMainNav();
+        }
         return;
       }
 
@@ -25,7 +29,7 @@ export function useHandleNavClick() {
 
       closeMainNav();
     },
-    [shouldNavigateTo]
+    [shouldNavigateTo],
   );
 
   return handleOnClick;

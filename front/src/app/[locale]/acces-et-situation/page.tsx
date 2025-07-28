@@ -9,11 +9,48 @@ import {
 } from "@/components/ui/accordion";
 import { fetchSettings } from "@/lib/cms";
 import Link from "next/link";
+import { PageParams } from "../[...slug]/page";
+import { Metadata } from "next";
+import { SettingsProps } from "@/interfaces/settings";
 
+const metaTitle: Record<string, string> = {
+  fr: "Accès et situation",
+  en: "Access and location",
+  es: "Acceso y ubicación",
+};
+
+const metaDesc: Record<string, string> = {
+  fr: "Accès et situation",
+  en: "Access and location",
+  es: "Acceso y ubicación",
+};
+
+/* --------------------------------------------------
+   SEO dynamique
+-------------------------------------------------- */
+export async function generateMetadata(props: {
+  params: PageParams;
+}): Promise<Metadata> {
+  const { locale } = await props.params;
+  const settings: SettingsProps | null = await fetchSettings();
+  const title = `${metaTitle[locale]} | ${settings?.title}`;
+  const description = metaDesc[locale];
+
+  return {
+    title: title,
+    description: description,
+    generator: "Dreamsite V3",
+    authors: [{ name: "Kévin RIFA", url: "https://creative-eye.fr" }],
+    openGraph: { title, description, url: "/", type: `website` },
+    twitter: { card: "summary_large_image", title, description },
+  };
+}
+
+/* --------------------------------------------------
+   Page
+-------------------------------------------------- */
 export default async function AccessSituationPage() {
   const settings = await fetchSettings();
-
-  console.log(settings);
 
   const canShowMap: boolean =
     settings?.accessPage.accessLat !== undefined &&

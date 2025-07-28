@@ -26,7 +26,7 @@ export async function generateMetadata(props: {
   const fullTitle = `${title ?? page.title}`;
 
   return {
-    title: fullTitle,
+    title: `→ ${fullTitle}`,
     description: description ?? "",
   };
 }
