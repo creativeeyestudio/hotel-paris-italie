@@ -1,13 +1,46 @@
 import Heroscreen from "@/components/panels/Heroscreen";
 import TextImage from "@/components/panels/TextImage";
 import TextIntro from "@/components/panels/TextIntro";
-import { fetchRoomPage } from "@/lib/cms";
+import { SettingsProps } from "@/interfaces/settings";
+import { fetchRoomPage, fetchSettings } from "@/lib/cms";
 import { getDeviceDetector } from "@/lib/deviceDetector";
+import { Metadata } from "next";
 import { headers } from "next/headers";
 
 export type RoomPageParams = Promise<{
   locale: string;
 }>;
+
+const metaTitle: Record<string, string> = {
+  fr: "Nos chambres et suites",
+  en: "Our rooms and suites",
+  es: "Nuestras habitaciones y suites",
+};
+
+const metaDesc: Record<string, string> = {
+  fr: "Nos chambres et suites",
+  en: "Our rooms and suites",
+  es: "Nuestras habitaciones y suites",
+};
+
+/* --------------------------------------------------
+   SEO dynamique
+-------------------------------------------------- */
+export async function generateMetadata(props: { params: RoomPageParams }): Promise<Metadata> {
+  const { locale } = await props.params;
+  const settings: SettingsProps | null = await fetchSettings();
+  const title = `${metaTitle[locale]} | ${settings?.title}`;
+  const description = metaDesc[locale];
+
+  return {
+    title: title,
+    description: description,
+    generator: "Dreamsite V3",
+    authors: [{ name: "Kévin RIFA", url: "https://creative-eye.fr" }],
+    openGraph: { title, description, url: "/", type: `website` },
+    twitter: { card: "summary_large_image", title, description },
+  };
+}
 
 export default async function RoomPage(props: { params: RoomPageParams }) {
   const { locale } = await props.params;

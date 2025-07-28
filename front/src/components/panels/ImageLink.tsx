@@ -16,7 +16,7 @@ const ImageLink: React.FC<ImageLinkProps> = ({ linksList }) => {
         return (
           <div className="image-link__item" key={index}>
             <NavLink
-              isExternal={false}
+              isExternal={isBlank}
               linkType={type}
               label={label}
               isBlank={isBlank}

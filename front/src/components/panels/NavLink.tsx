@@ -52,7 +52,7 @@ const HomePageLink = (
 ) => {
   const handleOnClick = useHandleNavClick();
   const href = `/${locale}/`;
-  
+
   return (
     <Link
       href={href}
