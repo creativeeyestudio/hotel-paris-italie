@@ -122,11 +122,13 @@ const Settings: CollectionConfig = {
           name: 'accessIntro',
           label: 'Texte de présentation',
           type: 'richText',
+          localized: true,
         },
         {
           name: 'accessIntroHtml',
           type: 'code',
           hidden: true,
+          localized: true,
           admin: {
             language: 'html',
           }
@@ -179,13 +181,15 @@ const Settings: CollectionConfig = {
               name: 'accessName',
               label: 'Titre',
               type: 'text',
-              required: true
+              required: true,
+              localized: true,
             },
             {
               name: 'accessContent',
               label: 'Contenu',
               type: 'richText',
               required: true,
+              localized: true,
             },
           ]
         }

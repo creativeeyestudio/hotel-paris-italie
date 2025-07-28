@@ -9,9 +9,12 @@ import {
 } from "@/components/ui/accordion";
 import { fetchSettings } from "@/lib/cms";
 import Link from "next/link";
-import { PageParams } from "../[...slug]/page";
 import { Metadata } from "next";
 import { SettingsProps } from "@/interfaces/settings";
+
+export type AccessPageParams = Promise<{
+  locale: string;
+}>;
 
 const metaTitle: Record<string, string> = {
   fr: "Accès et situation",
@@ -25,12 +28,22 @@ const metaDesc: Record<string, string> = {
   es: "Acceso y ubicación",
 };
 
+const btnMapLabel: Record<string, string> = {
+  fr: "Voir l'itinéraire",
+  en: "See the route",
+  es: "Ver la ruta",
+};
+
+const subTitle: Record<string, string> = {
+  fr: "Nous localiser",
+  en: "To find us",
+  es: "Ubícanos",
+};
+
 /* --------------------------------------------------
    SEO dynamique
 -------------------------------------------------- */
-export async function generateMetadata(props: {
-  params: PageParams;
-}): Promise<Metadata> {
+export async function generateMetadata(props: { params: AccessPageParams }): Promise<Metadata> {
   const { locale } = await props.params;
   const settings: SettingsProps | null = await fetchSettings();
   const title = `${metaTitle[locale]} | ${settings?.title}`;
@@ -49,8 +62,9 @@ export async function generateMetadata(props: {
 /* --------------------------------------------------
    Page
 -------------------------------------------------- */
-export default async function AccessSituationPage() {
-  const settings = await fetchSettings();
+export default async function AccessSituationPage(props: { params: AccessPageParams }) {
+  const { locale } = await props.params;
+  const settings = await fetchSettings(locale);
 
   const canShowMap: boolean =
     settings?.accessPage.accessLat !== undefined &&
@@ -62,7 +76,7 @@ export default async function AccessSituationPage() {
   return (
     <>
       <TextIntro
-        title={"Accès et situation"}
+        title={metaTitle[locale]}
         html={""}
         firstBlock={true}
         className="text-intro--margin"
@@ -70,7 +84,7 @@ export default async function AccessSituationPage() {
 
       <section className="access-content">
         <div className="access-content__text">
-          <h2 className="access-content__title">Nous localiser</h2>
+          <h2 className="access-content__title">{subTitle[locale]}</h2>
           {settings?.accessPage.accessIntroHtml ? (
             <div
               className="access-content__content"
@@ -88,7 +102,7 @@ export default async function AccessSituationPage() {
               target="_blank"
               className="access-content__map-link btn--secondary"
             >
-              Voir l&apos;itinéraire
+              {btnMapLabel[locale]}
             </Link>
           ) : (
             <></>
