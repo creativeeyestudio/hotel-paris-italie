@@ -13,7 +13,7 @@ const Header: React.FC<HeaderProps> = ({ locale }) => {
     <>
       <header className="header">
         <div className="header__nav">
-          <MenuIcon  locale={locale}/>
+          <MenuIcon locale={locale} />
           {/* Logo */}
           <figure className="header__logo">
             <div className="header__logo-container">

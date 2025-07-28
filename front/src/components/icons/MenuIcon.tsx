@@ -5,9 +5,9 @@ import UseAnimations from "react-useanimations";
 import menu2 from "react-useanimations/lib/menu2";
 
 const label: Record<string, [string, string]> = {
-  fr: ['menu', 'fermer'],
-  en: ['menu', 'close'],
-  es: ['menú', 'cerrar'],
+  fr: ["menu", "fermer"],
+  en: ["menu", "close"],
+  es: ["menú", "cerrar"],
 };
 
 const MenuIcon = ({ locale, classes = "", mobile = false }) => {

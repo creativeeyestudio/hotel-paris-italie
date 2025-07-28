@@ -26,7 +26,9 @@ const metaDesc: Record<string, string> = {
 /* --------------------------------------------------
    SEO dynamique
 -------------------------------------------------- */
-export async function generateMetadata(props: { params: RoomPageParams }): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: RoomPageParams;
+}): Promise<Metadata> {
   const { locale } = await props.params;
   const settings: SettingsProps | null = await fetchSettings();
   const title = `${metaTitle[locale]} | ${settings?.title}`;

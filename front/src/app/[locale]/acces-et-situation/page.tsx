@@ -43,7 +43,9 @@ const subTitle: Record<string, string> = {
 /* --------------------------------------------------
    SEO dynamique
 -------------------------------------------------- */
-export async function generateMetadata(props: { params: AccessPageParams }): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: AccessPageParams;
+}): Promise<Metadata> {
   const { locale } = await props.params;
   const settings: SettingsProps | null = await fetchSettings();
   const title = `${metaTitle[locale]} | ${settings?.title}`;
@@ -62,7 +64,9 @@ export async function generateMetadata(props: { params: AccessPageParams }): Pro
 /* --------------------------------------------------
    Page
 -------------------------------------------------- */
-export default async function AccessSituationPage(props: { params: AccessPageParams }) {
+export default async function AccessSituationPage(props: {
+  params: AccessPageParams;
+}) {
   const { locale } = await props.params;
   const settings = await fetchSettings(locale);
 

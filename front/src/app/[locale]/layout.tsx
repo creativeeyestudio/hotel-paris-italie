@@ -46,7 +46,7 @@ export default async function RootLayout({
         <LoaderPage />
         <LoaderSite />
         <Header locale={locale} />
-        <ReservePopup></ReservePopup>
+        <ReservePopup locale={locale} />
         <main>{children}</main>
         <MobileBar locale={locale} />
         <Footer locale={locale} />

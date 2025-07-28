@@ -14,21 +14,25 @@ const CMS_URL = process.env.NEXT_PUBLIC_API_URL!;
 -------------------------------------------------- */
 const cachedSettingsMap: Record<string, SettingsProps> = {};
 
-export async function fetchSettings(locale: string = 'fr'): Promise<SettingsProps | null> {
+export async function fetchSettings(
+  locale: string = "fr",
+): Promise<SettingsProps | null> {
   if (cachedSettingsMap[locale]) return cachedSettingsMap[locale];
 
-  const res = await fetch(`${CMS_URL}/api/settings/${SETTINGS_ID}?depth=2&draft=false&locale=${locale}`, {
-    next: { revalidate: 0 },
-    cache: "no-store",
-  });
+  const res = await fetch(
+    `${CMS_URL}/api/settings/${SETTINGS_ID}?depth=2&draft=false&locale=${locale}`,
+    {
+      next: { revalidate: 0 },
+      cache: "no-store",
+    },
+  );
 
   if (!res.ok) return null;
 
-  const data = await res.json() as SettingsProps;
+  const data = (await res.json()) as SettingsProps;
   cachedSettingsMap[locale] = data;
   return data;
 }
-
 
 /* --------------------------------------------------
    Pages

@@ -10,10 +10,10 @@ interface FooterProps {
 }
 
 const title: Record<string, [string, string, string]> = {
-  fr: ['Accès et contact', 'Navigation', 'Suivez nous'],
-  en: ['Access and contact', 'Navigation', 'Follow us'],
-  es: ['Acceso y contacto', 'Navigaciones', 'Síganos'],
-}
+  fr: ["Accès et contact", "Navigation", "Suivez nous"],
+  en: ["Access and contact", "Navigation", "Follow us"],
+  es: ["Acceso y contacto", "Navigaciones", "Síganos"],
+};
 
 const Footer: React.FC<FooterProps> = async ({ locale }) => {
   const settings: SettingsProps | null = await fetchSettings();
