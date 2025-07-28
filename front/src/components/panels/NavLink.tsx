@@ -26,6 +26,20 @@ type LinkType =
   | "reserve"
   | "homepage";
 
+function ShowLoaderPage() {
+  const loaderPage = document.querySelector(".loader--page");
+  if (loaderPage?.classList.contains("loader--close")) {
+    loaderPage.classList.replace("loader--close", "loader--open");
+  } else {
+    loaderPage?.classList.add("loader--open");
+  }
+}
+
+function handleOnClick() {
+  ShowLoaderPage();
+  closeMainNav();
+}
+
 const ExternalLink: React.FC<{
   href: string;
   label: string;
@@ -56,7 +70,7 @@ const HomePageLink = (
       className={className}
       target={isBlank ? "_blank" : undefined}
       rel={isBlank ? "noopener noreferrer" : undefined}
-      onClick={() => closeMainNav()}
+      onClick={() => handleOnClick()}
     >
       <span className={`${className}__label`}>{label}</span>
     </Link>
@@ -76,7 +90,7 @@ const InternalLink = (
       className={className}
       target={isBlank ? "_blank" : undefined}
       rel={isBlank ? "noopener noreferrer" : undefined}
-      onClick={() => closeMainNav()}
+      onClick={() => handleOnClick()}
     >
       <span className={`${className}__label`}>{label}</span>
     </Link>
@@ -95,7 +109,7 @@ const RoomsPageLink = (
       className={className}
       target={isBlank ? "_blank" : undefined}
       rel={isBlank ? "noopener noreferrer" : undefined}
-      onClick={() => closeMainNav()}
+      onClick={() => handleOnClick()}
     >
       <span className={`${className}__label`}>{label}</span>
     </Link>
@@ -114,7 +128,7 @@ const AccessPageLink = (
       className={className}
       target={isBlank ? "_blank" : undefined}
       rel={isBlank ? "noopener noreferrer" : undefined}
-      onClick={() => closeMainNav()}
+      onClick={() => handleOnClick()}
     >
       <span className={`${className}__label`}>{label}</span>
     </Link>

@@ -1,6 +1,15 @@
 .loader {
+  &--site,
+  &--page {
+    @apply fixed inset-0 z-[9999] flex justify-center items-center duration-1000;
+  }
+
   &--site {
-    @apply fixed inset-0 z-[9999] bg-primary flex justify-center items-center duration-1000;
+    @apply bg-primary;
+  }
+
+  &--page {
+    @apply bg-[#FAF8F3];
   }
 
   &--open {
@@ -16,7 +25,7 @@
     animation: expandWidth 1s ease-out forwards;
 
     @media screen and (min-width: 1280px) {
-        animation: expandWidth 4s ease-out forwards;
+      animation: expandWidth 4s ease-out forwards;
     }
   }
 
