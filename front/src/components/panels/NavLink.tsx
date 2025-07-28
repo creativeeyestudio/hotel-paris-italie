@@ -5,7 +5,7 @@ import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
 import toggleReservePopup from "@/lib/toggleReservePopup";
-import closeMainNav from "@/lib/closeMainNav";
+import { useHandleNavClick } from "@/lib/useHandleNavClick";
 
 interface NavLinkProps {
   isExternal: boolean;
@@ -25,20 +25,6 @@ type LinkType =
   | "rooms-page"
   | "reserve"
   | "homepage";
-
-function ShowLoaderPage() {
-  const loaderPage = document.querySelector(".loader--page");
-  if (loaderPage?.classList.contains("loader--close")) {
-    loaderPage.classList.replace("loader--close", "loader--open");
-  } else {
-    loaderPage?.classList.add("loader--open");
-  }
-}
-
-function handleOnClick() {
-  ShowLoaderPage();
-  closeMainNav();
-}
 
 const ExternalLink: React.FC<{
   href: string;
@@ -64,13 +50,16 @@ const HomePageLink = (
   locale: string,
   className?: string,
 ) => {
+  const handleOnClick = useHandleNavClick();
+  const href = `/${locale}`;
+  
   return (
     <Link
-      href={`/${locale}`}
+      href={href}
       className={className}
       target={isBlank ? "_blank" : undefined}
       rel={isBlank ? "noopener noreferrer" : undefined}
-      onClick={() => handleOnClick()}
+      onClick={(e) => handleOnClick(e, href)}
     >
       <span className={`${className}__label`}>{label}</span>
     </Link>
@@ -84,13 +73,16 @@ const InternalLink = (
   locale: string,
   className?: string,
 ) => {
+  const handleOnClick = useHandleNavClick();
+  const href = `/${locale}/${link.slug}`;
+
   return (
     <Link
-      href={`/${locale}/${link.slug}`}
+      href={href}
       className={className}
       target={isBlank ? "_blank" : undefined}
       rel={isBlank ? "noopener noreferrer" : undefined}
-      onClick={() => handleOnClick()}
+      onClick={(e) => handleOnClick(e, href)}
     >
       <span className={`${className}__label`}>{label}</span>
     </Link>
@@ -103,13 +95,16 @@ const RoomsPageLink = (
   isBlank: boolean,
   className?: string,
 ) => {
+  const handleOnClick = useHandleNavClick();
+  const href = `/${locale}/nos-chambres`;
+
   return (
     <Link
-      href={`/${locale}/nos-chambres`}
+      href={href}
       className={className}
       target={isBlank ? "_blank" : undefined}
       rel={isBlank ? "noopener noreferrer" : undefined}
-      onClick={() => handleOnClick()}
+      onClick={(e) => handleOnClick(e, href)}
     >
       <span className={`${className}__label`}>{label}</span>
     </Link>
@@ -122,13 +117,16 @@ const AccessPageLink = (
   isBlank: boolean,
   className?: string,
 ) => {
+  const handleOnClick = useHandleNavClick();
+  const href = `/${locale}/acces-et-situation`;
+
   return (
     <Link
-      href={`/${locale}/acces-et-situation`}
+      href={href}
       className={className}
       target={isBlank ? "_blank" : undefined}
       rel={isBlank ? "noopener noreferrer" : undefined}
-      onClick={() => handleOnClick()}
+      onClick={(e) => handleOnClick(e, href)}
     >
       <span className={`${className}__label`}>{label}</span>
     </Link>
