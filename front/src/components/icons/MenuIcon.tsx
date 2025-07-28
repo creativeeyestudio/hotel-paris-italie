@@ -28,7 +28,7 @@ const MenuIcon = ({ classes = "", mobile = false }) => {
 
   return (
     <UseAnimations
-      id="toggle-nav-btn"
+      id={mobile ? "toggle-nav-btn-mobile" : "toggle-nav-btn"}
       animation={menu2}
       size={36}
       strokeColor={isLargeScreen || mobile ? "white" : "black"}

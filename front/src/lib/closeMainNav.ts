@@ -6,5 +6,9 @@ export default function closeMainNav(): void {
   if (!isOpen) return;
 
   const toggleNavBtn = document.querySelector("#toggle-nav-btn") as HTMLElement;
-  toggleNavBtn?.click();
+  const toggleNavBtnMobile = document.querySelector(
+    "#toggle-nav-btn-mobile",
+  ) as HTMLElement;
+
+  (window.innerWidth < 768 ? toggleNavBtnMobile : toggleNavBtn)?.click();
 }
