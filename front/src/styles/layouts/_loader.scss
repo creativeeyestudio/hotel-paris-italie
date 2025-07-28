@@ -1,0 +1,47 @@
+.loader {
+  &--site {
+    @apply fixed inset-0 z-[9999] bg-primary flex justify-center items-center duration-1000;
+  }
+
+  &--open {
+    @apply translate-x-0 opacity-100;
+  }
+
+  &--close {
+    @apply -translate-x-full opacity-0;
+  }
+
+  &__block {
+    @apply aspect-square bg-white relative flex justify-center items-center max-w-[400px];
+    animation: expandWidth 1s ease-out forwards;
+
+    @media screen and (min-width: 1280px) {
+        animation: expandWidth 4s ease-out forwards;
+    }
+  }
+
+  &__logo {
+    @apply w-10/12 aspect-square relative opacity-0 md:max-w-full;
+    animation: showIcon 1s ease-out 1s forwards;
+  }
+}
+
+@keyframes expandWidth {
+  from {
+    @apply w-0;
+  }
+  to {
+    @apply w-3/4;
+  }
+}
+
+@keyframes showIcon {
+  from {
+    opacity: 0;
+    transform: translateY(5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

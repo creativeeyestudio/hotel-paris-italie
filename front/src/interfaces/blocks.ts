@@ -68,8 +68,8 @@ interface CTA {
     | "homepage";
   label: string;
   isBlank: boolean;
-  image: ImageDataProps;
-  page: Page;
+  image?: ImageDataProps;
+  page?: Page;
 }
 
 export interface LinkList {

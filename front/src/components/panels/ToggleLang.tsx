@@ -53,7 +53,7 @@ const ToggleLang: React.FC<ToggleLangProps> = ({ currentLocale }) => {
 
       <Button
         variant={"link"}
-        size={'sm'}
+        size={"sm"}
         className="hidden md:block lg:text-white px-0"
         onClick={() => toggleReservePopup()}
       >

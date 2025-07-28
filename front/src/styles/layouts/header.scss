@@ -1,5 +1,5 @@
 .header {
-  @apply w-full px-[1.25rem] flex justify-between items-center sticky top-0 z-[9999] bg-white md:h-[6rem] md:px-[1.875rem] lg:fixed lg:w-full lg:px-[5.787vw] lg:bg-primary lg:text-white;
+  @apply w-full px-[1.25rem] flex justify-between items-center sticky top-0 z-[9998] bg-white md:h-[6rem] md:px-[1.875rem] lg:fixed lg:w-full lg:px-[5.787vw] lg:bg-primary lg:text-white;
   height: $header-ht--m;
 
   &__nav {
