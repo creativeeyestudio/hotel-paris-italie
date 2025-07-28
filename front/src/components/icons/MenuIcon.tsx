@@ -4,7 +4,13 @@ import { useEffect, useState } from "react";
 import UseAnimations from "react-useanimations";
 import menu2 from "react-useanimations/lib/menu2";
 
-const MenuIcon = ({ classes = "", mobile = false }) => {
+const label: Record<string, [string, string]> = {
+  fr: ['menu', 'fermer'],
+  en: ['menu', 'close'],
+  es: ['menú', 'cerrar'],
+};
+
+const MenuIcon = ({ locale, classes = "", mobile = false }) => {
   const [isActive, setIsActive] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
 
@@ -51,7 +57,7 @@ const MenuIcon = ({ classes = "", mobile = false }) => {
                                 ${isActive ? "translate-x-full opacity-0 absolute" : "translate-x-0 opacity-100"}
                             `}
             >
-              menu
+              {label[locale]?.[0]}
             </span>
             <span
               className={`
@@ -59,7 +65,7 @@ const MenuIcon = ({ classes = "", mobile = false }) => {
                                 ${isActive ? "translate-x-0 opacity-100" : "translate-x-full opacity-0 absolute"}
                             `}
             >
-              fermer
+              {label[locale]?.[1]}
             </span>
           </span>
         </button>
