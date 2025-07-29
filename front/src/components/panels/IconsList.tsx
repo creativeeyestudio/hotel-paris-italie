@@ -13,11 +13,7 @@ interface IconsListProps {
 
 const IconsList: React.FC<IconsListProps> = ({ serviceList }) => {
   
-    console.info(serviceList)
-  
-    if (!Array.isArray(serviceList) || serviceList.length === 0) {
-        return null; // ou un fallback UI
-    }
+    if (!Array.isArray(serviceList) || serviceList.length === 0) return null;
     
     return (
         <section className="icons-list">
