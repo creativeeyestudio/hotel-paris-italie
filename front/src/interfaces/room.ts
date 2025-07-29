@@ -7,6 +7,22 @@ export interface RoomPageProps {
     introTitle: string;
     introContentHtml: string;
   };
+  services: {
+    serviceList: [
+      {
+        serviceLabel: string;
+        serviceIcon:
+          | "bathroom"
+          | "air"
+          | "wifi"
+          | "phone"
+          | "safe"
+          | "minibar"
+          | "television"
+          | "courtesyTray";
+      },
+    ];
+  };
   rooms: {
     roomsList: RoomItemProps[];
   };

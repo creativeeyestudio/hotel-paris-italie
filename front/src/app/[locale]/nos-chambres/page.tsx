@@ -1,4 +1,5 @@
 import Heroscreen from "@/components/panels/Heroscreen";
+import IconsList from "@/components/panels/IconsList";
 import TextImage from "@/components/panels/TextImage";
 import TextIntro from "@/components/panels/TextIntro";
 import { SettingsProps } from "@/interfaces/settings";
@@ -56,17 +57,19 @@ export default async function RoomPage(props: { params: RoomPageParams }) {
   const heroscreen = roomPageApi.intro.heroscreen[0]?.heroImage;
   const introTitle = roomPageApi.intro.introTitle;
   const introContent = roomPageApi.intro.introContentHtml;
+  const services = roomPageApi.services.serviceList;
   const roomsList = roomPageApi.rooms.roomsList;
 
   const btnReserveLabel: Record<string, string> = {
-    fr: 'Réserver une chambre',
-    en: 'Book a room',
-    es: 'Reservar una habitación',
-  }
+    fr: "Réserver une chambre",
+    en: "Book a room",
+    es: "Reservar una habitación",
+  };
 
   return (
     <>
       {heroscreen ? <Heroscreen heroImage={heroscreen} /> : <></>}
+
       {introTitle ? (
         <TextIntro
           title={introTitle}
@@ -76,6 +79,8 @@ export default async function RoomPage(props: { params: RoomPageParams }) {
       ) : (
         <></>
       )}
+
+      <IconsList serviceList={services} />
 
       {roomsList.map((room, index) => (
         <TextImage

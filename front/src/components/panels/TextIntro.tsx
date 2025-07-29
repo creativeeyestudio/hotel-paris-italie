@@ -5,7 +5,7 @@ import { CurtainReveal } from "../anims/CurtainReveal";
 const TextIntro: React.FC<TextIntroProps> = ({
   title,
   html,
-  className,
+  className = "",
   firstBlock,
 }) => {
   const TitleTag = firstBlock ? "h1" : "h2";
