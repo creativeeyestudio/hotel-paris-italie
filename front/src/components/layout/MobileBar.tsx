@@ -27,7 +27,7 @@ const MobileBar: React.FC<MobileBarProps> = () => {
     <div className="mobile-bar">
       <MenuIcon mobile classes="mobile-bar__nav-btn" />
       <button className="mobile-bar__call-btn">
-        <Icon type={"phone"} color="white" size={24} />
+        <Icon type={"phone"} color="white" size={"24"} />
       </button>
       <button
         className="mobile-bar__reserve-btn"

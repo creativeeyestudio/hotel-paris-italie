@@ -1,7 +1,7 @@
 .icons-list {
-    @apply px-[2rem] pt-[2rem] grid grid-cols-12 gap-y-5;
+    @apply px-[2rem] pt-[2rem] grid grid-cols-12 gap-y-5 lg:px-[5.787vw] lg:py-[8.681vw] xl:px-[6.94vw] xl:gap-y-[2.5rem];
 
     &__item {
-        @apply col-span-6 flex flex-col justify-center items-center gap-y-2;
+        @apply col-span-6 flex flex-col justify-center items-center gap-y-2 md:col-span-3;
     }
 }
