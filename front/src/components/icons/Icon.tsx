@@ -23,7 +23,7 @@ const iconMap = {
 
 const Icon: React.FC<IconProps> = ({
   type,
-  size = 48,
+  size = '48',
   color = "black",
   className = "",
 }) => {
