@@ -1,3 +1,4 @@
+import { IconProps } from "@/interfaces/icons";
 import {
   AirVent,
   Bath,
@@ -8,20 +9,6 @@ import {
   TvMinimal,
   Wifi,
 } from "lucide-react";
-
-interface IconProps {
-  type:
-    | "bathroom"
-    | "air"
-    | "wifi"
-    | "phone"
-    | "safe"
-    | "minibar"
-    | "television"
-    | "courtesyTray";
-  size?: number;
-  color?: string;
-}
 
 const iconMap = {
   bathroom: Bath,
@@ -34,10 +21,20 @@ const iconMap = {
   courtesyTray: HandPlatter,
 };
 
-const Icon: React.FC<IconProps> = ({ type, size = 48, color = "black" }) => {
+const Icon: React.FC<IconProps> = ({
+  type,
+  size = 48,
+  color = "black",
+  className = "",
+}) => {
   const LucideIcon = iconMap[type];
   return LucideIcon ? (
-    <LucideIcon size={size} color={color} absoluteStrokeWidth />
+    <LucideIcon
+      size={size}
+      color={color}
+      className={className}
+      absoluteStrokeWidth
+    />
   ) : null;
 };
 
