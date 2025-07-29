@@ -1,6 +1,5 @@
 export interface LeafletMapProps {
-  lat?: number;
-  long?: number;
+  location?: [number, number];
   adress?: string;
   postCode?: string;
   city?: string;

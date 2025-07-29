@@ -23,6 +23,7 @@ export interface SettingsProps {
   accessPage: {
     accessImage?: ImageDataProps;
     accessList?: AccessListItem[];
+    accessLocation?: [number, number];
     accessLong?: number;
     accessLat?: number;
     accessMapLink?: string;
