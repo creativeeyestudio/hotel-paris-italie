@@ -59,10 +59,10 @@ export default async function RoomPage(props: { params: RoomPageParams }) {
   const roomsList = roomPageApi.rooms.roomsList;
 
   const btnReserveLabel: Record<string, string> = {
-    fr: 'Réserver une chambre',
-    en: 'Book a room',
-    es: 'Reservar una habitación',
-  }
+    fr: "Réserver une chambre",
+    en: "Book a room",
+    es: "Reservar una habitación",
+  };
 
   return (
     <>

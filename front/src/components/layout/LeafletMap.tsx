@@ -13,9 +13,10 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
   city,
   className,
 }) => {
-
   const position: [number, number] = [location?.[0] ?? 0, location?.[1] ?? 0];
-  const icon = new L.Icon({ iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png' });
+  const icon = new L.Icon({
+    iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+  });
 
   return (
     <MapContainer
@@ -30,7 +31,8 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
       />
       <Marker position={position} icon={icon}>
         <Popup>
-          {adress}<br />
+          {adress}
+          <br />
           {postCode} {city}
         </Popup>
       </Marker>
