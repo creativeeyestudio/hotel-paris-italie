@@ -27,18 +27,21 @@ const RoomPage: GlobalConfig = {
                     name: 'introTitle',
                     label: 'Titre',
                     type: 'text',
-                    required: true
+                    required: true,
+                    localized: true,
                 },
                 {
                     name: 'introContent',
                     label: 'Contenu',
                     type: 'richText',
-                    required: true
+                    required: true,
+                    localized: true,
                 },
                 {
                     name: 'introContentHtml',
                     type: 'code',
                     hidden: true,
+                    localized: true,
                     admin: {
                         language: 'html'
                     }
@@ -109,6 +112,7 @@ const RoomPage: GlobalConfig = {
                                     label: 'Nom du service',
                                     type: 'text',
                                     required: true,
+                                    localized: true,
                                     admin: {
                                         width: '75%'
                                     },
@@ -133,12 +137,15 @@ const RoomPage: GlobalConfig = {
                             name: 'roomName',
                             label: 'Nom de la chambre',
                             type: 'text',
+                            required: true,
+                            localized: true,
                         },
                         {
                             name: 'roomDescHtml',
                             label: false,
                             type: 'code',
                             hidden: true,
+                            localized: true,
                             admin: {
                                 language: 'html'
                             }
@@ -147,6 +154,8 @@ const RoomPage: GlobalConfig = {
                             name: 'roomDesc',
                             label: 'Description de la chambre',
                             type: 'richText',
+                            required: true,
+                            localized: true,
                         },
                         {
                             name: 'roomImage',
