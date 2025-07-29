@@ -11,10 +11,12 @@ import ImageLink from "../panels/ImageLink";
 
 interface ContentPageItemsProps {
   blocks: BlockProps[];
+  locale: string
 }
 
 const ContentPageItems: React.FC<ContentPageItemsProps> = async ({
   blocks,
+  locale,
 }) => {
   if (!blocks || blocks.length === 0) return null;
 
@@ -84,7 +86,7 @@ const ContentPageItems: React.FC<ContentPageItemsProps> = async ({
               />
             );
           case "image-link":
-            return <ImageLink linksList={block.linksList} key={index} />;
+            return <ImageLink linksList={block.linksList} key={index} locale={locale} />;
           case "html-content":
             return <HtmlContent content={block.content} key={index} />;
           default:

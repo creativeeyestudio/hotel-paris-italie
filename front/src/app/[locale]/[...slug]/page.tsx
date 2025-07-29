@@ -60,7 +60,7 @@ export default async function WebPage(props: { params: PageParams }) {
   return (
     <>
       {heroscreen ? <Heroscreen heroImage={heroscreen} /> : <></>}
-      <ContentPageItems blocks={page.content.layout} />
+      <ContentPageItems blocks={page.content.layout} locale={locale} />
     </>
   );
 }

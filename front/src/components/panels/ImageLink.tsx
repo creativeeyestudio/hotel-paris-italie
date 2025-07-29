@@ -2,7 +2,7 @@ import Image from "next/image";
 import { ImageLinkProps } from "@/interfaces/blocks";
 import NavLink from "./NavLink";
 
-const ImageLink: React.FC<ImageLinkProps> = ({ linksList }) => {
+const ImageLink: React.FC<ImageLinkProps> = ({ linksList, locale }) => {
   return (
     <section className="image-link">
       {linksList.map((link, index) => {
@@ -22,6 +22,7 @@ const ImageLink: React.FC<ImageLinkProps> = ({ linksList }) => {
               isBlank={isBlank}
               link={pageLink}
               className="image-link__link"
+              locale={locale}
             />
             <figure className="image-link__image">
               <Image
