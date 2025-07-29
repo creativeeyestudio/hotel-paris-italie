@@ -10,7 +10,7 @@ const label: Record<string, [string, string]> = {
   es: ["menú", "cerrar"],
 };
 
-const MenuIcon = ({ locale, classes = "", mobile = false }) => {
+const MenuIcon = ({ locale = 'fr', classes = "", mobile = false }) => {
   const [isActive, setIsActive] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
 
