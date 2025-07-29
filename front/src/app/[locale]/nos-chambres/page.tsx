@@ -26,7 +26,9 @@ const metaDesc: Record<string, string> = {
 /* --------------------------------------------------
    SEO dynamique
 -------------------------------------------------- */
-export async function generateMetadata(props: { params: RoomPageParams }): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: RoomPageParams;
+}): Promise<Metadata> {
   const { locale } = await props.params;
   const settings: SettingsProps | null = await fetchSettings();
   const title = `${metaTitle[locale]} | ${settings?.title}`;
@@ -56,6 +58,12 @@ export default async function RoomPage(props: { params: RoomPageParams }) {
   const introContent = roomPageApi.intro.introContentHtml;
   const roomsList = roomPageApi.rooms.roomsList;
 
+  const btnReserveLabel: Record<string, string> = {
+    fr: 'Réserver une chambre',
+    en: 'Book a room',
+    es: 'Reservar una habitación',
+  }
+
   return (
     <>
       {heroscreen ? <Heroscreen heroImage={heroscreen} /> : <></>}
@@ -76,7 +84,7 @@ export default async function RoomPage(props: { params: RoomPageParams }) {
           cta={[
             {
               type: "reserve",
-              label: "Réserver une chambre",
+              label: btnReserveLabel[locale],
               isBlank: false,
             },
           ]}

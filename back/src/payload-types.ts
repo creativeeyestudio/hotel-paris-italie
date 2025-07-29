@@ -1189,9 +1189,9 @@ export interface RoomPage {
   rooms?: {
     roomsList?:
       | {
-          roomName?: string | null;
+          roomName: string;
           roomDescHtml?: string | null;
-          roomDesc?: {
+          roomDesc: {
             root: {
               type: string;
               children: {
@@ -1205,7 +1205,7 @@ export interface RoomPage {
               version: number;
             };
             [k: string]: unknown;
-          } | null;
+          };
           roomImage?: (string | null) | Media;
           id?: string | null;
         }[]

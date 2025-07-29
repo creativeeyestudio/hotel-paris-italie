@@ -7,7 +7,29 @@ import { Label } from "../ui/label";
 import toggleReservePopup from "@/lib/toggleReservePopup";
 import { useEffect } from "react";
 
-const ReservePopup = () => {
+export type ReservePopupProps = {
+  locale: string;
+};
+
+const ReservePopup = ({ locale }: ReservePopupProps) => {
+  const label: Record<string, string[]> = {
+    fr: [
+      "Date d'arrivée",
+      "Date de départ",
+      "Adultes",
+      "Enfants",
+      "Réserver une chambre",
+    ],
+    en: ["Arrive", "Departure", "Adults", "Children", "Book a room"],
+    es: [
+      "Fecha de llegada",
+      "Fecha de salida",
+      "Adultos",
+      "Niños",
+      "Reservar una habitación",
+    ],
+  };
+
   useEffect(() => {
     const inputsContent = document.querySelectorAll<HTMLElement>(
       ".reserve-popup__input",
@@ -98,7 +120,7 @@ const ReservePopup = () => {
 
         <form action="" method="post" className="reserve-popup__form">
           <div className="reserve-popup__input reserve-popup__input--inactive reserve-popup__input--full">
-            <Label htmlFor="arriveDate">Date d&apos;arrivée</Label>
+            <Label htmlFor="arriveDate">{label[locale]?.[0]}</Label>
             <Input
               type="date"
               id="arriveDate"
@@ -108,7 +130,7 @@ const ReservePopup = () => {
           </div>
 
           <div className="reserve-popup__input reserve-popup__input--inactive reserve-popup__input--full">
-            <Label htmlFor="departDate">Date de départ</Label>
+            <Label htmlFor="departDate">{label[locale]?.[1]}</Label>
             <Input
               type="date"
               id="departDate"
@@ -118,18 +140,18 @@ const ReservePopup = () => {
           </div>
 
           <div className="reserve-popup__input reserve-popup__input--inactive reserve-popup__input--half">
-            <Label htmlFor="adults">Adultes</Label>
+            <Label htmlFor="adults">{label[locale]?.[2]}</Label>
             <Input type="number" id="adults" name="adults" min={0} />
           </div>
 
           <div className="reserve-popup__input reserve-popup__input--inactive reserve-popup__input--half">
-            <Label htmlFor="childs">Enfants</Label>
+            <Label htmlFor="childs">{label[locale]?.[3]}</Label>
             <Input type="number" id="childs" name="childs" min={0} />
           </div>
 
           <div className="reserve-popup__input reserve-popup__input--full">
             <Button className="reserve-popup__btn--send">
-              Réserver une chambre
+              {label[locale]?.[4]}
             </Button>
           </div>
         </form>

@@ -56,6 +56,7 @@ export interface TextDoubleImageProps {
 export interface ImageLinkProps {
   blockType?: "image-link";
   linksList: CTA[];
+  locale: string;
 }
 
 interface CTA {

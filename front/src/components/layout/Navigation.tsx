@@ -37,6 +37,7 @@ const Navigation = async ({
         label={item.label ?? ""}
         link={item.page}
         href={item.url}
+        locale={locale}
         className={`${classes}__link`}
         isBlank={item.newTab ?? false}
       />

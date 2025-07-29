@@ -9,6 +9,12 @@ interface FooterProps {
   locale: string;
 }
 
+const title: Record<string, [string, string, string]> = {
+  fr: ["Accès et contact", "Navigation", "Suivez nous"],
+  en: ["Access and contact", "Navigation", "Follow us"],
+  es: ["Acceso y contacto", "Navigaciones", "Síganos"],
+};
+
 const Footer: React.FC<FooterProps> = async ({ locale }) => {
   const settings: SettingsProps | null = await fetchSettings();
 
@@ -28,7 +34,7 @@ const Footer: React.FC<FooterProps> = async ({ locale }) => {
     <footer className="footer">
       <div className="footer__site-nav">
         <div className="footer__nav-block">
-          <p className="footer__title text-lg mb-[1rem]">Accès et contact</p>
+          <p className="footer__title text-lg mb-[1rem]">{title[locale][0]}</p>
           <div className="grid lg:grid-cols-2">
             <p>
               {settings?.contactDetails?.adress}
@@ -51,7 +57,7 @@ const Footer: React.FC<FooterProps> = async ({ locale }) => {
           </div>
         </div>
         <div className="footer__nav-block">
-          <p className="footer__title text-lg mb-[1rem]">Navigation</p>
+          <p className="footer__title text-lg mb-[1rem]">{title[locale][1]}</p>
           <Navigation
             menuId={"footer-menu"}
             locale={locale}
@@ -59,7 +65,7 @@ const Footer: React.FC<FooterProps> = async ({ locale }) => {
           />
         </div>
         <div className="footer__nav-block">
-          <p className="footer__title text-lg mb-[1rem]">Suivez nous</p>
+          <p className="footer__title text-lg mb-[1rem]">{title[locale][2]}</p>
           <ul className="flex gap-[1rem]">
             <li>
               <Facebook
