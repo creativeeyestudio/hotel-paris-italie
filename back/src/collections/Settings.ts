@@ -143,20 +143,9 @@ const Settings: CollectionConfig = {
           type: 'row',
           fields: [
             {
-              name: 'accessLong',
-              label: 'Longitude',
-              type: 'number',
-              admin: {
-                width: '50%',
-              },
-            },
-            {
-              name: 'accessLat',
-              label: 'Lattitude',
-              type: 'number',
-              admin: {
-                width: '50%',
-              },
+              name: 'accessLocation',
+              type: 'point',
+              label: 'Location',
             },
           ]
         },

@@ -9,8 +9,7 @@ const LazyMap = dynamic(() => import("@/components/layout/LeafletMap"), {
 });
 
 export default function LeafletContainer({
-  lat,
-  long,
+  location,
   adress,
   postCode,
   city,
@@ -18,8 +17,7 @@ export default function LeafletContainer({
 }: LeafletMapProps) {
   return (
     <LazyMap
-      lat={lat}
-      long={long}
+      location={location}
       adress={adress}
       postCode={postCode}
       city={city}

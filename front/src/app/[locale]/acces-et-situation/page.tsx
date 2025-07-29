@@ -71,8 +71,7 @@ export default async function AccessSituationPage(props: {
   const settings = await fetchSettings(locale);
 
   const canShowMap: boolean =
-    settings?.accessPage.accessLat !== undefined &&
-    settings?.accessPage.accessLong !== undefined &&
+    settings?.accessPage.accessLocation !== undefined &&
     settings?.contactDetails.adress !== undefined &&
     settings?.contactDetails.postcode !== undefined &&
     settings?.contactDetails.city !== undefined;
@@ -153,8 +152,7 @@ export default async function AccessSituationPage(props: {
 
       {canShowMap ? (
         <LeafletContainer
-          lat={settings?.accessPage.accessLat}
-          long={settings?.accessPage.accessLong}
+          location={settings?.accessPage.accessLocation}
           adress={settings?.contactDetails.adress}
           postCode={settings?.contactDetails.postcode}
           city={settings?.contactDetails.city}

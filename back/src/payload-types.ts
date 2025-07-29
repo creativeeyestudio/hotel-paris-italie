@@ -493,8 +493,11 @@ export interface Setting {
     } | null;
     accessIntroHtml?: string | null;
     accessImage?: (string | null) | Media;
-    accessLong?: number | null;
-    accessLat?: number | null;
+    /**
+     * @minItems 2
+     * @maxItems 2
+     */
+    accessLocation?: [number, number] | null;
     accessMapLink?: string | null;
     accessList?:
       | {
@@ -971,8 +974,7 @@ export interface SettingsSelect<T extends boolean = true> {
         accessIntro?: T;
         accessIntroHtml?: T;
         accessImage?: T;
-        accessLong?: T;
-        accessLat?: T;
+        accessLocation?: T;
         accessMapLink?: T;
         accessList?:
           | T
