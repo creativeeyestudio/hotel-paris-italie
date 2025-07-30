@@ -4,4 +4,8 @@
   &__item {
     @apply col-span-6 flex flex-col justify-center items-center gap-y-2 md:col-span-3;
   }
+
+  &__label {
+    @apply text-center;
+  }
 }
