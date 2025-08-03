@@ -23,21 +23,26 @@ jobs:
           --health-timeout=5s
           --health-retries=5
 
-    steps:
-      - uses: actions/checkout@v4
+  steps:
+    - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: 'pnpm'
 
-      - name: Install back dependencies
-        working-directory: back
-        run: npm ci
+    - name: Install PNPM
+      run: npm install -g pnpm
 
-      - name: Build Payload
-        working-directory: back
-        run: npm run build || echo "No build step needed"
+    - name: Install back dependencies
+      working-directory: back
+      run: pnpm install --frozen-lockfile
+
+    - name: Build Payload
+      working-directory: back
+      run: pnpm run build || echo "No build step needed"
+
 
   test-front:
     name: Test front (Next.js)
