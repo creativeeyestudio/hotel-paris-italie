@@ -177,7 +177,7 @@ const RoomPage: GlobalConfig = {
                 }
 
                 if (doc?.rooms?.roomsList[0]) {
-                    doc?.rooms?.roomsList.forEach(async room => {
+                    doc?.rooms?.roomsList.forEach(async (room: { roomDescHtml: string; roomDesc: any; }) => {
                         room.roomDescHtml = await convertRichTextToHTML(room.roomDesc);
                     });
                 }

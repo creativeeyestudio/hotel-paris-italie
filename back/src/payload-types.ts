@@ -70,7 +70,6 @@ export interface Config {
     users: User;
     media: Media;
     pages: Page;
-    posts: Post;
     gallery: Gallery;
     navigation: Navigation;
     settings: Setting;
@@ -84,7 +83,6 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
-    posts: PostsSelect<false> | PostsSelect<true>;
     gallery: GallerySelect<false> | GallerySelect<true>;
     navigation: NavigationSelect<false> | NavigationSelect<true>;
     settings: SettingsSelect<false> | SettingsSelect<true>;
@@ -261,10 +259,9 @@ export interface Page {
               } | null;
               cta?:
                 | {
-                    type: 'page' | 'post' | 'external' | 'homepage' | 'rooms-page' | 'access-situation' | 'reserve';
+                    type: 'page' | 'external' | 'homepage' | 'rooms-page' | 'access-situation' | 'reserve';
                     label: string;
                     page?: (string | null) | Page;
-                    post?: (string | null) | Post;
                     url?: string | null;
                     image?: (string | null) | Media;
                     newTab?: boolean | null;
@@ -325,10 +322,9 @@ export interface Page {
               } | null;
               cta?:
                 | {
-                    type: 'page' | 'post' | 'external' | 'homepage' | 'rooms-page' | 'access-situation' | 'reserve';
+                    type: 'page' | 'external' | 'homepage' | 'rooms-page' | 'access-situation' | 'reserve';
                     label: string;
                     page?: (string | null) | Page;
-                    post?: (string | null) | Post;
                     url?: string | null;
                     image?: (string | null) | Media;
                     newTab?: boolean | null;
@@ -377,10 +373,9 @@ export interface Page {
           | {
               linksList?:
                 | {
-                    type: 'page' | 'post' | 'external' | 'homepage' | 'rooms-page' | 'access-situation' | 'reserve';
+                    type: 'page' | 'external' | 'homepage' | 'rooms-page' | 'access-situation' | 'reserve';
                     label: string;
                     page?: (string | null) | Page;
-                    post?: (string | null) | Post;
                     url?: string | null;
                     image?: (string | null) | Media;
                     newTab?: boolean | null;
@@ -403,47 +398,6 @@ export interface Page {
   config: {
     site: string | Setting;
     published?: ('0' | '1' | '2') | null;
-  };
-  meta?: {
-    title?: string | null;
-    description?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (string | null) | Media;
-  };
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "posts".
- */
-export interface Post {
-  id: string;
-  title: string;
-  slug: string;
-  excerpt?: string | null;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  coverImage?: (string | null) | Media;
-  config: {
-    site: string | Setting;
-    published?: ('0' | '1' | '2') | null;
-    createdBy?: (string | null) | User;
   };
   meta?: {
     title?: string | null;
@@ -550,10 +504,9 @@ export interface Navigation {
   menuId: 'main-menu' | 'secondary-menu' | 'footer-menu';
   items?:
     | {
-        type: 'page' | 'post' | 'external' | 'homepage' | 'rooms-page' | 'access-situation' | 'reserve';
+        type: 'page' | 'external' | 'homepage' | 'rooms-page' | 'access-situation' | 'reserve';
         label: string;
         page?: (string | null) | Page;
-        post?: (string | null) | Post;
         url?: string | null;
         image?: (string | null) | Media;
         newTab?: boolean | null;
@@ -610,10 +563,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'pages';
         value: string | Page;
-      } | null)
-    | ({
-        relationTo: 'posts';
-        value: string | Post;
       } | null)
     | ({
         relationTo: 'gallery';
@@ -767,7 +716,6 @@ export interface PagesSelect<T extends boolean = true> {
                           type?: T;
                           label?: T;
                           page?: T;
-                          post?: T;
                           url?: T;
                           image?: T;
                           newTab?: T;
@@ -804,7 +752,6 @@ export interface PagesSelect<T extends boolean = true> {
                           type?: T;
                           label?: T;
                           page?: T;
-                          post?: T;
                           url?: T;
                           image?: T;
                           newTab?: T;
@@ -844,7 +791,6 @@ export interface PagesSelect<T extends boolean = true> {
                           type?: T;
                           label?: T;
                           page?: T;
-                          post?: T;
                           url?: T;
                           image?: T;
                           newTab?: T;
@@ -867,33 +813,6 @@ export interface PagesSelect<T extends boolean = true> {
     | {
         site?: T;
         published?: T;
-      };
-  meta?:
-    | T
-    | {
-        title?: T;
-        description?: T;
-        image?: T;
-      };
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "posts_select".
- */
-export interface PostsSelect<T extends boolean = true> {
-  title?: T;
-  slug?: T;
-  excerpt?: T;
-  content?: T;
-  coverImage?: T;
-  config?:
-    | T
-    | {
-        site?: T;
-        published?: T;
-        createdBy?: T;
       };
   meta?:
     | T
@@ -932,7 +851,6 @@ export interface NavigationSelect<T extends boolean = true> {
         type?: T;
         label?: T;
         page?: T;
-        post?: T;
         url?: T;
         image?: T;
         newTab?: T;

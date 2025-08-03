@@ -1,22 +1,30 @@
-version: "3.9"
-
 services:
   front:
     image: "${PROJECT_NAME}-front:latest"
-    restart: unless-stopped
     ports:
-      - "80:3000"
-    environment:
-      - NODE_ENV=production
+      - '3000:3000'
+    volumes:
+      - ./back:/home/node/app
+      - ./back/node_modules:/home/node/app/node_modules
+    working_dir: /home/node/app/
+    command: sh -c "corepack enable && corepack prepare pnpm@latest --activate && pnpm install && pnpm dev"
+    depends_on:
+      - mongo
+    env_file:
+      - .env
 
   back:
     image: "${PROJECT_NAME}-back:latest"
     restart: unless-stopped
     ports:
-      - "8080:3000"
+      - "3100:3000"
     environment:
       - NODE_ENV=production
       - PAYLOAD_SECRET=${PAYLOAD_SECRET}
       - MONGODB_URI=${MONGODB_URI}
     depends_on:
       - mongo
+    env_file:
+      - .env
+    networks:
+      - project-network

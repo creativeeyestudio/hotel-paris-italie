@@ -16,7 +16,6 @@ import { Media } from './collections/Media'
 import Pages from './collections/Pages'
 import Galleries from './collections/Galleries'
 import Navigation from './collections/Navigation'
-import Posts from './collections/Posts'
 
 import { seoPlugin } from '@payloadcms/plugin-seo'
 import LegalNotice from './globals/LegalNotice'
@@ -36,7 +35,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Pages, Posts, Galleries, Navigation, Settings, ChrConnectConfig],
+  collections: [Users, Media, Pages, Galleries, Navigation, Settings, ChrConnectConfig],
   globals: [LegalNotice, Confidentiality, Cgv, RoomPage],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
@@ -51,7 +50,7 @@ export default buildConfig({
     payloadCloudPlugin(),
     // storage-adapter-placeholder
     seoPlugin({
-      collections: ['pages', 'posts'],
+      collections: ['pages'],
       uploadsCollection: 'media',
     }),
   ],

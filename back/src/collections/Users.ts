@@ -1,4 +1,4 @@
-import { roleField } from '../fields/roleField'
+import { ROLE_OPTIONS } from '@/constants/roles'
 import type { CollectionConfig } from 'payload'
 
 export const Users: CollectionConfig = {
@@ -12,5 +12,21 @@ export const Users: CollectionConfig = {
     group: 'Administration',
   },
   auth: true,
-  fields: [roleField],
+  fields: [
+    {
+      name: 'role',
+      type: 'select',
+      required: true,
+      defaultValue: 'contributor',
+      options: ROLE_OPTIONS,
+      access: {
+        create: ({ req: { user } }) => user?.role === 'admin',
+        read: ({ req: { user } }) => user?.role === 'admin',
+        update: ({ req: { user } }) => user?.role === 'admin',
+      },
+      admin: {
+        position: 'sidebar',
+      },
+    }
+  ],
 }

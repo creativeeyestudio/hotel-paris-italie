@@ -41,7 +41,6 @@ const Galleries: CollectionConfig = {
           type: 'relationship',
           relationTo: 'settings',
           required: true,
-          multiple: true,
         },
       ],
     },

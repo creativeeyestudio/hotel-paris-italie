@@ -1,6 +1,7 @@
 import { UserRole } from '../types/UserRole'
 import { roleHierarchy } from '../constants/roles'
-export const hasRole = (userRole: UserRole, requiredRole: UserRole): boolean => {
+
+export const hasRole = (userRole: UserRole | undefined, requiredRole: UserRole): boolean => {
   if (!userRole || !requiredRole) return false
 
   const userIndex = roleHierarchy.indexOf(userRole)

@@ -43,19 +43,22 @@ const ThaisPMS: Field = {
       type: 'text',
       admin: {
         placeholder: 'Mot de passe fourni par Thais',
-        condition: (data) => !data?.thais?.passwordHash,
+        condition: (_data, _sibling) => !_sibling.passwordHash,
       },
     },
     {
       name: 'passwordHash',
       type: 'text',
-      admin: { hidden: true },
+      admin: {
+        condition: (_data) => false,
+        readOnly: true,
+      },
     },
     {
       name: 'resetPassword',
       type: 'ui',
       admin: {
-        condition: ({ thais }) => Boolean(thais?.passwordHash),
+        condition: (_data, _sibling) => _sibling.passwordHash,
         components: {
           Field: {
             path: '/components/ResetPasswordButton',
@@ -89,20 +92,23 @@ const SiteMinder: Field = {
       label: 'API Key',
       type: 'text',
       admin: {
+        condition: (_data, siblingData) => !siblingData?.passwordHash,
         placeholder: 'API Key fournie par SiteMinder',
-        condition: (data) => !data?.siteminder?.passwordHash,
       },
     },
     {
       name: 'passwordHash',
       type: 'text',
-      admin: { hidden: true },
+      admin: {
+        condition: (_data) => false,
+        readOnly: true,
+      },
     },
     {
       name: 'resetPassword',
       type: 'ui',
       admin: {
-        condition: ({ siteminder }) => Boolean(siteminder?.passwordHash),
+        condition: (_data, siblingData) => !!siblingData?.passwordHash,
         components: {
           Field: {
             path: '/components/ResetPasswordButton',
@@ -116,7 +122,7 @@ const SiteMinder: Field = {
       },
     },
   ],
-}
+};
 
 // ZENCHEF
 // ----------------------------------------------

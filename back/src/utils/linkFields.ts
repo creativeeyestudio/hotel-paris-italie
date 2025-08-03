@@ -11,7 +11,6 @@ const LinkFields = (noImage = false, requiredImage = false): Field[] => [
         required: true,
         options: [
           { label: 'Page', value: 'page' },
-          { label: 'Article', value: 'post' },
           { label: 'Lien personnalisé', value: 'external' },
           { label: 'Page "Accueil du site"', value: 'homepage' },
           { label: 'Page "Nos Chambres"', value: 'rooms-page' },
@@ -40,14 +39,6 @@ const LinkFields = (noImage = false, requiredImage = false): Field[] => [
     relationTo: 'pages',
     admin: {
       condition: (_data, sibling) => sibling.type === 'page',
-    },
-  },
-  {
-    name: 'post',
-    type: 'relationship',
-    relationTo: 'posts',
-    admin: {
-      condition: (_data, sibling) => sibling.type === 'post',
     },
   },
   {
