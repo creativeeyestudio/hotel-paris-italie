@@ -35,11 +35,13 @@ jobs:
 
       - name: Install Node.js
         uses: actions/setup-node@v4
+        working-directory: back
         with:
           node-version: 20
           cache: 'pnpm'
 
       - name: Install dependencies
+        working-directory: back
         run: pnpm install --frozen-lockfile
 
       - name: Build Payload
