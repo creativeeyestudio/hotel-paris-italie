@@ -29,11 +29,13 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 20.19
           cache: 'pnpm'
 
-      - name: Install PNPM
-        run: npm install -g pnpm
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
 
       - name: Install back dependencies
         working-directory: back
@@ -61,8 +63,10 @@ jobs:
           node-version: 20
           cache: 'pnpm'
 
-      - name: Install PNPM
-        run: npm install -g pnpm
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
 
       - name: Install front dependencies
         working-directory: front
