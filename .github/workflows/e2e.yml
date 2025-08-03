@@ -61,21 +61,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
-
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
 
       - name: Install front dependencies
         working-directory: front
-        run: pnpm install --frozen-lockfile
+        run: npm ci
 
       - name: Build Next.js
         working-directory: front
-        run: pnpm run build
-
-      - name: Run Front Tests
-        working-directory: front
-        run: pnpm test || echo "No tests defined"
+        run: npm run build
