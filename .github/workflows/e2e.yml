@@ -37,6 +37,9 @@ jobs:
         with:
           version: 8
 
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Install back dependencies
         working-directory: back
         run: pnpm install --frozen-lockfile
