@@ -50,8 +50,7 @@ export async function fetchHomePage(site: string, locale: string) {
     `${CMS_URL}/api/pages/${settings.identityGroup?.homepage.id}?depth=2&locale=${locale}`,
     {
       headers: { "x-website": site },
-      next: { revalidate: 0 },
-      cache: "no-store",
+      next: { revalidate: 60 },
     },
   );
 
@@ -74,7 +73,7 @@ export async function fetchPage(
     `${CMS_URL}/api/pages?where[slug][equals]=${slug}&depth=2&locale=${locale}`,
     {
       headers: { "x-website": site },
-      next: { revalidate: 0 },
+      next: { revalidate: 60 },
     },
   );
 
@@ -100,8 +99,7 @@ export async function fetchRoomPage(
     `${CMS_URL}/api/globals/roomPage?depth=2&draft=false&locale=${locale}`,
     {
       headers: { "x-website": site },
-      next: { revalidate: 0 },
-      cache: "no-store",
+      next: { revalidate: 60 },
     },
   );
 
@@ -128,7 +126,7 @@ export async function fetchNavigation(
     `${CMS_URL}/api/navigation?where[menuId][equals]=${menuId}&depth=2&locale=${locale}`,
     {
       headers: { "x-website": site },
-      next: { revalidate: 0 },
+      next: { revalidate: 60 },
     },
   );
 
