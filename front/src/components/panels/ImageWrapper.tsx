@@ -10,6 +10,7 @@ export const ImageWrapper = ({
   className,
   anim = false,
   delay = 0,
+  priority = false,
 }: ImageWrapperProps) => (
   <figure className={className}>
     {anim ? (
@@ -20,7 +21,7 @@ export const ImageWrapper = ({
         viewport={{ once: false, amount: 0.1 }}
         className="relative w-full h-full"
       >
-        <Image src={url} alt={alt} fill style={{ objectFit: "cover" }} />
+        <Image src={url} alt={alt} fill style={{ objectFit: "cover" }} priority={priority} />
       </motion.div>
     ) : (
       <Image src={url} alt={alt} fill style={{ objectFit: "cover" }} />

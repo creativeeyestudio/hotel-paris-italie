@@ -70,6 +70,7 @@ const Heroscreen = ({ heroImage }: HeroscreenProps) => {
             url={apiUrl + image.url}
             alt={image.alt}
             className="w-full h-screen relative"
+            priority
           />
         )}
       </>
