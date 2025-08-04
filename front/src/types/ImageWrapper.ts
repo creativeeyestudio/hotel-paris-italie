@@ -5,4 +5,5 @@ export type ImageWrapperProps = {
   delay?: number;
   anim?: boolean;
   priority?: boolean;
+  sizes?: string;
 };
