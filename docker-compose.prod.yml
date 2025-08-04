@@ -1,20 +1,15 @@
 services:
   front:
-    image: "${PROJECT_NAME}-front:latest"
+    image: "kevinad/${PROJECT_NAME}-front:latest"
     ports:
       - '3000:3000'
-    volumes:
-      - ./back:/home/node/app
-      - ./back/node_modules:/home/node/app/node_modules
-    working_dir: /home/node/app/
-    command: sh -c "corepack enable && corepack prepare pnpm@latest --activate && pnpm install && pnpm dev"
     depends_on:
       - mongo
     env_file:
       - .env
 
   back:
-    image: "${PROJECT_NAME}-back:latest"
+    image: "kevinad/${PROJECT_NAME}-back:latest"
     restart: unless-stopped
     ports:
       - "3100:3000"

@@ -1,8 +1,10 @@
 import type { NextConfig } from "next";
 
+/** @type {import('next').NextConfig} */
 const nextConfig: NextConfig = {
   reactStrictMode: false,
   trailingSlash: true,
+  output: 'standalone',
 
   // Images
   images: {

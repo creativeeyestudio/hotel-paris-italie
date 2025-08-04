@@ -10,10 +10,13 @@ BACK_IMAGE="${DOCKERHUB_USER}/${PROJECT_NAME}-back:latest"
 FRONT_DOCKERFILE="./front/Dockerfile.prod"
 BACK_DOCKERFILE="./back/Dockerfile.prod"
 
-echo "🔨 Build de l'image Front avec $FRONT_DOCKERFILE..."
-docker build -t $FRONT_IMAGE -f $FRONT_DOCKERFILE ./front
+echo "🔨 Build de l'image Front"
+docker build \
+  --build-arg NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL \
+  -t $FRONT_IMAGE \
+  -f $FRONT_DOCKERFILE ./front
 
-echo "🔨 Build de l'image Back avec $BACK_DOCKERFILE..."
+echo "🔨 Build de l'image Back"
 docker build -t $BACK_IMAGE -f $BACK_DOCKERFILE ./back
 
 echo "🔑 Connexion à Docker Hub..."
