@@ -29,7 +29,7 @@ const ImageLink: React.FC<ImageLinkProps> = ({ linksList, locale }) => {
                 src={`${process.env.NEXT_PUBLIC_API_URL}${imageUrl}`}
                 alt={imageAlt}
                 fill
-                sizes={`(min-width: 1024px) ${((1 / linksList.length) * 100).toFixed(2)}vw`}
+                sizes={`(min-width: 1024px) ${((1 / linksList.length) * 100).toFixed(2)}vw 100vw`}
               />
             </figure>
           </div>
