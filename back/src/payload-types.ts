@@ -234,6 +234,17 @@ export interface Page {
                 };
                 [k: string]: unknown;
               };
+              links?:
+                | {
+                    type: 'page' | 'external' | 'homepage' | 'rooms-page' | 'access-situation' | 'reserve';
+                    label: string;
+                    page?: (string | null) | Page;
+                    url?: string | null;
+                    image?: (string | null) | Media;
+                    newTab?: boolean | null;
+                    id?: string | null;
+                  }[]
+                | null;
               id?: string | null;
               blockName?: string | null;
               blockType: 'text-intro';
@@ -700,6 +711,17 @@ export interface PagesSelect<T extends boolean = true> {
                 | {
                     title?: T;
                     content?: T;
+                    links?:
+                      | T
+                      | {
+                          type?: T;
+                          label?: T;
+                          page?: T;
+                          url?: T;
+                          image?: T;
+                          newTab?: T;
+                          id?: T;
+                        };
                     id?: T;
                     blockName?: T;
                   };

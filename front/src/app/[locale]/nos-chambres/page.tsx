@@ -5,6 +5,7 @@ import TextIntro from "@/components/panels/TextIntro";
 import { SettingsProps } from "@/interfaces/settings";
 import { fetchRoomPage, fetchSettings } from "@/lib/cms";
 import { getDeviceDetector } from "@/lib/deviceDetector";
+import { slugify } from "@/lib/utils";
 import { Metadata } from "next";
 import { headers } from "next/headers";
 
@@ -74,8 +75,12 @@ export default async function RoomPage(props: { params: RoomPageParams }) {
         <TextIntro
           title={introTitle}
           html={introContent}
-          firstBlock={true}
-        ></TextIntro>
+          firstBlock={true} 
+          linkList={roomsList.map((room) => ({
+            linkName: room.roomName,
+            linkUrl: '#' + slugify(room.roomName) 
+          }))}        
+        />
       ) : (
         <></>
       )}
@@ -97,6 +102,7 @@ export default async function RoomPage(props: { params: RoomPageParams }) {
           secondaryBg={false}
           linkList={[]}
           subItem={[]}
+          idBlock={slugify(room.roomName)}
           device={device}
           firstBlock={false}
           key={index}

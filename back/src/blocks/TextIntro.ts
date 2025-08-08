@@ -1,3 +1,4 @@
+import linkFields from "@/utils/linkFields";
 import type { Block } from "payload";
 
 const TextIntro: Block = {
@@ -19,6 +20,14 @@ const TextIntro: Block = {
             type: 'richText',
             required: true,
         },
+        {
+            name: 'links',
+            label: 'Liste de liens',
+            type: 'array',
+            fields: [
+                ...linkFields()
+            ]
+        }
     ]
 }
 

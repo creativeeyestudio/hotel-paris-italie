@@ -9,8 +9,17 @@
     @apply text-2xl md:text-center md:text-3xl lg:text-5xl;
   }
 
+  &__text,
+  &__btn-list {
+    @apply mt-[1.875rem]
+  }
+
   &__text {
-    @apply mt-[1.875rem] lg:text-center;
+    @apply lg:text-center;
+  }
+
+  &__btn-list {
+    @apply flex flex-col flex-wrap justify-center items-center gap-4 lg:flex-row;
   }
 
   &--margin {
