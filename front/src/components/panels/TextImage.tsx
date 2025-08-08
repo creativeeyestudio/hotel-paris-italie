@@ -87,6 +87,7 @@ const TextImage: React.FC<TextImageProps> = ({
           url={apiUrl + image.url}
           alt={image.alt}
           className="text-img__image"
+          sizes="46.875vw"
           anim
         />
       ) : (
@@ -95,6 +96,7 @@ const TextImage: React.FC<TextImageProps> = ({
             url={apiUrl + image.url}
             alt={image.alt}
             className="text-img__image"
+            sizes="100vw"
           />
         </AspectRatio>
       )}

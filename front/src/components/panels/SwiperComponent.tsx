@@ -31,6 +31,7 @@ const SwiperComponent = ({ images, ratio }: SwiperComponentsProps) => {
               <ImageWrapper
                 url={process.env.NEXT_PUBLIC_API_URL + img.url}
                 alt={img.alt}
+                sizes="100w"
               />
             </AspectRatio>
           </SwiperSlide>

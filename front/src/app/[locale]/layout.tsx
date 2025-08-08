@@ -19,9 +19,11 @@ interface LayoutParams {
 
 const fontBody = Raleway({
   subsets: ["latin"],
+  display: 'swap'
 });
 const fontTitle = Playfair_Display({
   subsets: ["latin"],
+  display: 'swap'
 });
 
 export default async function RootLayout({

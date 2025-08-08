@@ -93,6 +93,7 @@ const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
             url={apiUrl + image1.url}
             alt={image1.alt}
             className={`text-double-img__image--1 ${image2 ? "text-double-img__image--half" : "text-double-img__image--full"}`}
+            sizes="31.25vw"
             anim
           />
           {image2 !== undefined && image2 !== null && (
@@ -102,6 +103,7 @@ const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
               className="text-double-img__image--2"
               anim
               delay={0.25}
+              sizes="23.38vw"
             />
           )}
         </div>
@@ -110,7 +112,7 @@ const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
       {(device.mobile || device.tablet) &&
         (image2 === undefined || image2 === null ? (
           <AspectRatio ratio={imgRatio}>
-            <ImageWrapper url={apiUrl + image1.url} alt={image1.alt} />
+            <ImageWrapper url={apiUrl + image1.url} alt={image1.alt} sizes="100w" />
           </AspectRatio>
         ) : (
           <SwiperComponent
