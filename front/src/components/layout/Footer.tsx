@@ -4,6 +4,7 @@ import React from "react";
 import Navigation from "./Navigation";
 import { fetchSettings } from "@/lib/cms";
 import { SettingsProps } from "@/interfaces/settings";
+import Icon from "../icons/Icon";
 
 interface FooterProps {
   locale: string;
@@ -44,6 +45,7 @@ const Footer: React.FC<FooterProps> = async ({ locale }) => {
             </p>
             <p>
               <a href={`tel:${telLink()}`} className="footer__link">
+                <Icon type={"phone"} size={'16'} className="float-left mr-2 mt-1" color="white" />
                 {settings.contactDetails?.phone}
               </a>
               <br />
@@ -51,6 +53,7 @@ const Footer: React.FC<FooterProps> = async ({ locale }) => {
                 href={`mailto:${settings.contactDetails?.email}`}
                 className="footer__link"
               >
+                <Icon type={"mail"} size={'16'} className="float-left mr-2 mt-1" color="white" />
                 {settings.contactDetails?.email}
               </a>
             </p>
