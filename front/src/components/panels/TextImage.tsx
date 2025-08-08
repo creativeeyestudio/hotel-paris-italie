@@ -16,12 +16,13 @@ const TextImage: React.FC<TextImageProps> = ({
   subItem,
   device,
   firstBlock,
+  idBlock
 }) => {
   const TitleTag = firstBlock ? "h1" : "h2";
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   return process.env.NEXT_PUBLIC_API_URL ? (
-    <section className={`text-img${secondaryBg ? " text-img--sec-color" : ""}`}>
+    <section id={idBlock} className={`text-img${secondaryBg ? " text-img--sec-color" : ""}`}>
       <div className="text-img__content">
         <CurtainReveal color={secondaryBg ? "#FAF9F3" : "#FFF"}>
           <TitleTag className="text-img__title">{title}</TitleTag>
