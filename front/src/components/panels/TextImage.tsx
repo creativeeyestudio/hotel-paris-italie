@@ -5,6 +5,8 @@ import { TextImageProps } from "@/interfaces/blocks";
 import { ImageWrapper } from "./ImageWrapper";
 import NavLink from "./NavLink";
 import { CurtainReveal } from "../anims/CurtainReveal";
+import { slugify } from "@/lib/utils";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@radix-ui/react-accordion";
 
 const TextImage: React.FC<TextImageProps> = ({
   title,
@@ -13,6 +15,7 @@ const TextImage: React.FC<TextImageProps> = ({
   cta,
   secondaryBg,
   linkList,
+  accordionItem,
   subItem,
   device,
   firstBlock,
@@ -32,6 +35,21 @@ const TextImage: React.FC<TextImageProps> = ({
               className="text-img__text"
               dangerouslySetInnerHTML={{ __html: html }}
             />
+          ) : (
+            <></>
+          )}
+
+          {accordionItem?.length && accordionItem?.length > 0 ? (
+            <Accordion type="single">
+              {accordionItem.map((item, index) => (
+                <AccordionItem value={`${slugify(item.title)}`} key={index}>
+                  <AccordionTrigger>{item.title}</AccordionTrigger>
+                  <AccordionContent>
+                    <div dangerouslySetInnerHTML={{ __html: item.html }}></div>
+                  </AccordionContent>
+                </AccordionItem>  
+              ))}
+            </Accordion>
           ) : (
             <></>
           )}

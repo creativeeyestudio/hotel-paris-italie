@@ -117,6 +117,19 @@
     }
   }
 
+  &__accordion {
+    @apply mt-[3rem];
+
+    &__title {
+      @apply bg-[#B8A373] py-[1rem] px-[2rem];
+      @extend .text-base;
+    }
+
+    &__content {
+      @apply p-[1rem];
+    }
+  }
+
   .list-bullet {
     @apply list-disc pl-[2.5rem] mb-[1.5rem] leading-[2];
   }
