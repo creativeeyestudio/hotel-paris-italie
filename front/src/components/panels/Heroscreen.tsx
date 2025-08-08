@@ -82,9 +82,10 @@ const Heroscreen = ({ heroImage }: HeroscreenProps) => {
       effect="fade"
       centeredSlides
       loop
+      speed={1500}
       pagination={{ dynamicBullets: true }}
-      autoplay={{ delay: 5000, disableOnInteraction: false }}
-      modules={[EffectFade, Pagination, Autoplay]}
+      autoplay={{ delay: 3000, disableOnInteraction: false }}
+      modules={[EffectFade, Autoplay]}
       className="heroscreen"
     >
       {heroImage.map((image, index) => (
@@ -95,6 +96,7 @@ const Heroscreen = ({ heroImage }: HeroscreenProps) => {
             fill
             style={{ objectFit: "cover" }}
             priority
+            className="heroscreen__image"
           />
         </SwiperSlide>
       ))}

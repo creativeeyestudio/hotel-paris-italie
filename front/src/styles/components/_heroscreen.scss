@@ -1,0 +1,7 @@
+.heroscreen {
+    @apply aspect-[4/3] md:aspect-[16/10] lg:aspect-[inherit] lg:w-full lg:h-screen;
+
+    &__container {
+        @apply relative;
+    }
+}
