@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectFade, Pagination } from "swiper/modules";
+import { Autoplay, EffectFade } from "swiper/modules";
 import { HeroscreenProps } from "@/interfaces/blocks";
 
 import "swiper/css";
