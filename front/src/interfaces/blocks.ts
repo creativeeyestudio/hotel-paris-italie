@@ -38,6 +38,7 @@ export interface TextImageProps {
   secondaryBg: boolean;
   linkList: LinkList[];
   subItem: SubItemList[];
+  accordionItem?: AccordionItem[];
   device: DeviceType;
   firstBlock: boolean;
   idBlock?: string;
@@ -53,6 +54,7 @@ export interface TextDoubleImageProps {
   secondaryBg: boolean;
   linkList: LinkList[];
   subItem: SubItemList[];
+  accordionItem?: AccordionItem[];
   device: DeviceType;
   firstBlock: boolean;
 }
@@ -75,6 +77,11 @@ export interface CTA {
   isBlank: boolean;
   image?: ImageDataProps;
   page?: Page;
+}
+
+export interface AccordionItem {
+  title: string;
+  html: string;
 }
 
 export interface LinkList {
