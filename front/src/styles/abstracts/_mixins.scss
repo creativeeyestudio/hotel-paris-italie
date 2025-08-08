@@ -110,6 +110,11 @@
 
   &__btn {
     @include btnDesign("secondary");
+
+    &__label {
+      @include TitleDesign(16px, 16px, 16px, true);
+      font-weight: 500;
+    }
   }
 
   .list-bullet {
