@@ -129,6 +129,32 @@ const TextImageDouble: Block = {
                         },
                     ]    
                 },
+                {
+                    label: 'Blocks Accordion',
+                    description: "Contenus accordion",
+                    fields: [
+                        {
+                            name: 'accordionItem',
+                            type: 'array',
+                            label: false,
+                            fields: [
+                                {
+                                    name: 'title',
+                                    label: 'Titre',
+                                    type: 'text',
+                                    required: true
+                                },
+                                {
+                                    name: 'content',
+                                    label: 'Contenu',
+                                    type: 'richText',
+                                    required: true
+                                }
+                            ]
+                        }
+                        
+                    ]
+                }
             ]
         },
         
