@@ -6,8 +6,8 @@
     }
 
     &__title {
-        @apply absolute z-10 px-14 py-7 left-0 bottom-0 text-white;
-        background: linear-gradient(270deg,rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.53) 50%, rgba(0, 0, 0, 0.75) 100%);
         @extend .title1;
+        @apply text-white text-7xl text-center tracking-wider absolute z-10 px-14 py-9 w-10/12 left-1/2 bottom-[6.25rem] -translate-x-1/2;
+        background: linear-gradient(270deg,rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 20%, rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 0.4) 80%, rgba(0, 0, 0, 0) 100%);
     }
 }

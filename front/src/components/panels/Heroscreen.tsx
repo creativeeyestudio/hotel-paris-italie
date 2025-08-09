@@ -66,12 +66,15 @@ const Heroscreen = ({ heroImage, title }: HeroscreenProps) => {
 
         {/* Desktop : Full width + height */}
         {isDesktop && (
-          <ImageWrapper
-            url={apiUrl + image.url}
-            alt={image.alt}
-            className="w-full h-screen relative"
-            priority
-          />  
+          <div className="heroscreen">
+            <ImageWrapper
+              url={apiUrl + image.url}
+              alt={image.alt}
+              className="heroscreen__image"
+              priority
+            />  
+            {title ? <h2 className="heroscreen__title">{title}</h2> : <></>}
+          </div>
         )}
       </>
     );
@@ -103,7 +106,7 @@ const Heroscreen = ({ heroImage, title }: HeroscreenProps) => {
             </SwiperSlide>
           </>
         ))}
-        {title ? <span className="heroscreen__title">{title}</span> : <span className="heroscreen__title">Y en a pas</span>}
+        {title ? <h2 className="heroscreen__title">{title}</h2> : <></>}
       </Swiper>
     </>
     
