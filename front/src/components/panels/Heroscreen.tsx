@@ -12,7 +12,7 @@ import { AspectRatio } from "../ui/aspect-ratio";
 import { useEffect, useState } from "react";
 import { ImageWrapper } from "./ImageWrapper";
 
-const Heroscreen = ({ heroImage }: HeroscreenProps) => {
+const Heroscreen = ({ heroImage, title }: HeroscreenProps) => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   const [isMobile, setIsMobile] = useState(true);
@@ -71,36 +71,42 @@ const Heroscreen = ({ heroImage }: HeroscreenProps) => {
             alt={image.alt}
             className="w-full h-screen relative"
             priority
-          />
+          />  
         )}
       </>
     );
   }
 
   return (
-    <Swiper
-      effect="fade"
-      centeredSlides
-      loop
-      speed={1500}
-      pagination={{ dynamicBullets: true }}
-      autoplay={{ delay: 3000, disableOnInteraction: false }}
-      modules={[EffectFade, Autoplay]}
-      className="heroscreen"
-    >
-      {heroImage.map((image, index) => (
-        <SwiperSlide key={index} className="heroscreen__container">
-          <Image
-            src={apiUrl + image.url}
-            alt={image.alt ?? ""}
-            fill
-            style={{ objectFit: "cover" }}
-            priority
-            className="heroscreen__image"
-          />
-        </SwiperSlide>
-      ))}
-    </Swiper>
+    <>
+      <Swiper
+        effect="fade"
+        centeredSlides
+        loop
+        speed={1500}
+        pagination={{ dynamicBullets: true }}
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
+        modules={[EffectFade, Autoplay]}
+        className="heroscreen"
+      >
+        {heroImage.map((image, index) => (
+          <>
+            <SwiperSlide key={index} className="heroscreen__container">
+              <Image
+                src={apiUrl + image.url}
+                alt={image.alt ?? ""}
+                fill
+                style={{ objectFit: "cover" }}
+                priority
+                className="heroscreen__image"
+              />
+            </SwiperSlide>
+          </>
+        ))}
+        {title ? <span className="heroscreen__title">{title}</span> : <span className="heroscreen__title">Y en a pas</span>}
+      </Swiper>
+    </>
+    
   );
 };
 

@@ -43,10 +43,11 @@ export default async function HomePage(props: { params: PageHomeParams }) {
   if (!page) return notFound();
 
   const heroscreen = page.content?.heroscreen[0]?.heroImage;
+  const heroTitle = page.content?.heroscreen[0]?.title;
 
   return (
     <>
-      {heroscreen && <Heroscreen heroImage={heroscreen} />}
+      {heroscreen && <Heroscreen heroImage={heroscreen} title={heroTitle} />}
       <ContentPageItems blocks={page.content.layout} locale={locale} />
     </>
   );

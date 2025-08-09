@@ -1,7 +1,13 @@
 .heroscreen {
-    @apply aspect-[4/3] md:aspect-[16/10] lg:aspect-[inherit] lg:w-full lg:h-screen;
+    @apply relative aspect-[4/3] md:aspect-[16/10] lg:aspect-[inherit] lg:w-full lg:h-screen;
 
     &__container {
         @apply relative;
+    }
+
+    &__title {
+        @apply absolute z-10 px-14 py-7 left-0 bottom-0 text-white;
+        background: linear-gradient(270deg,rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.53) 50%, rgba(0, 0, 0, 0.75) 100%);
+        @extend .title1;
     }
 }

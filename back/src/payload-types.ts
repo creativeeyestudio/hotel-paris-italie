@@ -189,6 +189,10 @@ export interface Page {
     heroscreen?:
       | {
           heroImage: (string | Media)[];
+          /**
+           * Titre visible en version Desktop
+           */
+          title?: string | null;
           id?: string | null;
           blockName?: string | null;
           blockType: 'heroscreen';
@@ -733,6 +737,7 @@ export interface PagesSelect<T extends boolean = true> {
                 | T
                 | {
                     heroImage?: T;
+                    title?: T;
                     id?: T;
                     blockName?: T;
                   };
@@ -1150,6 +1155,10 @@ export interface RoomPage {
     heroscreen?:
       | {
           heroImage: (string | Media)[];
+          /**
+           * Titre visible en version Desktop
+           */
+          title?: string | null;
           id?: string | null;
           blockName?: string | null;
           blockType: 'heroscreen';
@@ -1336,6 +1345,7 @@ export interface RoomPageSelect<T extends boolean = true> {
                 | T
                 | {
                     heroImage?: T;
+                    title?: T;
                     id?: T;
                     blockName?: T;
                   };

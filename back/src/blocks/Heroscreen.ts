@@ -15,6 +15,14 @@ const Heroscreen: Block = {
             hasMany: true,
             required: true, 
         },
+        {
+            name: 'title',
+            label: 'Titre',
+            type: 'text',
+            admin: {
+                description: 'Titre visible en version Desktop'
+            }
+        }
     ]
 }
 
