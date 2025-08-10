@@ -11,6 +11,7 @@ import "swiper/css/pagination";
 import { AspectRatio } from "../ui/aspect-ratio";
 import { useEffect, useState } from "react";
 import { ImageWrapper } from "./ImageWrapper";
+import ScrollDownIcon from "../icons/ScrollDownIcon";
 
 const Heroscreen = ({ heroImage, title }: HeroscreenProps) => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -31,6 +32,16 @@ const Heroscreen = ({ heroImage, title }: HeroscreenProps) => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const ScrollDownHeroscreen = () => {
+    const heroscreen = document.querySelector('.heroscreen') as HTMLDivElement;
+    const header = document.querySelector('.header') as HTMLDivElement;
+
+    window.scrollTo({
+      top: heroscreen.clientHeight - header.clientHeight,
+      behavior: "smooth",
+    });
+  }
 
   if (!apiUrl) return null;
 
@@ -74,6 +85,7 @@ const Heroscreen = ({ heroImage, title }: HeroscreenProps) => {
               priority
             />  
             {(title && isDesktop) ? <h2 className="heroscreen__title">{title}</h2> : <></>}
+            {isDesktop ? <ScrollDownIcon className="heroscreen__arrow" clickAction={ScrollDownHeroscreen} /> : <></>}
           </div>
         )}
       </>
@@ -107,6 +119,7 @@ const Heroscreen = ({ heroImage, title }: HeroscreenProps) => {
           </>
         ))}
         {(title && isDesktop) ? <h2 className="heroscreen__title">{title}</h2> : <></>}
+        {isDesktop ? <ScrollDownIcon className="heroscreen__arrow" clickAction={ScrollDownHeroscreen} /> : <></>}
       </Swiper>
     </>
     
