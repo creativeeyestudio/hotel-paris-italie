@@ -73,7 +73,7 @@ const Heroscreen = ({ heroImage, title }: HeroscreenProps) => {
               className="heroscreen__image"
               priority
             />  
-            {title ? <h2 className="heroscreen__title">{title}</h2> : <></>}
+            {(title && isDesktop) ? <h2 className="heroscreen__title">{title}</h2> : <></>}
           </div>
         )}
       </>
@@ -106,7 +106,7 @@ const Heroscreen = ({ heroImage, title }: HeroscreenProps) => {
             </SwiperSlide>
           </>
         ))}
-        {title ? <h2 className="heroscreen__title">{title}</h2> : <></>}
+        {(title && isDesktop) ? <h2 className="heroscreen__title">{title}</h2> : <></>}
       </Swiper>
     </>
     

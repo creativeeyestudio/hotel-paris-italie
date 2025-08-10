@@ -19,6 +19,7 @@ const Heroscreen: Block = {
             name: 'title',
             label: 'Titre',
             type: 'text',
+            localized: true,
             admin: {
                 description: 'Titre visible en version Desktop'
             }
