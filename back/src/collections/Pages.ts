@@ -28,7 +28,7 @@ export type LayoutBlock = {
 export async function enrichLayoutWithHTML(layout: LayoutBlock[] = []): Promise<LayoutBlock[]> {
   return Promise.all(
     layout.map(async (block) => {
-      const { blockType, blockName, content, subItem, ...rest } = block
+      const { blockType, blockName, content, subItem, accordionItem, ...rest } = block
 
       const enrichedBlock: LayoutBlock = {
         blockType,
@@ -44,6 +44,15 @@ export async function enrichLayoutWithHTML(layout: LayoutBlock[] = []): Promise<
       if (Array.isArray(subItem)) {
         enrichedBlock.subItem = await Promise.all(
           subItem.map(async (item) => ({
+            ...item,
+            html: item.content ? await convertRichTextToHTML(item.content) : undefined,
+          }))
+        )
+      }
+
+      if (Array.isArray(accordionItem)) {
+        enrichedBlock.accordionItem = await Promise.all(
+          accordionItem.map(async (item) => ({
             ...item,
             html: item.content ? await convertRichTextToHTML(item.content) : undefined,
           }))

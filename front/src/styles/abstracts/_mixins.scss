@@ -110,6 +110,24 @@
 
   &__btn {
     @include btnDesign("secondary");
+
+    &__label {
+      @include TitleDesign(16px, 16px, 16px, true);
+      font-weight: 500;
+    }
+  }
+
+  &__accordion {
+    @apply mt-[3rem];
+
+    &__title {
+      @apply bg-[#B8A373] py-[1rem] px-[2rem];
+      @extend .text-base;
+    }
+
+    &__content {
+      @apply px-[1rem] pt-[1rem] pb-0;
+    }
   }
 
   .list-bullet {

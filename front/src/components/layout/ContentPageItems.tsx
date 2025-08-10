@@ -56,9 +56,10 @@ const ContentPageItems: React.FC<ContentPageItemsProps> = async ({
                 secondaryBg={block.secondaryBg}
                 linkList={block.linkList}
                 subItem={block.subItem}
+                accordionItem={block.accordionItem}
                 device={device}
                 firstBlock={isFirst}
-                key={index}
+                key={index}               
               />
             );
           case "text-double-image":
@@ -72,6 +73,7 @@ const ContentPageItems: React.FC<ContentPageItemsProps> = async ({
                 secondaryBg={block.secondaryBg}
                 linkList={block.linkList}
                 subItem={block.subItem}
+                accordionItem={block.accordionItem}
                 device={device}
                 firstBlock={isFirst}
                 key={index}

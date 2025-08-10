@@ -8,6 +8,7 @@ import {
   Phone,
   TvMinimal,
   Wifi,
+  Mail,
 } from "lucide-react";
 
 const iconMap = {
@@ -19,6 +20,7 @@ const iconMap = {
   minibar: Martini,
   television: TvMinimal,
   courtesyTray: HandPlatter,
+  mail: Mail
 };
 
 const Icon: React.FC<IconProps> = ({

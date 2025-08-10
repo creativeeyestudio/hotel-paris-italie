@@ -5,6 +5,8 @@ import { TextImageProps } from "@/interfaces/blocks";
 import { ImageWrapper } from "./ImageWrapper";
 import NavLink from "./NavLink";
 import { CurtainReveal } from "../anims/CurtainReveal";
+import { slugify } from "@/lib/utils";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@radix-ui/react-accordion";
 
 const TextImage: React.FC<TextImageProps> = ({
   title,
@@ -13,15 +15,17 @@ const TextImage: React.FC<TextImageProps> = ({
   cta,
   secondaryBg,
   linkList,
+  accordionItem,
   subItem,
   device,
   firstBlock,
+  idBlock
 }) => {
   const TitleTag = firstBlock ? "h1" : "h2";
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   return process.env.NEXT_PUBLIC_API_URL ? (
-    <section className={`text-img${secondaryBg ? " text-img--sec-color" : ""}`}>
+    <section id={idBlock} className={`text-img${secondaryBg ? " text-img--sec-color" : ""}`}>
       <div className="text-img__content">
         <CurtainReveal color={secondaryBg ? "#FAF9F3" : "#FFF"}>
           <TitleTag className="text-img__title">{title}</TitleTag>
@@ -31,6 +35,21 @@ const TextImage: React.FC<TextImageProps> = ({
               className="text-img__text"
               dangerouslySetInnerHTML={{ __html: html }}
             />
+          ) : (
+            <></>
+          )}
+
+          {accordionItem?.length && accordionItem?.length > 0 ? (
+            <Accordion type="single">
+              {accordionItem.map((item, index) => (
+                <AccordionItem value={`${slugify(item.title)}`} key={index}>
+                  <AccordionTrigger>{item.title}</AccordionTrigger>
+                  <AccordionContent>
+                    <div dangerouslySetInnerHTML={{ __html: item.html }}></div>
+                  </AccordionContent>
+                </AccordionItem>  
+              ))}
+            </Accordion>
           ) : (
             <></>
           )}

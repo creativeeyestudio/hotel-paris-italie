@@ -1,6 +1,7 @@
 import { DeviceType } from "@/types/DeviceType";
 import { ImageDataProps } from "./image";
 import { Page } from "./page";
+import { MouseEventHandler } from "react";
 
 // CONTENT
 // --------------------------------
@@ -24,6 +25,8 @@ export interface TextIntroProps {
   html?: string;
   className?: string;
   firstBlock: boolean;
+  cta?: CTA[];
+  linkList?: LinkList[];
 }
 
 export interface TextImageProps {
@@ -35,8 +38,10 @@ export interface TextImageProps {
   secondaryBg: boolean;
   linkList: LinkList[];
   subItem: SubItemList[];
+  accordionItem?: AccordionItem[];
   device: DeviceType;
   firstBlock: boolean;
+  idBlock?: string;
 }
 
 export interface TextDoubleImageProps {
@@ -49,6 +54,7 @@ export interface TextDoubleImageProps {
   secondaryBg: boolean;
   linkList: LinkList[];
   subItem: SubItemList[];
+  accordionItem?: AccordionItem[];
   device: DeviceType;
   firstBlock: boolean;
 }
@@ -59,7 +65,7 @@ export interface ImageLinkProps {
   locale: string;
 }
 
-interface CTA {
+export interface CTA {
   type:
     | "page"
     | "external"
@@ -73,9 +79,15 @@ interface CTA {
   page?: Page;
 }
 
+export interface AccordionItem {
+  title: string;
+  html: string;
+}
+
 export interface LinkList {
   linkName: string;
   linkUrl?: string;
+  linkClick?: MouseEventHandler;
 }
 
 export interface SubItemList {
@@ -86,6 +98,7 @@ export interface SubItemList {
 export interface HeroscreenProps {
   blockType?: "heroscreen";
   heroImage: ImageDataProps[];
+  title?: string;
 }
 
 export interface ParallaxProps {

@@ -189,6 +189,10 @@ export interface Page {
     heroscreen?:
       | {
           heroImage: (string | Media)[];
+          /**
+           * Titre visible en version Desktop
+           */
+          title?: string | null;
           id?: string | null;
           blockName?: string | null;
           blockType: 'heroscreen';
@@ -234,6 +238,17 @@ export interface Page {
                 };
                 [k: string]: unknown;
               };
+              links?:
+                | {
+                    type: 'page' | 'external' | 'homepage' | 'rooms-page' | 'access-situation' | 'reserve';
+                    label: string;
+                    page?: (string | null) | Page;
+                    url?: string | null;
+                    image?: (string | null) | Media;
+                    newTab?: boolean | null;
+                    id?: string | null;
+                  }[]
+                | null;
               id?: string | null;
               blockName?: string | null;
               blockType: 'text-intro';
@@ -276,6 +291,27 @@ export interface Page {
                   }[]
                 | null;
               subItem?:
+                | {
+                    title: string;
+                    content: {
+                      root: {
+                        type: string;
+                        children: {
+                          type: string;
+                          version: number;
+                          [k: string]: unknown;
+                        }[];
+                        direction: ('ltr' | 'rtl') | null;
+                        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                        indent: number;
+                        version: number;
+                      };
+                      [k: string]: unknown;
+                    };
+                    id?: string | null;
+                  }[]
+                | null;
+              accordionItem?:
                 | {
                     title: string;
                     content: {
@@ -339,6 +375,27 @@ export interface Page {
                   }[]
                 | null;
               subItem?:
+                | {
+                    title: string;
+                    content: {
+                      root: {
+                        type: string;
+                        children: {
+                          type: string;
+                          version: number;
+                          [k: string]: unknown;
+                        }[];
+                        direction: ('ltr' | 'rtl') | null;
+                        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                        indent: number;
+                        version: number;
+                      };
+                      [k: string]: unknown;
+                    };
+                    id?: string | null;
+                  }[]
+                | null;
+              accordionItem?:
                 | {
                     title: string;
                     content: {
@@ -680,6 +737,7 @@ export interface PagesSelect<T extends boolean = true> {
                 | T
                 | {
                     heroImage?: T;
+                    title?: T;
                     id?: T;
                     blockName?: T;
                   };
@@ -700,6 +758,17 @@ export interface PagesSelect<T extends boolean = true> {
                 | {
                     title?: T;
                     content?: T;
+                    links?:
+                      | T
+                      | {
+                          type?: T;
+                          label?: T;
+                          page?: T;
+                          url?: T;
+                          image?: T;
+                          newTab?: T;
+                          id?: T;
+                        };
                     id?: T;
                     blockName?: T;
                   };
@@ -729,6 +798,13 @@ export interface PagesSelect<T extends boolean = true> {
                           id?: T;
                         };
                     subItem?:
+                      | T
+                      | {
+                          title?: T;
+                          content?: T;
+                          id?: T;
+                        };
+                    accordionItem?:
                       | T
                       | {
                           title?: T;
@@ -765,6 +841,13 @@ export interface PagesSelect<T extends boolean = true> {
                           id?: T;
                         };
                     subItem?:
+                      | T
+                      | {
+                          title?: T;
+                          content?: T;
+                          id?: T;
+                        };
+                    accordionItem?:
                       | T
                       | {
                           title?: T;
@@ -1072,6 +1155,10 @@ export interface RoomPage {
     heroscreen?:
       | {
           heroImage: (string | Media)[];
+          /**
+           * Titre visible en version Desktop
+           */
+          title?: string | null;
           id?: string | null;
           blockName?: string | null;
           blockType: 'heroscreen';
@@ -1258,6 +1345,7 @@ export interface RoomPageSelect<T extends boolean = true> {
                 | T
                 | {
                     heroImage?: T;
+                    title?: T;
                     id?: T;
                     blockName?: T;
                   };

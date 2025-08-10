@@ -6,12 +6,15 @@ import { ImageWrapper } from "./ImageWrapper";
 import SwiperComponent from "./SwiperComponent";
 import NavLink from "./NavLink";
 import { CurtainReveal } from "../anims/CurtainReveal";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
+import { slugify } from "@/lib/utils";
 
 const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
   title,
   html,
   image1,
   image2,
+  accordionItem,
   cta,
   secondaryBg,
   linkList,
@@ -36,6 +39,27 @@ const TextDoubleImage: React.FC<TextDoubleImageProps> = ({
               className="text-double-img__text"
               dangerouslySetInnerHTML={{ __html: html }}
             />
+          ) : (
+            <></>
+          )}
+
+          {accordionItem?.length && accordionItem?.length > 0 ? (
+            <Accordion 
+              type="single"
+              collapsible
+              className="text-double-img__accordion">
+              {accordionItem.map((item, index) => (
+                <AccordionItem 
+                  value={`${slugify(item.title)}`}
+                  className="text-double-img__accordion__item" 
+                  key={index}>
+                  <AccordionTrigger className="text-double-img__accordion__title">{item.title}</AccordionTrigger>
+                  <AccordionContent className="text-double-img__accordion__content">
+                    <div dangerouslySetInnerHTML={{ __html: item.html }}></div>
+                  </AccordionContent>
+                </AccordionItem>  
+              ))}
+            </Accordion>
           ) : (
             <></>
           )}
