@@ -98,6 +98,7 @@ export interface SubItemList {
 export interface HeroscreenProps {
   blockType?: "heroscreen";
   heroImage: ImageDataProps[];
+  title?: string;
 }
 
 export interface ParallaxProps {

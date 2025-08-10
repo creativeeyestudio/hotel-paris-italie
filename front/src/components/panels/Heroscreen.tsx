@@ -11,8 +11,9 @@ import "swiper/css/pagination";
 import { AspectRatio } from "../ui/aspect-ratio";
 import { useEffect, useState } from "react";
 import { ImageWrapper } from "./ImageWrapper";
+import ScrollDownIcon from "../icons/ScrollDownIcon";
 
-const Heroscreen = ({ heroImage }: HeroscreenProps) => {
+const Heroscreen = ({ heroImage, title }: HeroscreenProps) => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   const [isMobile, setIsMobile] = useState(true);
@@ -31,6 +32,16 @@ const Heroscreen = ({ heroImage }: HeroscreenProps) => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const ScrollDownHeroscreen = () => {
+    const heroscreen = document.querySelector('.heroscreen') as HTMLDivElement;
+    const header = document.querySelector('.header') as HTMLDivElement;
+
+    window.scrollTo({
+      top: heroscreen.clientHeight - header.clientHeight,
+      behavior: "smooth",
+    });
+  }
 
   if (!apiUrl) return null;
 
@@ -66,41 +77,52 @@ const Heroscreen = ({ heroImage }: HeroscreenProps) => {
 
         {/* Desktop : Full width + height */}
         {isDesktop && (
-          <ImageWrapper
-            url={apiUrl + image.url}
-            alt={image.alt}
-            className="w-full h-screen relative"
-            priority
-          />
+          <div className="heroscreen">
+            <ImageWrapper
+              url={apiUrl + image.url}
+              alt={image.alt}
+              className="heroscreen__image"
+              priority
+            />  
+            {(title && isDesktop) ? <h2 className="heroscreen__title">{title}</h2> : <></>}
+            {isDesktop ? <ScrollDownIcon className="heroscreen__arrow" clickAction={ScrollDownHeroscreen} /> : <></>}
+          </div>
         )}
       </>
     );
   }
 
   return (
-    <Swiper
-      effect="fade"
-      centeredSlides
-      loop
-      speed={1500}
-      pagination={{ dynamicBullets: true }}
-      autoplay={{ delay: 3000, disableOnInteraction: false }}
-      modules={[EffectFade, Autoplay]}
-      className="heroscreen"
-    >
-      {heroImage.map((image, index) => (
-        <SwiperSlide key={index} className="heroscreen__container">
-          <Image
-            src={apiUrl + image.url}
-            alt={image.alt ?? ""}
-            fill
-            style={{ objectFit: "cover" }}
-            priority
-            className="heroscreen__image"
-          />
-        </SwiperSlide>
-      ))}
-    </Swiper>
+    <>
+      <Swiper
+        effect="fade"
+        centeredSlides
+        loop
+        speed={1500}
+        pagination={{ dynamicBullets: true }}
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
+        modules={[EffectFade, Autoplay]}
+        className="heroscreen"
+      >
+        {heroImage.map((image, index) => (
+          <>
+            <SwiperSlide key={index} className="heroscreen__container">
+              <Image
+                src={apiUrl + image.url}
+                alt={image.alt ?? ""}
+                fill
+                style={{ objectFit: "cover" }}
+                priority
+                className="heroscreen__image"
+              />
+            </SwiperSlide>
+          </>
+        ))}
+        {(title && isDesktop) ? <h2 className="heroscreen__title">{title}</h2> : <></>}
+        {isDesktop ? <ScrollDownIcon className="heroscreen__arrow" clickAction={ScrollDownHeroscreen} /> : <></>}
+      </Swiper>
+    </>
+    
   );
 };
 

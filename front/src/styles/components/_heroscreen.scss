@@ -1,7 +1,17 @@
 .heroscreen {
-    @apply aspect-[4/3] md:aspect-[16/10] lg:aspect-[inherit] lg:w-full lg:h-screen;
+    @apply relative aspect-[4/3] md:aspect-[16/10] lg:aspect-[inherit] lg:w-full lg:h-screen;
 
     &__container {
         @apply relative;
+    }
+
+    &__title {
+        @extend .title1;
+        @apply text-white text-5xl text-center tracking-wider absolute z-10 px-14 py-7 w-10/12 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2;
+        background: linear-gradient(270deg,rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 20%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.25) 80%, rgba(0, 0, 0, 0) 100%);
+    }
+
+    &__arrow {
+        @apply absolute z-10 left-1/2 -translate-x-1/2 bottom-[4rem] cursor-pointer border border-white rounded-[4rem] p-4 bg-black/50 hover:scale-[1.2] hover:bg-black/75 duration-1000;
     }
 }

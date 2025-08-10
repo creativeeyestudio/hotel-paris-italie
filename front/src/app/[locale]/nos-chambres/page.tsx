@@ -56,6 +56,7 @@ export default async function RoomPage(props: { params: RoomPageParams }) {
   if (!roomPageApi) return;
 
   const heroscreen = roomPageApi.intro.heroscreen[0]?.heroImage;
+  const heroTitle = roomPageApi.intro?.heroscreen[0]?.title;
   const introTitle = roomPageApi.intro.introTitle;
   const introContent = roomPageApi.intro.introContentHtml;
   const services = roomPageApi.services.serviceList;
@@ -69,7 +70,7 @@ export default async function RoomPage(props: { params: RoomPageParams }) {
 
   return (
     <>
-      {heroscreen ? <Heroscreen heroImage={heroscreen} /> : <></>}
+      {heroscreen ? <Heroscreen heroImage={heroscreen} title={heroTitle} /> : <></>}
 
       {introTitle ? (
         <TextIntro
