@@ -66,6 +66,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@next/bundle-analyzer": "^15.4.5",
     "@types/leaflet": "^1.9.20",
     "@types/node": "^20",
     "@types/react": "^19",
