@@ -47,7 +47,7 @@ const ToggleLang: React.FC<ToggleLangProps> = ({ currentLocale }) => {
     <div className="flex items-center gap-4 space-x-2 text-sm">
       
       <DropdownMenu>
-        <DropdownMenuTrigger className='uppercase'>
+        <DropdownMenuTrigger className='uppercase font-medium'>
           {currentLocale}
         </DropdownMenuTrigger>
         <DropdownMenuContent className='z-[9999]'>
