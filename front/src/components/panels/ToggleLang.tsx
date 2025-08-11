@@ -6,6 +6,7 @@ import { Button } from "../ui/button";
 import toggleReservePopup from "@/lib/toggleReservePopup";
 import NavLink from "./NavLink";
 import { toUpperCaseSafe } from "@/lib/utils";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/dropdown-menu";
 
 interface ToggleLangProps {
   currentLocale: string;
@@ -44,22 +45,17 @@ const ToggleLang: React.FC<ToggleLangProps> = ({ currentLocale }) => {
 
   return (
     <div className="flex items-center gap-4 space-x-2 text-sm">
-      <div className="toggle-lang flex items-center space-x-1">
-        {locales.map((locale, index) => (
-          <React.Fragment key={locale}>
-            <button
-              onClick={() => handleLocaleChange(locale)}
-              disabled={locale === currentLocale}
-              className={`hover:underline ${
-                locale === currentLocale ? "font-bold" : ""
-              }`}
-            >
-              {locale.toUpperCase()}
-            </button>
-            {index < locales.length - 1 && <span>-</span>}
-          </React.Fragment>
-        ))}
-      </div>
+      
+      <DropdownMenu>
+        <DropdownMenuTrigger className='uppercase'>
+          {currentLocale}
+        </DropdownMenuTrigger>
+        <DropdownMenuContent className='z-[9999]'>
+          {locales.map((locale, index) => (
+            <DropdownMenuItem className='uppercase' onClick={() => handleLocaleChange(locale)} key={index}>{locale}</DropdownMenuItem>
+          ))}
+        </DropdownMenuContent>
+      </DropdownMenu>
 
       <span className="hidden md:block xl:hidden">|</span>
 
@@ -74,14 +70,17 @@ const ToggleLang: React.FC<ToggleLangProps> = ({ currentLocale }) => {
 
       <span className="hidden md:block xl:hidden">|</span>
 
-      <NavLink 
-        isExternal={false} 
-        linkType={"access-situation"} 
-        label={toUpperCaseSafe("Venir à l'hôtel")} 
-        isBlank={false} 
-        className="btn--cta"
-        buttonStyle={isDesktop}
-      />
+      <div className="hidden md:block">
+        <NavLink 
+          isExternal={false} 
+          linkType={"access-situation"} 
+          label={toUpperCaseSafe("Venir à l'hôtel")} 
+          isBlank={false} 
+          className="btn--cta"
+          buttonStyle={isDesktop}
+        />
+      </div>
+      
     </div>
   );
 };
