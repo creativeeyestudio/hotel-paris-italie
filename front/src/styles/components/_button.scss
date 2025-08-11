@@ -1,9 +1,13 @@
 .btn {
   &--primary {
-    @apply px-[1.25rem] py-[.625rem] bg-[#B8A373] text-center relative md:px-[2.5rem] md:py-[1.25rem] xl:duration-700 xl:hover:bg-primary xl:hover:text-white;
+    @apply px-[1.25rem] py-[.625rem] bg-[#B8A373] text-center text-black uppercase font-medium relative md:px-[2.5rem] md:py-[1.25rem] xl:duration-700 xl:hover:bg-primary xl:hover:text-white;
   }
 
   &--secondary {
     @include btnDesign("secondary");
+  }
+
+  &--cta {
+    @apply font-medium;
   }
 }

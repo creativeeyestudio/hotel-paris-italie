@@ -47,3 +47,6 @@ export function scrollToAnchor(id: string) {
   }
 }
 
+export function toUpperCaseSafe(str: string): string {
+  return (str ?? "").toUpperCase();
+}
