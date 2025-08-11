@@ -10,6 +10,10 @@
     bottom: 0;
   }
 
+  @media screen and (min-width: 1280px) {
+    top: $header-ht--d;
+  }
+
   &--open {
     opacity: 1;
     transform: translateX(0%);
