@@ -7,6 +7,7 @@ import toggleReservePopup from "@/lib/toggleReservePopup";
 import NavLink from "./NavLink";
 import { toUpperCaseSafe } from "@/lib/utils";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/dropdown-menu";
+import Icon from "../icons/Icon";
 
 interface ToggleLangProps {
   currentLocale: string;
@@ -31,12 +32,18 @@ const ToggleLang: React.FC<ToggleLangProps> = ({ currentLocale }) => {
 
   const bookingTexts: Record<string, string> = {
     fr: "Réserver",
-    en: "Booking",
+    en: "Book a room",
     es: "Reservar",
   };
 
+  const accessTexts: Record<string, string> = {
+    fr: "Venir à l'hôtel",
+    en: "Go to the Hotel",
+    es: "Llegar al hotel",
+  };
+
   useEffect(() => {
-  const updateIsDesktop = () => setIsDesktop(window.innerWidth >= 1280);
+    const updateIsDesktop = () => setIsDesktop(window.innerWidth >= 1280);
     updateIsDesktop();
     window.addEventListener("resize", updateIsDesktop);
     return () => window.removeEventListener("resize", updateIsDesktop);
@@ -47,8 +54,9 @@ const ToggleLang: React.FC<ToggleLangProps> = ({ currentLocale }) => {
     <div className="flex items-center gap-4 space-x-2 text-sm">
       
       <DropdownMenu>
-        <DropdownMenuTrigger className='uppercase font-medium'>
+        <DropdownMenuTrigger className='uppercase font-medium flex items-center gap-2'>
           {currentLocale}
+          <Icon type='chevronDown' color="white" size={'16'} />
         </DropdownMenuTrigger>
         <DropdownMenuContent className='z-[9999]'>
           {locales.map((locale, index) => (
@@ -73,8 +81,9 @@ const ToggleLang: React.FC<ToggleLangProps> = ({ currentLocale }) => {
       <div className="hidden md:block">
         <NavLink 
           isExternal={false} 
-          linkType={"access-situation"} 
-          label={toUpperCaseSafe("Venir à l'hôtel")} 
+          linkType={"access-situation"}
+          locale={currentLocale} 
+          label={toUpperCaseSafe(accessTexts[currentLocale])} 
           isBlank={false} 
           className="btn--cta"
           buttonStyle={isDesktop}
