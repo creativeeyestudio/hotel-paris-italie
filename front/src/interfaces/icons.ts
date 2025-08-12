@@ -8,7 +8,8 @@ export interface IconProps {
     | "minibar"
     | "television"
     | "courtesyTray"
-    | 'mail';
+    | 'mail'
+    | 'chevronDown';
   size?: string | number;
   color?: "black" | "white";
   className?: string;

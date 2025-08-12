@@ -16,6 +16,7 @@ interface NavLinkProps {
   href?: string;
   className?: string;
   locale?: string;
+  buttonStyle?: boolean;
 }
 
 type LinkType =
@@ -116,6 +117,7 @@ const AccessPageLink = (
   locale: string,
   isBlank: boolean,
   className?: string,
+  buttonStyle?: boolean
 ) => {
   const handleOnClick = useHandleNavClick();
   const href = `/${locale}/acces-et-situation`;
@@ -128,7 +130,7 @@ const AccessPageLink = (
       rel={isBlank ? "noopener noreferrer" : undefined}
       onClick={(e) => handleOnClick(e, href)}
     >
-      <span className={`${className}__label`}>{label}</span>
+      <span className={`${className ?? ""}__label ${buttonStyle ? "btn--primary" : ""}`.trim()}>{label}</span>
     </Link>
   );
 };
@@ -154,6 +156,7 @@ const NavLink: React.FC<NavLinkProps> = ({
   href,
   className,
   locale = "fr",
+  buttonStyle
 }) => {
   if (isExternal && href) {
     return (
@@ -178,7 +181,7 @@ const NavLink: React.FC<NavLinkProps> = ({
       return RoomsPageLink(label, locale, isBlank, className);
 
     case "access-situation":
-      return AccessPageLink(label, locale, isBlank, className);
+      return AccessPageLink(label, locale, isBlank, className, buttonStyle);
 
     case "reserve":
       return ReserveLink(label, className);

@@ -3,7 +3,7 @@
   height: $header-ht--m;
 
   &__nav {
-    @apply h-full flex items-center gap-[1.875rem] duration-1000;
+    @apply h-full flex items-center gap-[1.875rem] lg:gap-[5.787vw] duration-1000;
 
     @media screen and (min-width: 1280px) {
       &:hover {
@@ -13,7 +13,7 @@
   }
 
   &__logo {
-    @apply aspect-video h-full relative bg-white lg:px-[1rem] lg:absolute lg:left-[50%] lg:translate-x-[-50%];
+    @apply aspect-video h-full relative bg-white lg:px-[1rem] xl:absolute xl:left-[50%] xl:translate-x-[-50%];
   }
 
   &__logo-container {
@@ -28,5 +28,9 @@
     &-btn {
       @apply ps-[0.5rem];
     }
+  }
+
+  @media screen and (min-width: 1280px) {
+    height: $header-ht--d;
   }
 }
